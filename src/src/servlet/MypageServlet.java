@@ -23,11 +23,18 @@ public class MypageServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}*/
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*if (session.getAttribute("id") == null) {
+			response.sendRedirect("/health_management/LoginServlet");
+			return;
+		}
 		// パーソナルデータページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+			else {*/	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
 				dispatcher.forward(request, response);
 	}
+//}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
