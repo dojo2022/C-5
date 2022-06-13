@@ -13,10 +13,12 @@
 	<img src="" alt="健康アプリ">
 	</h1>
 長期目標設定
+
 <form method = "GET" action = "/health_management/FirstChecktestServlet">
 
 <input type = "submit" name = "" value = "戻る">
 </form>
+
 <form method = "GET" action = "/health_management/ShortChecklistServlet">
 <input type = "submit" name = "" value = "次へ進む">
 </form>
