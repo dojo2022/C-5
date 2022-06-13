@@ -10,6 +10,10 @@
 </head>
 <body>
 初期チェックリスト
+
+<a href = "/health_management/RegisterServlet">戻る</a>
+
+<a href = "/health_management/LongChecklistServlet">次へ進む</a>
 </body>
 <script src = "/health_management/js/checklist.js"></script>
 </html>
