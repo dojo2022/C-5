@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="/health_management/css/backlog.css">
 </head>
 <body>
+<h1  >
+	<a href="/health_management/MypageServlet">
+	<img src="" alt="健康アプリ">
+	</a>
+	</h1>
+<hr>
 過去データ閲覧
 
 <a href="/health_management/MypageServlet">マイページへ</a>
