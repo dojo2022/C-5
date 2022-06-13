@@ -9,7 +9,14 @@
 <link rel = "stylesheet" href = "/health_management/css/common.css">
 </head>
 <body>
+<h1>
+	<img src="" alt="健康アプリ">
+	</h1>
 今日の目標設定
+<a href = "/health_management/LongChecklistServlet">戻る</a>
+
+<a href = "/health_management/MypageServlet">確定</a>
+
 </body>
 <script src = "/health_management/js/checklist.js">
 </script>

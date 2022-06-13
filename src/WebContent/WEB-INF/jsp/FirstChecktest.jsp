@@ -9,11 +9,15 @@
 <link rel = "stylesheet" href = "/health_management/css/common.css">
 </head>
 <body>
+<h1>
+	<img src="" alt="健康アプリ">
+	</h1>
 初期チェックリスト
 
 <a href = "/health_management/RegisterServlet">戻る</a>
 
 <a href = "/health_management/LongChecklistServlet">次へ進む</a>
+
 </body>
 <script src = "/health_management/js/checklist.js"></script>
 </html>
