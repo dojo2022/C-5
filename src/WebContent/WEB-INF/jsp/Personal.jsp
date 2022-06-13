@@ -10,6 +10,7 @@
 </head>
 <body>
 パーソナルデータ
+<a href="/health_management/MypageServlet">マイページへ</a>
 </body>
 <script src = "health_management/js/personal.js"></script>
 </html>
