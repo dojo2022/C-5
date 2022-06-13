@@ -17,6 +17,9 @@
 <hr>
 過去データ閲覧
 
+<input type="submit" name="REGIST" value="前へ">
+<input type="submit" name="REGIST" value="次へ">
+
 <a href="/health_management/MypageServlet">マイページへ</a>
 </body>
 <script src = "/health_management/js/backlog.js"></script>
