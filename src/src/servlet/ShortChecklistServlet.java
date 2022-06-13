@@ -20,6 +20,7 @@ public class ShortChecklistServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//今日の目標チェックリストへ
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ShortChecklist.jsp");
 		dispatcher.forward(request, response);
 	}
