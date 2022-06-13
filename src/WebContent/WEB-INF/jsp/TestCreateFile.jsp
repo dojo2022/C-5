@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン</title>
+<title>Insert title here</title>
 </head>
 <body>
-ログイン
+<p>ログイン</p>
 </body>
 </html>
