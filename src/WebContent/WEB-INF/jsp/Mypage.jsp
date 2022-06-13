@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Mypage</title>
+<link rel="stylesheet" href="/simpleBC/css/common.css">
+<link rel="stylesheet" href="/simpleBC/css/Mypage.css">
 </head>
 <body>
 マイページなのです
