@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>健康アプリ</title>
 </head>
 <body>
-
+長期目標設定
 </body>
 </html>
