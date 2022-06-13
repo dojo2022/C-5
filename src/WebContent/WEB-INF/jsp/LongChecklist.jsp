@@ -13,9 +13,13 @@
 	<img src="" alt="健康アプリ">
 	</h1>
 長期目標設定
-<a href = "/health_management/FirstChecktestServlet">戻る</a>
+<form method = "GET" action = "/health_management/FirstChecktestServlet">
 
-<a href = "/health_management/ShortChecklistServlet">次へ進む</a>
+<input type = "submit" name = "" value = "戻る">
+</form>
+<form method = "GET" action = "/health_management/ShortChecklistServlet">
+<input type = "submit" name = "" value = "次へ進む">
+</form>
 </body>
 
 <script src = "/health_management/js/checklist.js">
