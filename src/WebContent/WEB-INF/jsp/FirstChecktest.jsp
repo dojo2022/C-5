@@ -11,5 +11,5 @@
 <body>
 初期チェックリスト
 </body>
-<script src = "/health_management/js/checklist.js">
+<script src = "/health_management/js/checklist.js"></script>
 </html>

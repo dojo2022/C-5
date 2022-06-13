@@ -12,4 +12,6 @@
 今日の目標設定
 </body>
 <script src = "/health_management/js/checklist.js">
+</script>
+
 </html>
