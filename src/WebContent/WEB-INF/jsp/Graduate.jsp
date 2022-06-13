@@ -8,5 +8,6 @@
 </head>
 <body>
 健康アプリ
+卒業ページ
 </body>
 </html>
