@@ -7,6 +7,6 @@
 <title>Mypage</title>
 </head>
 <body>
-
+マイページなのです
 </body>
 </html>
