@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+過去データ閲覧
 </body>
 </html>
