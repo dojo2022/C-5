@@ -10,6 +10,8 @@
 </head>
 <body>
 過去データ閲覧
+
+<a href="/health_management/MypageServlet">マイページへ</a>
 </body>
 <script src = "/health_management/js/backlog.js"></script>
 </html>
