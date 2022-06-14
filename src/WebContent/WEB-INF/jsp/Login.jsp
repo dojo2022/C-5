@@ -14,7 +14,7 @@
 	</h1>
 <hr>
 ログイン
-<form>
+<form method = "POST" action ="/health_management/MypageServlet">
 <table>
 <tr>
 <td><input type = "text" class = "" placeholder = "ID"></td>
@@ -23,7 +23,9 @@
 <td><input type = "password" class = "" placeholder = "PW"></td>
 </tr>
 <tr>
-<td><input type = "submit" name = "" onclick="location.href='./index.html'"value = "ログイン"></td>
+<td>
+ <input type = "submit" name ="regist" value = "ログイン">
+</td>
 </tr>
 </table>
 </form>
