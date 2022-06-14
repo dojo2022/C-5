@@ -12,7 +12,7 @@
  <h1><a href="/health_management/MypageServlet">健康アプリ</a></h1>
  体重推移アニメーション
  ｛ユーザーネーム｝さんの軌跡<br>
- <a href="/health_management/FirstChecktestServlet/">
+ <a href="/health_management/FirstChecktestServlet">
   <button type="button">二週目へ</button>
 </a>
 
