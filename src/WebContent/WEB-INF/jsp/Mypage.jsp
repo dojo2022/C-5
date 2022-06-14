@@ -31,7 +31,7 @@
 </div>-->
 <hr>
 
-<form method="POST" action="health_management/ShortChecklistServlet" id="report">
+<form method="POST" action="/health_management/ShortChecklistServlet" id="report">
 <div class=first>
 		長期目標　○○　<br>
 		短期目標　○○　　<input type="checkbox" name="short" value="check"><br><br></div>

@@ -14,7 +14,7 @@
 	</h1>
 <hr>
 新規登録
-<form method = "GET" action ="/health_management/FirstChecktest">
+<form method = "POST" action ="/health_management/FirstChecktestServlet">
  <input type = "submit" name ="regist" value = "登録">
 </form>
 <!--
