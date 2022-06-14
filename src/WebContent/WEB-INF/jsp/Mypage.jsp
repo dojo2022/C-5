@@ -9,6 +9,19 @@
 <link rel="stylesheet" href="/health_management/css/mypage.css">
 </head>
 <body>
+<!--  <div class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>-->
+
+<nav class="globalMenuSp">
+    <ul>
+        <li><a href="/health_management/PersonalServlet">パーソナルページ</a></li>
+        <li><a href="/health_management/BacklogServlet">過去データ</a></li>
+        <li><a href="/health_management/LogoutServlet">ログアウト</a></li>
+    </ul>
+</nav>
 <h1  >
 	<a href="/health_management/MypageServlet">
 	<img src="" alt="健康アプリ">
