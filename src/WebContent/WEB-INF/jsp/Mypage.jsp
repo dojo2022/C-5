@@ -15,6 +15,13 @@
 	</a>
 	</h1>
 <hr>
+<form method="POST" action="health_management/ShortChecklistServlet" id="report">
+<div class=first>
+		長期目標　○○　<br>
+		短期目標　○○　　<input type="checkbox" name="short" value="check"><br><br></div>
+		体重<input type="text" name="height" value="">kg　
+<input type="submit" name="report" value="報告"><br><br>
+</form>
 マイページなのです
 </body>
 <script src="/health_management/js/mypage.js"></script>
