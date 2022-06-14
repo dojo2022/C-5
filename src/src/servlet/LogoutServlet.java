@@ -25,7 +25,7 @@ public class LogoutServlet extends HttpServlet {
 				session.invalidate();*/
 
 		// ログインページにリダイレクトする
-				response.sendRedirect("/WEB-INF/jsp/Login.jsp");
+				response.sendRedirect("/health_management/LoginServlet");
 
 		/*RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 		dispatcher.forward(request, response);*/
