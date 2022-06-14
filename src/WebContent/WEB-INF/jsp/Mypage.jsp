@@ -8,14 +8,8 @@
 <link rel="stylesheet" href="/health_management/css/common.css">
 <link rel="stylesheet" href="/health_management/css/mypage.css">
 </head>
-<body>
-<!--  <div class="hamburger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>-->
-
-<nav class="globalMenuSp">
+<header class="globalMenuSp">
+<nav >
     <ul>
         <li><a href="/health_management/PersonalServlet">パーソナルページ</a></li>
         <li><a href="/health_management/BacklogServlet">過去データ</a></li>
@@ -27,7 +21,16 @@
 	<img src="" alt="健康アプリ">
 	</a>
 	</h1>
+
+</header>
+<body>
+<!--  <div class="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>-->
 <hr>
+
 <form method="POST" action="health_management/ShortChecklistServlet" id="report">
 <div class=first>
 		長期目標　○○　<br>

@@ -1,4 +1,17 @@
 @charset "UTF-8";
+.globalMenuSp{
+	display:flex;
+}
+li{
+	text-align:left;
+	list-style: none;
+}
+h1{
+	padding: 0 300px 0 300px;
+}
+body{
+	text-align:center;
+}
 
 
 #report{
