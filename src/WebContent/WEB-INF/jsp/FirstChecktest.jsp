@@ -14,9 +14,14 @@
 	</h1>
 初期チェックリスト
 
-<a href = "/health_management/RegisterServlet">戻る</a>
+<form method = "GET" action = "/health_management/RegisterServlet">
 
-<a href = "/health_management/LongChecklistServlet">次へ進む</a>
+<input type = "submit" name = "" value = "戻る">
+</form>
+
+<form method = "GET" action = "/health_management/LongChecklistServlet">
+<input type = "submit" name = "" value = "次へ進む">
+</form>
 
 </body>
 <script src = "/health_management/js/checklist.js"></script>
