@@ -103,12 +103,12 @@ width:810px;
 .photo{
   display:none;
 }
-.avater.is-active{
+.avater.is-active-avater{
   background:yellow;
   color:#FFF;
   transition: all 0.2s ease-out;
 }
-.photo.is-show{
+.photo.is-show-avater{
   display:block;
 }
 /*-------------------------------------*/
