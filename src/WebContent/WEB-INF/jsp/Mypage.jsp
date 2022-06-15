@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Mypage</title>
-<link rel="stylesheet" href="/health_management/css/common.css">
+<!--  <link rel="stylesheet" href="/health_management/css/common.css">-->
 <link rel="stylesheet" href="/health_management/css/mypage.css">
 </head>
 <header class="globalMenuSp">
@@ -40,12 +40,19 @@
 </form>
 <div class="illustration">
 		<ul id="switch1">
-		<li id="stamp">短期目標達成状況</li>
-		<li id="weight">体重推移</li>
+		<li id="stamp_s">短期目標達成状況</li>
+		<li id="weight_s">体重推移</li>
 		</ul>
-		
+
+		<div id="stamp_i">aaaaa</div>
+		<div id="stamp_i">vvvvv</div>
 		<div class="avater">
-		
+		<ul id="switch2">
+			<li id="avater_n">現在</li>
+			<li id="avater_i">理想</li>
+		</ul>
+
+
 		</div>
 </div>
 マイページなのです
