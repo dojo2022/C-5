@@ -52,10 +52,45 @@ values(NULL, ?, ?, DEFAULT, ?, ?, DEFAULT)
 
 【マイページ】
 ・選択した長期目標の表示
-SELECT first_test FROM FirstLongMaster 
+SELECT  long_goal FROM FirstLongMaster 
+INNER JOIN FirstLongTrans
+ON  FirstLongMaster.type =  FirstLongTrans.type
+where user_id = '?' and long_complete = 1;
+→テスト
+SELECT  long_goal FROM FirstLongMaster 
+INNER JOIN FirstLongTrans
+ON  FirstLongMaster.type =  FirstLongTrans.type
+where user_id = 'id_yamada' and long_complete = 1;
+
 ・選択した短期目標の表示
+SELECT  short_goal FROM ShortMaster 
+INNER JOIN ShortTrans
+ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type
+where user_id = '?' and exe_date = '?';
+→テスト
+SELECT  short_goal FROM ShortMaster 
+INNER JOIN ShortTrans
+ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type
+where user_id = 'id_yamada' and exe_date = '2022-06-15';
+
 ・短期目標達成回数（スタンプカードに使用）
-・長期目標達成数（アバターの首下の色に仕様）
+	・チェックしたときに情報をShortTransに格納
+	   UPDATE ShortTrans SET short_complete = 1 WHERE exe_date ='?';
+	   UPDATE ShortTrans SET short_complete = 2 WHERE exe_date ='?';
+	   →テスト
+	   UPDATE ShortTrans SET short_complete = 2 WHERE exe_date ='2022-06-15';
+	・チェックしたときに情報をFirstLongTransに格納
+	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 WHERE user_id = '?' and long_complete = 1;
+	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = '?' and long_complete = 1;
+	　→テスト
+	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
+	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
+　
+・長期目標未達成数（アバターの首下の色に使用）
+SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = '?';
+→テスト
+SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = 'id_yamada';
+
 ・今までの体重（グラフに使用）
 ・身長体重（BMIを算出）
 ・個々人で挿入した顔写真
@@ -64,7 +99,7 @@ SELECT first_test FROM FirstLongMaster
 【達成評価】
 【卒業ページ】
 【アニメーション】
-【過去データ一覧】
+【過去データ閲覧】
 
 変更
 ⑥Users　⑦短期トランザクション　⑨初期長期トランザクション
