@@ -1,0 +1,45 @@
+6/15作成
+
+【初期チェックテスト】
+・設問全表示
+select * from FirstLongMaster
+
+・選んだ項目の情報を初期＆長期トランザクションに格納
+INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date)
+values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?)
+ →格納テスト
+ INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date)
+ values (NULL, 'abe', DEFAULT, 'veg', DEFAULT, DEFAULT, DEFAULT, '2022-06-14')
+
+【長期チェックリスト】
+・初期で選ばれた項目に対応する項目を表示
+SELECT * FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
+on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
+where user_id = '?'
+ →テスト
+ SELECT * FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
+ on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
+ where user_id = 'abe'
+
+・選んだ長期目標（１こ）のデータを格納
+UPDATE FirstLongTrans SET long_complete = 1 WHERE type  = '?'
+→テスト
+UPDATE FirstLongTrans SET long_complete = 1 WHERE type  = 'veg'
+
+【短期チェックリスト】
+・短期目標を表示
+SELECT * FROM ShortMaster INNER JOIN FirstLongTrans ON
+ShortMaster.type = FirstLongTrans.type
+where user_id = '?' and long_complete = 1;
+ →テスト
+ SELECT * FROM ShortMaster INNER JOIN FirstLongTrans ON
+ ShortMaster.type = FirstLongTrans.type
+ where user_id = 'id_yamada' and long_complete = 1;
+
+・選択された短期目標のデータを格納
+INSERT INTO ShortTrans (id, user_id, exe_date, counter, type, no, short_complete)
+values(NULL, ?, ?, DEFAULT, ?, ?, DEFAULT)
+ →テスト
+ INSERT INTO ShortTrans (id, user_id, exe_date, counter, type, no, short_complete)
+ values(NULL, 'id_yamada', '2022-06-15', DEFAULT, 'veg', 2, DEFAULT)
+

@@ -1,0 +1,154 @@
+//健康診断画像ページ　①
+create table HealthImage (
+id int primary key auto_increment not null,
+user_id varchar(20) not null,
+up_date date not null,
+health_image varchar(200) 
+);
+insert into healthimage (id, user_id, up_date, health_image)
+values (null, 'kanezashi', '2022-06-14', '101637.png') ;
+insert into healthimage (id, user_id, up_date, health_image)
+values (null, 'kojima', '2022-06-15', '154400.png') ;
+
+//体画像　　　　　　　②
+create table BodyImage(
+id int primary key auto_increment not null,
+body_id varchar(20) not null,
+body_image varchar(200) not null
+);
+insert into bodyimage (id, body_id, body_image)
+values (null, 'zassi', '101637.png') ;
+insert into bodyimage (id, body_id, body_image)
+values (null, 'zasssssi', '154400.png') ;
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+//短期マスタテーブル　　③
+
+  //テーブル作成
+	CREATE TABLE ShortMaster(
+	id INT PRIMARY KEY AUTO_INCREMENT not null,
+	type VARCHAR (10) not null,
+	no INT not null,
+	short_goal VARCHAR (100) not null
+);
+
+  //テーブルにデータ格納
+	INSERT INTO ShortMaster values (1,'veg',1,'350グラムの野菜を食べてやる！');
+	INSERT INTO ShortMaster values (2,'veg',2,'3種類以上の野菜を食べてやる！');
+	INSERT INTO ShortMaster values (3,'veg',3,'１食あたり３色以上の野菜を食べてやる！');
+	INSERT INTO ShortMaster values (4,'salt',1,'塩分摂取量を5～7グラムに抑えます！');
+	INSERT INTO ShortMaster values (5,'salt',2,'減塩の調味料を使います！');
+	INSERT INTO ShortMaster values (6,'salt',3,'カップラーメンの誘惑には負けないんだから-……！');
+	INSERT INTO ShortMaster values (7,'fat',1,'スナック菓子を食べないぞ！');
+	INSERT INTO ShortMaster values (8,'fat',2,'総菜や弁当を買わない！');
+	INSERT INTO ShortMaster values (9,'fat',3,'1食はノンオイルの料理を食べる！');
+	INSERT INTO ShortMaster values (10,'cal',1,'今日は断食しよ！');
+	INSERT INTO ShortMaster values (11,'cal',2,'間食は死んでもしねぇ！');
+	INSERT INTO ShortMaster values (12,'cal',3,'1口あたり30回以上噛もうと思います');
+	INSERT INTO ShortMaster values (13,'sleep',1,'寝る3時間前から食事ひかえよ');
+	INSERT INTO ShortMaster values (14,'sleep',2,'寝る前にスマホやテレビを見ない！');
+	INSERT INTO ShortMaster values (15,'sleep',3,'夜はコーヒーを飲まない！');
+	INSERT INTO ShortMaster values (16,'liq',1,'絶対居酒屋に行かない！');
+	INSERT INTO ShortMaster values (17,'liq',2,'１本しか飲まないぞ！');
+	INSERT INTO ShortMaster values (18,'liq',3,'ノンアルで我慢するわ！');
+	INSERT INTO ShortMaster values (19,'tabacco',1,'仕事場にタバコをもっていかない！');
+	INSERT INTO ShortMaster values (20,'tabacco',2,'今日だけは吸わない！');
+	INSERT INTO ShortMaster values (21,'tabacco',3,'今日は3本まで！');
+	INSERT INTO ShortMaster values (22,'motion',1,'移動は自転車をつかいます！');
+	INSERT INTO ShortMaster values (23,'motion',2,'絶対に階段を使うんだ！');
+	INSERT INTO ShortMaster values (24,'motion',3,'腹筋と腕立てを50回やったるぜ！');
+
+
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+//マイページ　　　　　　　　④
+
+CREATE TABLE Mypage(
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+user_id VARCHAR(20) NOT NULL,
+date DATETIME NOT NULL,
+day_weight DOUBLE,
+bmi DOUBLE
+);
+INSERT INTO Mypage(id,user_id,date,day_weight,bmi)
+VALUES(null,'janes','2022-06-14',120,22);
+
+
+//顔画像　　　　　　　　　　　⑤
+
+CREATE TABLE Face_image(
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+face_id VARCHAR(20) NOT NULL,
+face_image VARCHAR(200)
+);
+INSERT INTO Face_image(id,face_id,face_image)
+VALUES(null,'janes','desktop/pulealpha.png');
+
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+テーブルを削除
+DROP TABLE IF EXISTS Users;
+
+※Usersテーブル　　　　　　　　　⑥
+CREATE TABLE Users (
+id INT PRIMARY KEY AUTO_INCREMENT,
+user_id VARCHAR(20) UNIQUE NOT NULL,
+password VARCHAR(20) NOT NULL,
+user_name VARCHAR(20) NOT NULL,
+height DOUBLE NOT NULL,
+weight DOUBLE NOT NULL,
+face_id VARCHAR(20) NOT NULL,
+body_id VARCHAR(20) NOT NULL
+)
+テストデータ格納
+INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10, 'aaaa.png', 'bbbb.png');
+
+
+※短期テストCREATE短期トランザクションテーブル　　⑦
+CREATE TABLE ShortTrans(
+id INT PRIMARY KEY AUTO_INCREMENT not null,
+user_id VARCHAR(20) not null,
+exe_date DATE not null,
+counter INT not null default 1,
+type VARCHAR(20) not null,
+no INT not null,
+short_complete INT default 0
+)
+短期テストINSERTテスト
+INSERT INTO ShortTrans values ( NULL, 'id_kanehira', '2022-06-14', 1, 'veg', 1,  DEFAULT);
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+初期長期マスターテーブル　　　　　　　　　　　　⑧
+
+CREATE TABLE FirstLongMaster(
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+type VARCHAR(20) NOT NULL,
+first_test VARCHAR(100) NOT NULL,
+long_goal VARCHAR(100) NOT NULL
+);
+INSERT INTO FirstLongMaster VALUES(1,'veg','最近野菜を食べていない','定期的に野菜をとろう！');
+INSERT INTO FirstLongMaster VALUES(2,'salt','塩分をとりすぎている自覚がある','塩分摂取量を減らそう！');
+INSERT INTO FirstLongMaster VALUES(3,'fat','油物をよく食べている','油物の摂取量を減らそう！');
+INSERT INTO FirstLongMaster VALUES(4,'cal','摂取カロリーが気になる','一日のカロリー摂取量を減らそう！');
+INSERT INTO FirstLongMaster VALUES(5,'sleep','睡眠時間が短い','よく眠れる工夫をしよう！');
+INSERT INTO FirstLongMaster VALUES(6,'liq','お酒をよく飲んでいる','飲酒量を減らそう！');
+INSERT INTO FirstLongMaster VALUES(7,'tabacco','タバコをよく吸っている','タバコの量を減らそう！');
+INSERT INTO FirstLongMaster VALUES(8,'motion','あまり運動をしていない','運動習慣を身につけよう！');
+
+※初期長期トランザクションテーブル　　　　　　　　　⑨
+CREATE TABLE FirstLongTrans(
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+user_id VARCHAR(20) NOT NULL,
+counter INT NOT NULL DEFAULT 1,
+type VARCHAR(20) NOT NULL,
+long_complete INT NOT NULL DEFAULT 0,
+goal_count INT NOT NULL DEFAULT 0,
+nogoal_count INT NOT NULL DEFAULT 0,
+date DATETIME NOT NULL
+);
+
+※INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'veg',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'fat',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'cal',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'motion',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
+
