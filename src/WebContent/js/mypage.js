@@ -1,32 +1,43 @@
 
-/*function click1(){
+document.addEventListener('DOMContentLoaded', function(){
+  // タブに対してクリックイベントを適用
+  const tabs = document.getElementsByClassName('tab');
+  for(let i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener('click', tabSwitch, false);
+  }
 
-'use strict';
-const now =0;
-const btn_s=document.getElementById('stamp_s');
-const btn_w=document.getElementById('weight_s');
-const view_s=document.getElementById('stamp_i');
-const view_w=document.getElementById('weight_i');
+  // タブをクリックすると実行する関数
+  function tabSwitch(){
+    // タブのclassの値を変更
+    document.getElementsByClassName('is-active')[0].classList.remove('is-active');
+    this.classList.add('is-active');
+    // コンテンツのclassの値を変更
+    document.getElementsByClassName('is-show')[0].classList.remove('is-show');
+    const arrayTabs = Array.prototype.slice.call(tabs);
+    const index = arrayTabs.indexOf(this);
+    document.getElementsByClassName('panel')[index].classList.add('is-show');
+  };
+}, false);
+
+/*-----------------------------------------------------------------------------*/
 
 
-function setState(now){
-	btn_s.className = (now==0)?'btn inactive':'btn';
-	view_s.className = (now==0)?'boxDisplay':'boxNone';
-	btn_w.className = (now==1)?'btn inactive':'btn';
-	view_w.className = (now==1)?'boxDisplay':'boxNone';
-	}
-	setState(0);
+document.addEventListener('DOMContentLoaded', function avater(){
+  // タブに対してクリックイベントを適用
+  const avaters = document.getElementsByClassName('avater');
+  for(let j = 0; j < avaters.length; j++) {
+    avaters[j].addEventListener('click', avaterSwitch, false);
+  }
 
-	btn_s.addEventLister('click',function(){
-	if(now==0)return;
-		now=0;
-		setstate(0);
-		});
-
-	btn_w.addEventLister('click',function(){
-	if(now==1)return;
-		now=1;
-		setstate(1);
-		});
-	};
-document.addEventListener("DOMContentLoaded", clickSwitch, false);*/
+  // タブをクリックすると実行する関数
+  function avaterSwitch(){
+    // タブのclassの値を変更
+    document.getElementsByClassName('is-active')[0].classList.remove('is-active');
+    this.classList.add('is-active');
+    // コンテンツのclassの値を変更
+    document.getElementsByClassName('is-show')[0].classList.remove('is-show');
+    const arrayAvaters = Array.prototype.slice.call(avaters);
+    const index = arrayAvaters.indexOf(this);
+    document.getElementsByClassName('photo')[index].classList.add('is-show');
+  };
+}, false);
