@@ -1,4 +1,10 @@
 @charset "UTF-8";
+*{
+	color:#2d21dc;
+}
+
+
+
 .globalMenuSp{
 	display:flex;
 }
@@ -6,9 +12,11 @@ li{
 	text-align:left;
 	list-style: none;
 }
+
 h1{
-	padding: 0 300px 0 300px;
+	padding: 0 0 0 380px;
 }
+
 body{
 	text-align:center;
 }

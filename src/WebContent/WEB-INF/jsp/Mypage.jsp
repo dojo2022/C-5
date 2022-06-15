@@ -16,7 +16,7 @@
         <li><a href="/health_management/LogoutServlet">ログアウト</a></li>
     </ul>
 </nav>
-<h1  >
+<h1>
 	<a href="/health_management/MypageServlet">
 	<img src="" alt="健康アプリ">
 	</a>
@@ -30,14 +30,24 @@
   <span></span>
 </div>-->
 <hr>
-
 <form method="POST" action="/health_management/ShortChecklistServlet" id="report">
+<!-- <form method="POST" action="/health_management/ResultServlet" id="report"> -->
 <div class=first>
 		長期目標　○○　<br>
 		短期目標　○○　　<input type="checkbox" name="short" value="check"><br><br></div>
 		体重<input type="text" name="height" value="">kg　
 <input type="submit" name="report" value="報告"><br><br>
 </form>
+<div class="illustration">
+		<ul id="switch1">
+		<li id="stamp">短期目標達成状況</li>
+		<li id="weight">体重推移</li>
+		</ul>
+		
+		<div class="avater">
+		
+		</div>
+</div>
 マイページなのです
 </body>
 <script src="/health_management/js/mypage.js"></script>
