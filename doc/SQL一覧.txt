@@ -90,7 +90,7 @@ VALUES(null,'janes','desktop/pulealpha.png');
 テーブルを削除
 DROP TABLE IF EXISTS Users;
 
-Usersテーブル　　　　　　　　　⑥
+※Usersテーブル　　　　　　　　　⑥
 CREATE TABLE Users (
 id INT PRIMARY KEY AUTO_INCREMENT,
 user_id VARCHAR(20) UNIQUE NOT NULL,
@@ -105,15 +105,15 @@ body_id VARCHAR(20) NOT NULL
 INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10, 'aaaa.png', 'bbbb.png');
 
 
-短期テストCREATE短期トランザクションテーブル　　⑦
+※短期テストCREATE短期トランザクションテーブル　　⑦
 CREATE TABLE ShortTrans(
 id INT PRIMARY KEY AUTO_INCREMENT not null,
 user_id VARCHAR(20) not null,
 exe_date DATE not null,
-counter INT not null,
+counter INT not null default 1,
 type VARCHAR(20) not null,
 no INT not null,
-complete INT default 0
+short_complete INT default 0
 )
 短期テストINSERTテスト
 INSERT INTO ShortTrans values ( NULL, 'id_kanehira', '2022-06-14', 1, 'veg', 1,  DEFAULT);
@@ -135,19 +135,20 @@ INSERT INTO FirstLongMaster VALUES(6,'liq','お酒をよく飲んでいる','飲
 INSERT INTO FirstLongMaster VALUES(7,'tabacco','タバコをよく吸っている','タバコの量を減らそう！');
 INSERT INTO FirstLongMaster VALUES(8,'motion','あまり運動をしていない','運動習慣を身につけよう！');
 
-初期長期トランザクションテーブル　　　　　　　　　⑨
+※初期長期トランザクションテーブル　　　　　　　　　⑨
 CREATE TABLE FirstLongTrans(
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 user_id VARCHAR(20) NOT NULL,
-counter INT NOT NULL,
+counter INT NOT NULL DEFAULT 1,
 type VARCHAR(20) NOT NULL,
-complete INT NOT NULL DEFAULT 0,
-goal_count INT NOT NULL,
-nogoal_count INT NOT NULL,
+long_complete INT NOT NULL DEFAULT 0,
+goal_count INT NOT NULL DEFAULT 0,
+nogoal_count INT NOT NULL DEFAULT 0,
 date DATETIME NOT NULL
 );
-INSERT INTO FirstLongTrans VALUES(null,'id_yamada',1,'veg',DEFAULT,10,2,'2022-06-14');
-INSERT INTO FirstLongTrans VALUES(null,'id_yamada',1,'fat',DEFAULT,0,0,'2022-06-14');
-INSERT INTO FirstLongTrans VALUES(null,'id_yamada',1,'cal',DEFAULT,0,0,'2022-06-14');
-INSERT INTO FirstLongTrans VALUES(null,'id_yamada',1,'motion',DEFAULT,0,0,'2022-06-14');
+
+※INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'veg',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'fat',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'cal',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'motion',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
 
