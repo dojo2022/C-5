@@ -55,12 +55,11 @@
 		id="report">
 		<!-- <form method="POST" action="/health_management/ResultServlet" id="report"> -->
 		<div class=first>
-			長期目標 ○○ <br> 短期目標 ○○ <input type="checkbox" name="short"
-				value="check"><br>
-			<br>
+			長期目標 ○○ <br>
+			短期目標 ○○ <input type="checkbox" name="short"value="check"><br>
 		</div>
-		体重<input type="text" name="height" value="">kg <input
-			type="submit" name="report" value="報告"><br>
+		体重<input type="text" name="height" value="">kg
+		<input type="submit" name="report" value="報告"><br>
 		<br>
 	</form>
 

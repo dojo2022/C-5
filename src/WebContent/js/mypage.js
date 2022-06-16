@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.getElementsByClassName('is-active-avater')[0].classList.remove('is-active-avater');
 		this.classList.add('is-active-avater');
 		// コンテンツのclassの値を変更
-		document.getElementsByClassName('is-show')[0].classList.remove('is-show-avater');
+		document.getElementsByClassName('is-show-avater')[0].classList.remove('is-show-avater');
 		const arrayAvaters = Array.prototype.slice.call(avaters);
 		const index = arrayAvaters.indexOf(this);
 		document.getElementsByClassName('photo')[index].classList.add('is-show-avater');
