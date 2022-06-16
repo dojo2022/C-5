@@ -8,14 +8,71 @@
 .globalMenuSp{
 	display:flex;
 }
-li{
-	text-align:left;
-	list-style: none;
+/*-------------------------------*/
+.ham {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	cursor: pointer;
+	background-color: aqua;
 }
+.ham_line {
+	text-align:center;
+	position: absolute;
+	left: 10px;
+	width: 40px;
+	height: 1px;
+	background-color: #333333;
+}
+.ham_line1 {
+	top: 20px;
+}
+.ham_line2 {
+	top: 36px;
+}
+.ham_line3 {
+	top: 52px;
+}
+/*-----------------------------*/
+.ham_line {
+	transition: all 0.3s;
+}
+
+/* 以下はすべて新規行で追加 */
+.clicked .ham_line1 {
+	transform: rotate(45deg);
+	top: 20px;
+}
+.clicked .ham_line2 {
+	width: 0px;
+}
+.clicked .ham_line3 {
+	transform: rotate(-45deg);
+	top: 20px;
+}
+/*------------------------------------*/
+.class{
+	align-items: flex-end;
+}
+.menu {
+	position:fixed;
+	width: 300px;
+	height: 570px;
+	background-color: aquamarine;
+	left: -400px;
+	transition: all 0.3s;
+	translate:0 80px;
+}
+.clicked .menu {
+	left: 8px;
+}
+/*------------------------------------*/
 
 h1{
 	padding: 0 0 0 380px;
 }
+
+/*-------------------------------*/
 
 body{
 	text-align:center;
