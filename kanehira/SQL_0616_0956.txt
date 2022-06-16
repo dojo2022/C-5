@@ -1,49 +1,33 @@
 【過去データ】
+スタンプ
 ・何の長期目標が選ばれているかを取り出す
-SELECT user_id, FIRSTLONGTRANS.type FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
-on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
+SELECT user_id, type FROM FIRSTLONGTRANS 
 where user_id = '?'
 →テスト
-SELECT user_id, FIRSTLONGTRANS.type FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
-on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
+SELECT user_id, type FROM FIRSTLONGTRANS 
 where user_id = 'id_yamada'
+
 ・↑をもとに短期目標達成可否データを長期目標(type)ごとに区切って表示
-SELECT * FROM ShortTrans INNER JOIN FirstLongTrans WHERE ShortTrans.type = FirstLongTrans.type and  ShortTrans.user_id ='?' and ShortTrans.type = '?' ORDER BY exe_date
+SELECT * FROM ShortTrans 
+INNER JOIN FirstLongTrans 
+WHERE ShortTrans.type = FirstLongTrans.type and ShortTrans.user_id ='?' and ShortTrans.type = '?' ORDER BY exe_date
 →テスト
 SELECT * FROM ShortTrans INNER JOIN FirstLongTrans WHERE ShortTrans.type = FirstLongTrans.type and  ShortTrans.user_id ='id_yamada' and ShortTrans.type = 'veg' ORDER BY exe_date
 
+体重推移
 ・何の長期目標が選ばれているかを取り出す
-SELECT user_id, FIRSTLONGTRANS.type FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
-on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
+SELECT user_id, type FROM FIRSTLONGTRANS 
 where user_id = '?'
-
-3つのテーブルを結合
-SELECT
-*
-FROM
-Mypage
-LEFT  JOIN
-ShortTrans
-ON
-Mypage.user_id = SHORTTRANS.user_id
-RIGHT JOIN
-FirstLongTrans
-ON
-Mypage.user_id = FIRSTLONGTRANS.user_id
-WHERE
-Mypage.user_id = 'id_yamada'
-
-SELECT * FROM SHORTTRANS 
-LEFT  JOIN MYPAGE 
-ON Mypage.user_id = SHORTTRANS.user_id
-RIGHT JOIN FIRSTLONGTRANS 
-ON
-SHORTTRANS.user_id = FIRSTLONGTRANS.user_id
-and SHORTTRANS.type = FIRSTLONGTRANS.type
-WHERE SHORTTRANS.type = 'veg' and Mypage.user_id = 'id_yamada'
+→テスト
+SELECT user_id, type FROM FIRSTLONGTRANS 
+where user_id = 'id_yamada'
 
 ・体重推移を長期目標ごとに表示
-SELECT user_id, 
+SELECT * FROM SHORTTRANS 
+  LEFT  JOIN MYPAGE 
+  ON Mypage.user_id = SHORTTRANS.user_id
+        and shorttrans.exe_date = mypage.date
+WHERE SHORTTRANS.type = 'veg' and SHORTTRANS.user_id = 'id_yamada'
 
 【パーソナルデータ】
 ・画像のパス（ファイル名）とアップロード日とユーザー名を格納
