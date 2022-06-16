@@ -75,22 +75,25 @@ INSERT INTO Mypage(id,user_id,date,day_weight,bmi)
 VALUES(null,'janes','2022-06-14',120,22);
 
 
-//顔画像　　　　　　　　　　　⑤
+//顔画像　0616　　　　　　　　⑤
 
-CREATE TABLE Face_image(
+CREATE TABLE Faceimage(
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+user_id VARCHAR(20) NOT NULL,
 face_id VARCHAR(20) NOT NULL,
+up_date DATE NOT NULL,
 face_image VARCHAR(200)
 );
-INSERT INTO Face_image(id,face_id,face_image)
-VALUES(null,'janes','desktop/pulealpha.png');
+テストデータ格納
+INSERT INTO Faceimage(id,user_id,face_id,up_date,face_image)
+VALUES(null,'id_abe','aa1','2022-06-16','111000.png');
 
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 テーブルを削除
 DROP TABLE IF EXISTS Users;
 
-※Usersテーブル　　　　　　　　　⑥
+Usersテーブル　0616　　　　　　　　⑥
 CREATE TABLE Users (
 id INT PRIMARY KEY AUTO_INCREMENT,
 user_id VARCHAR(20) UNIQUE NOT NULL,
@@ -98,14 +101,13 @@ password VARCHAR(20) NOT NULL,
 user_name VARCHAR(20) NOT NULL,
 height DOUBLE NOT NULL,
 weight DOUBLE NOT NULL,
-face_id VARCHAR(20) NOT NULL,
 body_id VARCHAR(20) NOT NULL
 )
 テストデータ格納
-INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10, 'aaaa.png', 'bbbb.png');
+INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10,'bbbb.png');
 
 
-※短期テストCREATE短期トランザクションテーブル　　⑦
+短期テストCREATE短期トランザクションテーブル　　⑦
 CREATE TABLE ShortTrans(
 id INT PRIMARY KEY AUTO_INCREMENT not null,
 user_id VARCHAR(20) not null,
@@ -135,7 +137,7 @@ INSERT INTO FirstLongMaster VALUES(6,'liq','お酒をよく飲んでいる','飲
 INSERT INTO FirstLongMaster VALUES(7,'tabacco','タバコをよく吸っている','タバコの量を減らそう！');
 INSERT INTO FirstLongMaster VALUES(8,'motion','あまり運動をしていない','運動習慣を身につけよう！');
 
-※初期長期トランザクションテーブル　　　　　　　　　⑨
+初期長期トランザクションテーブル　　　　　　　　　⑨
 CREATE TABLE FirstLongTrans(
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 user_id VARCHAR(20) NOT NULL,
