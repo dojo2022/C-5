@@ -66,6 +66,9 @@
 .clicked .menu {
 	left: 8px;
 }
+li{
+	list-style:none;
+}
 /*------------------------------------*/
 
 h1{

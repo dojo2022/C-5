@@ -20,6 +20,7 @@
 		<div class="menu_wrapper" id="menu_wrapper">
 			<div class="menu">
 			    <ul>
+			    	<li><a href="/health_management/MypageServlet">マイページ</a></li>
 			        <li><a href="/health_management/PersonalServlet">パーソナルページ</a></li>
 			        <li><a href="/health_management/BacklogServlet">過去データ</a></li>
 			        <li><a href="/health_management/LogoutServlet">ログアウト</a></li>
