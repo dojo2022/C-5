@@ -16,7 +16,7 @@ INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, no
 values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?)
  →格納テスト
  INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date)
- values (NULL, 'abe', DEFAULT, 'veg', DEFAULT, DEFAULT, DEFAULT, '2022-06-14')
+ values (NULL, 'abe', DEFAULT, 'veg', DEFAULT, DEFAULT, DEFAULT, CURDATE())
 
 【長期チェックリスト】
 ・初期で選ばれた項目に対応する項目を表示
@@ -85,6 +85,18 @@ where user_id = 'id_yamada' and exe_date = '2022-06-15';
 	　→テスト
 	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
 	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
+
+・毎日の体重データを格納する
+INSERT INTO Mypage (id, user_id, date, day_weight) VALUES (NULL, '?', '?', '?')
+(JavaでBMIを算出)
+・BMIのデータを格納する
+UPDATE Mypage SET bmi = ? WHERE date = '?' users_id = '?'
+
+・身長と最新の体重を持ってくる
+SELECT Users.user_id, height, day_weight, Mypage.date FROM Users
+INNER JOIN Mypage
+ON Users.user_id = Mypage.user_id
+WHERE Users.user_id = '?' ORDER BY Mypage.date DESC LIMIT 1
 
 ・短期目標達成/未達の判定をする（6/16）
 SELECT goal_count, nogoal_count FROM FirstLongTrans WHERE long_complete

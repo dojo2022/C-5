@@ -1,0 +1,52 @@
+【卒業ページ】
+①始めたときの長期目標の色の、体重に合わせたアバターを表示する。
+②終了したとき、終了時の色の、体重に合わせたアバターを表示する。
+③身長データ。最初に入力した体重データと最後に入力した体重データ
+（ビフォーアフターを対比するために使用する）
+④選択した長期目標（すべて表示）
+
+CREATE TABLE Faceimage(
+id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+user_id VARCHAR(20) NOT NULL,
+face_id VARCHAR(20) UNIQUE NOT NULL,
+face_image VARCHAR(200)
+image_date DATE not null,
+);
+INSERT INTO Faceimage values (NULL, 'id_yamada', 'da-yama', 'face_a.png', '2022-06-16')
+
+①初日アバター
+顔
+SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id = '?' order by faceimage.up_date asc LIMIT 1
+→テスト
+SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id = 'id_yamada' order by faceimage.up_date asc LIMIT 1
+
+体
+SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete =2 and user_id = '?';
+→テスト
+SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete =2 and user_id = '?';
+
+体重・身長・日付
+SELECT Users.user_id, height, weight, FirstLongTrans.date FROM Users
+INNER JOIN FirstLongTrans
+ON Users.user_id = FirstLongTrans.user_id
+WHERE Users.user_id = '?' ORDER BY FirstLongTrans.date ASC LIMIT 1
+→テスト
+SELECT Users.user_id, height, weight, FirstLongTrans.date FROM Users
+INNER JOIN FirstLongTrans
+ON Users.user_id = FirstLongTrans.user_id
+WHERE Users.user_id = 'id_yamada' ORDER BY FirstLongTrans.date ASC LIMIT 1
+②最終日アバター
+顔
+SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id = '?' order by faceimage.up_date desc LIMIT 1
+→テスト
+SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id = 'id_yamada' order by faceimage.up_date desc LIMIT 1
+
+体
+SELECT user_id, date, bmi FROM Mypage WHERE user_id = '?' ORDER BY date DESC LIMIT 1
+→テスト
+SELECT user_id, date, bmi FROM Mypage WHERE user_id = 'id_yamada' ORDER BY date DESC LIMIT 1
+
+④
+SELECT long_goal FROM FirstLongMaster INNER JOIN FirstLongTrans
+ON FirstLongMaster.type = FirstLongTrans.type 
+WHERE long_complete = 2 AND user_id = ?
