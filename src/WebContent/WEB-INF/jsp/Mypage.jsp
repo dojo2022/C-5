@@ -9,26 +9,32 @@
 <link rel="stylesheet" href="/health_management/css/mypage.css">
 </head>
 <header class="globalMenuSp">
-<nav >
-    <ul>
-        <li><a href="/health_management/PersonalServlet">パーソナルページ</a></li>
-        <li><a href="/health_management/BacklogServlet">過去データ</a></li>
-        <li><a href="/health_management/LogoutServlet">ログアウト</a></li>
-    </ul>
-</nav>
-<h1>
-	<a href="/health_management/MypageServlet">
-	<img src="" alt="健康アプリ">
-	</a>
+	<div class="hamburger">
+		<div class="ham" id="ham">
+			<span class="ham_line ham_line1"></span>
+			<span class="ham_line ham_line2"></span>
+			<span class="ham_line ham_line3"></span>
+		</div>
+
+
+		<div class="menu_wrapper" id="menu_wrapper">
+			<div class="menu">
+			    <ul>
+			        <li><a href="/health_management/PersonalServlet">パーソナルページ</a></li>
+			        <li><a href="/health_management/BacklogServlet">過去データ</a></li>
+			        <li><a href="/health_management/LogoutServlet">ログアウト</a></li>
+			    </ul>
+			</div>
+		</div>
+	</div>
+	<h1>
+		<a href="/health_management/MypageServlet">
+		<img src="" alt="健康アプリ">
+		</a>
 	</h1>
 
 </header>
 <body>
-	<!--  <div class="hamburger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>-->
 	<hr>
 
 
@@ -54,13 +60,13 @@
 	<form method="POST" action="/health_management/ShortChecklistServlet"
 		id="report">
 		<!-- <form method="POST" action="/health_management/ResultServlet" id="report"> -->
-		<div class=first>
-			長期目標 ○○ <br>
-			短期目標 ○○ <input type="checkbox" name="short"value="check"><br>
-		</div>
-		体重<input type="text" name="height" value="">kg
-		<input type="submit" name="report" value="報告"><br>
-		<br>
+		<ul class=first>
+			<li>長期目標 ○○ </li>
+			<li>短期目標 ○○ <input type="checkbox" name="short"value="check"></li>
+
+		<li>体重<input type="text" name="height" value="">kg
+		<input type="submit" name="report" value="報告"></li>
+		</ul>
 	</form>
 
 
