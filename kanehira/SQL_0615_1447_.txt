@@ -85,11 +85,19 @@ where user_id = 'id_yamada' and exe_date = '2022-06-15';
 	　→テスト
 	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
 	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
-　
+
+・短期目標達成/未達の判定をする（6/16）
+SELECT goal_count, nogoal_count FROM FirstLongTrans WHERE long_complete
+ = 1 and user_id = '?'
+→長期の達成/未達の判定に使う
+
 ・長期目標未達成数（アバターの首下の色に使用）
 SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = '?';
 →テスト
 SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = 'id_yamada';
+
+・短期目標達成可否をスタンプカードとして表示する（6/16）
+SELECT short_complete,exe_date FROM ShortTrans
 
 ・今までの体重（グラフに使用）
 ・身長体重（BMIを算出）

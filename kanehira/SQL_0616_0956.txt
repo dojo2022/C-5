@@ -1,0 +1,83 @@
+【過去データ】
+・何の長期目標が選ばれているかを取り出す
+SELECT user_id, FIRSTLONGTRANS.type FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
+on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
+where user_id = '?'
+→テスト
+SELECT user_id, FIRSTLONGTRANS.type FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
+on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
+where user_id = 'id_yamada'
+・↑をもとに短期目標達成可否データを長期目標(type)ごとに区切って表示
+SELECT * FROM ShortTrans INNER JOIN FirstLongTrans WHERE ShortTrans.type = FirstLongTrans.type and  ShortTrans.user_id ='?' and ShortTrans.type = '?' ORDER BY exe_date
+→テスト
+SELECT * FROM ShortTrans INNER JOIN FirstLongTrans WHERE ShortTrans.type = FirstLongTrans.type and  ShortTrans.user_id ='id_yamada' and ShortTrans.type = 'veg' ORDER BY exe_date
+
+・何の長期目標が選ばれているかを取り出す
+SELECT user_id, FIRSTLONGTRANS.type FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
+on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
+where user_id = '?'
+
+3つのテーブルを結合
+SELECT
+*
+FROM
+Mypage
+LEFT  JOIN
+ShortTrans
+ON
+Mypage.user_id = SHORTTRANS.user_id
+RIGHT JOIN
+FirstLongTrans
+ON
+Mypage.user_id = FIRSTLONGTRANS.user_id
+WHERE
+Mypage.user_id = 'id_yamada'
+
+SELECT * FROM SHORTTRANS 
+LEFT  JOIN MYPAGE 
+ON Mypage.user_id = SHORTTRANS.user_id
+RIGHT JOIN FIRSTLONGTRANS 
+ON
+SHORTTRANS.user_id = FIRSTLONGTRANS.user_id
+and SHORTTRANS.type = FIRSTLONGTRANS.type
+WHERE SHORTTRANS.type = 'veg' and Mypage.user_id = 'id_yamada'
+
+・体重推移を長期目標ごとに表示
+SELECT user_id, 
+
+【パーソナルデータ】
+・画像のパス（ファイル名）とアップロード日とユーザー名を格納
+INSERT INTO HealthImage (id, user_id, up_date, health_image) VALUES
+(NULL, '?', '?', '?' )
+→テスト
+INSERT INTO HealthImage (id, user_id, up_date, health_image) VALUES
+(NULL, 'id_yamada', '2022-06-16', 'aaaa.png' )
+
+・アップロードされた健康診断画像を表示
+SELECT * FROM HealthImage WHERE user_id = '?' ORDER BY up_date
+→テスト
+SELECT * FROM HealthImage WHERE user_id = 'id_yamada' ORDER BY up_date
+
+【アニメーション】
+・全期間の体重をグラフ化して表示
+SELECT day_weight FROM Mypage WHERE user_id = '?' ORDER BY date
+→テスト
+SELECT day_weight FROM Mypage WHERE user_id = 'id_yamada' ORDER BY date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
