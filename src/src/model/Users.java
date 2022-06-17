@@ -25,6 +25,22 @@ public Users(int id, String user_id, String password, String user_name, double h
 	this.color_id = color_id;
 }
 
+
+
+public Users() {
+	super();
+	this.id = 0;
+	this.user_id = "";
+	this.password = "";
+	this.user_name = "";
+	this.height = 0;
+	this.weight = 0;
+	this.bmi_id = 0;
+	this.color_id = 0;
+}
+
+
+
 public int getId() {
 	return id;
 }
