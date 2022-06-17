@@ -13,13 +13,12 @@ values (null, 'kojima', '2022-06-15', '154400.png') ;
 //体画像　　　　　　　②
 create table BodyImage(
 id int primary key auto_increment not null,
-body_id varchar(20) not null,
+bmi_id INT NOT NULL,
+color_id INT NOT NULL,
 body_image varchar(200) not null
 );
-insert into bodyimage (id, body_id, body_image)
-values (null, 'zassi', '101637.png') ;
-insert into bodyimage (id, body_id, body_image)
-values (null, 'zasssssi', '154400.png') ;
+insert into bodyimage (id, bmi_id,color_id, body_image)
+values (null, 1,7, '101637.png') ;
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 //短期マスタテーブル　　③
