@@ -19,10 +19,10 @@
 <form method = "POST" action ="/health_management/MypageServlet">
 <table>
 <tr>
-<td><input type = "text" class = "" placeholder = "ID"></td>
+<td><input type = "text" class = "" placeholder = "user_id"></td>
 </tr>
 <tr>
-<td><input type = "password" class = "" placeholder = "PW"></td>
+<td><input type = "password" class = "" placeholder = "password"></td>
 </tr>
 <tr>
 <td>

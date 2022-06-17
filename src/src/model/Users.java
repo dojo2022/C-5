@@ -25,7 +25,11 @@ public Users(int id, String user_id, String password, String user_name, double h
 	this.color_id = color_id;
 }
 
-
+public Users(String user_id, String password) {
+	super();
+	this.user_id = user_id;
+	this.password = password;
+}
 
 public Users() {
 	super();

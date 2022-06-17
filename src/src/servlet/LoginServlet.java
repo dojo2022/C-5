@@ -8,6 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.UsersDAO;
+//import model.LoginUser;
+//import model.Result;
+import model.Users;
 
 /**
  * Servlet implementation class LoginServlet
@@ -32,6 +38,29 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-	}
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String user_id = request.getParameter("user_id");
+		String password = request.getParameter("password");
 
+		// ログイン処理を行う
+		UsersDAO iDao = new UsersDAO();
+		if (iDao.isLoginOK(new Users(user_id, password))) {	// ログイン成功
+			// セッションスコープにIDを格納する
+			HttpSession session = request.getSession();
+			session.setAttribute("id", new LoginUser(id));
+
+			// メニューサーブレットにリダイレクトする
+			response.sendRedirect("/health_management/MypageServlet");
+		}
+		/*else {									// ログイン失敗
+			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+			request.setAttribute("result",
+			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/health_management/LoginServlet"));
+
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+			dispatcher.forward(request, response);
+		}*/
+	}
 }
