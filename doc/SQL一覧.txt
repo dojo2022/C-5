@@ -79,11 +79,13 @@ VALUES(null,'janes','2022-06-14',120,22);
 
 CREATE TABLE Face_image(
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+user_id VARCHAR (20),
 face_id VARCHAR(20) NOT NULL,
+up_date DATE NOT NULL,
 face_image VARCHAR(200)
 );
-INSERT INTO Face_image(id,face_id,face_image)
-VALUES(null,'janes','desktop/pulealpha.png');
+INSERT INTO Face_image(id,user_id,face_id,up_date,face_image)
+VALUES(null,'id_abe','aa1','2022-06-16','111000.png');
 
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
