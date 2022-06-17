@@ -13,7 +13,13 @@ public class FirstLongMaster implements Serializable{
 		this.type = type;
 		this.first_test = first_test;
 		this.long_goal = long_goal;
-
+	}
+	public FirstLongMaster() {
+		super();
+		this.id= 0 ;
+		this.type = "";
+		this.first_test ="";
+		this.long_goal = "";
 	}
 
 	public int getId() {
