@@ -16,7 +16,7 @@ public class FirstLongMaster{
 
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
 
-		public  display() {
+		public List display() {
 			Connection conn = null;
 			List<Bc>  = new ArrayList<Bc>();
 
@@ -36,13 +36,9 @@ public class FirstLongMaster{
 				ResultSet rs = pStmt.executeQuery();
 				//RESULTSETクラスのインスタンスとして得られる
 
-				//改造
-				// 結果表をコレクションにコピーする
-				//RESULTSETに入ってたやつをARRYに入れなおしている
-				//ネクスト…順番に返してくれる
-				//CHAR,は文字列として取り出す
+
 				while (rs.next()) {
-					FirstLongMaster  = new FirstLongMaster(
+					FirstLongMaster question = new FirstLongMaster(
 					rs.getString("first_test"),
 
 					cardList.add(card);
