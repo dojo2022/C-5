@@ -88,24 +88,36 @@
 			<div class="panel tab-A is-show">
 			  <table border="1" class="stampcard">
          <tr>
-          <td> <img src="/health_management/images/taihennyokuganbarimasita2.png"
-         alt="大変よく頑張りました！"></td>
-
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td> <img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
          </tr>
          <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
+          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
+         alt="大変よく頑張りました！" class="stamp_image"></td>
         </tr>
         </table>
 			</div>
