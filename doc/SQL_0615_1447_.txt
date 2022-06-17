@@ -1,4 +1,11 @@
-6/15作成
+6/15作成 6/16更新
+【ログイン】
+・user_idとpasswordが一致する行を取り出す
+select count(*) from Users where user_id = ? and password = ?
+
+【新規登録】
+・新規登録の情報をUsersテーブルとFaceImageテーブルに格納
+INSERT INTO Users () values ()
 
 【初期チェックテスト】
 ・設問全表示
@@ -9,7 +16,7 @@ INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, no
 values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?)
  →格納テスト
  INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date)
- values (NULL, 'abe', DEFAULT, 'veg', DEFAULT, DEFAULT, DEFAULT, '2022-06-14')
+ values (NULL, 'abe', DEFAULT, 'veg', DEFAULT, DEFAULT, DEFAULT, CURDATE())
 
 【長期チェックリスト】
 ・初期で選ばれた項目に対応する項目を表示
@@ -43,3 +50,89 @@ values(NULL, ?, ?, DEFAULT, ?, ?, DEFAULT)
  INSERT INTO ShortTrans (id, user_id, exe_date, counter, type, no, short_complete)
  values(NULL, 'id_yamada', '2022-06-15', DEFAULT, 'veg', 2, DEFAULT)
 
+【マイページ】
+・選択した長期目標の表示
+SELECT  long_goal FROM FirstLongMaster 
+INNER JOIN FirstLongTrans
+ON  FirstLongMaster.type =  FirstLongTrans.type
+where user_id = '?' and long_complete = 1;
+→テスト
+SELECT  long_goal FROM FirstLongMaster 
+INNER JOIN FirstLongTrans
+ON  FirstLongMaster.type =  FirstLongTrans.type
+where user_id = 'id_yamada' and long_complete = 1;
+
+・選択した短期目標の表示
+SELECT  short_goal FROM ShortMaster 
+INNER JOIN ShortTrans
+ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type
+where user_id = '?' and exe_date = '?';
+→テスト
+SELECT  short_goal FROM ShortMaster 
+INNER JOIN ShortTrans
+ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type
+where user_id = 'id_yamada' and exe_date = '2022-06-15';
+
+・短期目標達成回数（スタンプカードに使用）
+	・チェックしたときに情報をShortTransに格納
+	   UPDATE ShortTrans SET short_complete = 1 WHERE exe_date ='?';
+	   UPDATE ShortTrans SET short_complete = 2 WHERE exe_date ='?';
+	   →テスト
+	   UPDATE ShortTrans SET short_complete = 2 WHERE exe_date ='2022-06-15';
+	・チェックしたときに情報をFirstLongTransに格納
+	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 WHERE user_id = '?' and long_complete = 1;
+	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = '?' and long_complete = 1;
+	　→テスト
+	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
+	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
+
+・毎日の体重データを格納する
+INSERT INTO Mypage (id, user_id, date, day_weight) VALUES (NULL, '?', '?', '?')
+(JavaでBMIを算出)
+・BMIのデータを格納する
+UPDATE Mypage SET bmi = ? WHERE date = '?' users_id = '?'
+
+・身長と最新の体重を持ってくる
+SELECT Users.user_id, height, day_weight, Mypage.date FROM Users
+INNER JOIN Mypage
+ON Users.user_id = Mypage.user_id
+WHERE Users.user_id = '?' ORDER BY Mypage.date DESC LIMIT 1
+
+・短期目標達成/未達の判定をする（6/16）
+SELECT goal_count, nogoal_count FROM FirstLongTrans WHERE long_complete
+ = 1 and user_id = '?'
+→長期の達成/未達の判定に使う
+
+・長期目標未達成数（アバターの首下の色に使用）
+SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = '?';
+→テスト
+SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = 'id_yamada';
+
+・短期目標達成可否をスタンプカードとして表示する（6/16）
+SELECT short_complete,exe_date FROM ShortTrans
+
+今までの体重
+SELECT date, day_weight FROM Mypage WHERE user_id = ?;
+個々人で挿入した顔画像
+SELECT face_image FROM FaceImage WHERE face_id = ?;
+SELECT face_image FROM FaceImage WHERE face_id = 'janes';
+身長・体重⇒BMIを反映するアバター（の幅）
+SELECT day_weight, height FROM
+Users INNER JOIN Mypage ON
+Users.user_id = Mypage.user_id
+WHERE date = ?
+SELECT day_weight, height FROM
+Users INNER JOIN Mypage ON
+Users.user_id = Mypage.user_id
+WHERE date = '2022-06-14'
+
+【パーソナルデータ】
+【達成評価】
+【卒業ページ】
+【アニメーション】
+【過去データ閲覧】
+
+変更
+⑥Users　⑦短期トランザクション　⑨初期長期トランザクション
+のテーブルを削除（DROP TABLE テーブル名）、
+最新版のSQL文を使って上記3テーブルを作成し直す＆テストデータを格納し直す
