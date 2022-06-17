@@ -24,42 +24,11 @@ public class MypageDAO {
 							+ "ON  FirstLongMaster.type =  FirstLongTrans.type\r\n"
 							+ "where user_id = '?' and long_complete = 1;";
 
-					String sqlShort="SELECT  short_goal FROM ShortMaster \r\n"
-							+ "INNER JOIN ShortTrans\r\n"
-							+ "ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type\r\n"
-							+ "where user_id = '?' and exe_date = '?';";
-					PreparedStatement pStmtLong = conn.prepareStatement(sqlLong);
+
 					PreparedStatement pStmtShort = conn.prepareStatement(sqlShort);
 
 					Resultset rsLong =pStmtLong.executeQuery();
-					Resultset rsShort =pStmtShort.executeQuery();
-		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
 
-			}
-		// 結果を返す
-		return result;	
-	}
-	
-	
-	public boolean insert(){
-		boolean result = false;
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
-			String sql =
-		
 		}
 		finally {
 			// データベースを切断
@@ -76,8 +45,35 @@ public class MypageDAO {
 		// 結果を返す
 		return result;
 	}
-	
-	
+
+
+	public boolean insert(){
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+			String sql =
+
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+
+			}
+		// 結果を返す
+		return result;
+	}
+
+
 	public boolean update(Bc param, String order){
 		boolean result = false;
 		Connection conn = null;
@@ -104,6 +100,6 @@ public class MypageDAO {
 		// 結果を返す
 		return result;
 	}
-	
-	
+
+
 }
