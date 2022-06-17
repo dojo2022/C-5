@@ -69,11 +69,12 @@ public class FirstLongMasterDAO{
 						}
 						catch (SQLException e) {
 							e.printStackTrace();
-							cardList = null;
+							questionList = null;
 						}
 					}
 				}
 
 				// 結果を返す
-				return cardList;
+				return questionList;
 			}
+}
