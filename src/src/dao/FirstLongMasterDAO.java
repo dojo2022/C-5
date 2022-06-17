@@ -8,17 +8,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Bc;
+import model.FirstLongMaster;
 
 
 //書き足し
-public class FirstLongMaster{
+public class FirstLongMasterDAO{
 
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
 
-		public List display() {
+		public List<FirstLongMaster> first_display() {
 			Connection conn = null;
-			List<Bc>  = new ArrayList<Bc>();
+			List<FirstLongMaster> questionList = new ArrayList<FirstLongMaster>();
 
 			try {
 				// JDBCドライバを読み込む
@@ -28,7 +28,7 @@ public class FirstLongMaster{
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 				// SQL文を準備する　改造
-				String sql = "";
+				String sql = "select * from FirstLongMaster";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 
@@ -39,9 +39,14 @@ public class FirstLongMaster{
 
 				while (rs.next()) {
 					FirstLongMaster question = new FirstLongMaster(
+					rs.getInt("id"),
+					rs.getString("type")
 					rs.getString("first_test"),
+					rs.getString("long_goal")
 
-					cardList.add(card);
+					//jspのNAMEとそろえる
+					);
+					questionList.add(question);
 				}
 				}
 
@@ -50,11 +55,11 @@ public class FirstLongMaster{
 
 				catch (SQLException e) {
 					e.printStackTrace();
-					cardList = null;
+					questionList = null;
 				}
 				catch (ClassNotFoundException e) {
 					e.printStackTrace();
-					cardList = null;
+					questionList = null;
 				}
 				finally {
 					// データベースを切断
