@@ -134,6 +134,10 @@ width:830px;
 .panel.is-show{
   display:block;
 }
+.stampcard{
+	width:830px;
+ height:380px;
+}
 /*-------------------------------------*/
 
 .avater_photo{
