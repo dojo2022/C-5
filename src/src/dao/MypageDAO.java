@@ -9,9 +9,9 @@ import java.util.List;
 
 
 import model.Mypage;
-
+import model.FirstLongMaster;
 public class MypageDAO {
-	public List<Bc> select() {
+	public List<Long> LongTarget(FirstLongmaster) {
 		Connection conn = null;
 
 			// JDBCドライバを読み込む
@@ -25,7 +25,14 @@ public class MypageDAO {
 							+ "where user_id = '?' and long_complete = 1;";
 
 
-					PreparedStatement pStmtShort = conn.prepareStatement(sqlShort);
+					PreparedStatement pStmtLong = conn.prepareStatement(sqlLong);
+					// SQL文を完成させる　改造
+					if (.getLong_goal() != null) {
+						pStmt.setString(1, "%" + .getLong_goal() + "%");
+					}
+					//paramのゲット番号が空白でなけりゃ1-クエスチョンの番号
+					else {
+						pStmt.setString(1, "%");
 
 					Resultset rsLong =pStmtLong.executeQuery();
 
@@ -83,7 +90,7 @@ public class MypageDAO {
 			Class.forName("org.h2.Driver");
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 			String sqlUpS1 ="UPDATE ShortTrans SET short_complete = 1 WHERE exe_date ='?'";
-			String sqlUpS2 ="UPDATE ShortTrans SET short_complete = 2 WHERE exe_date ='?';";
+
 		}
 		finally {
 			// データベースを切断
