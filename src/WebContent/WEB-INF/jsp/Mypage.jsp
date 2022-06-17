@@ -45,15 +45,16 @@
 
 		<ul class="avater-group">
 			<li class="avater avater-now is-active-avater">現在</li>
-			<li class="avater avater-ideal">理想</li>
+			<li class="avater avater-ideal">理想(BMI:22)</li>
 		</ul>
 
 		<!--タブを切り替えて表示するコンテンツ-->
 		<div class="photo-group">
-			<div class="photo avater-now is-show-avater">
-			<img src="smile.png" alt="顔"></div>
-			<div class="photo avater-ideal">理想</div>
-		</div>
+			<div class="photo avater-now is-show-avater">現在</div>
+			<div class="photo avater-ideal">
+				<img class="idealface" src="/health_management/images/smile.png" alt="顔">
+				</div>
+			</div>
 	</div>
 
 

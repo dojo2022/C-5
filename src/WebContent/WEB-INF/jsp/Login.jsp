@@ -9,11 +9,13 @@
 <link rel = "stylesheet" href = "/health_management/css/common.css">
 </head>
 <body>
+<main>
 <h1  >
 	<img src="" alt="健康アプリ">
 	</h1>
 <hr>
-ログイン
+<h2>ログイン</h2>
+<h3>頑張れ！</h3>
 <form method = "POST" action ="/health_management/MypageServlet">
 <table>
 <tr>
@@ -29,7 +31,8 @@
 </tr>
 </table>
 </form>
-<a href = "/health_management/RegisterServlet">新規登録</a>
+<a href = "/health_management/RegisterServlet" class = "toregister">新規登録</a>
+</main>
 </body>
 <script src = "/health_management/js/login.js"></script>
 </html>
