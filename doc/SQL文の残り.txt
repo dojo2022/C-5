@@ -1,0 +1,54 @@
+
+【新規登録】
+・Usersテーブルにデータを格納
+INSERT INTO Users VALUES(null,?,?,?,?,?,?)
+
+テスト
+INSERT INTO Users VALUES(null,'id_abe','aaaa','abe',150,70,'a1')
+
+・FaceImageテーブルにデータを格納
+INSERT INTO FaceImage VALUES(null,'?','?','?')
+
+テスト
+INSERT INTO FaceImage VALUES(null,'aa1','111000.png','2022-06-16')
+
+【達成評価ページ】
+①短期目標達成回数（内容に応じてページの内容は変更される）
+
+SELECT date, user_id, goal_count, nogoal_count, long_complete
+FROM FIRSTLONGTRANS  
+WHERE  user_id = '?'  and long_complete =  0 OR long_complete = 2 ORDER BY date desc LIMIT 1
+→テスト
+SELECT date, user_id, goal_count, nogoal_count, long_complete
+FROM FIRSTLONGTRANS  
+WHERE  user_id = 'id_yamada'  and long_complete =  0 OR long_complete = 2 ORDER BY date desc LIMIT 1
+
+②その時の達成状況に応じたアバター（達成なら次の色に変更。失敗なら据え置き）
+（体、顔）
+
+①
+SELECT date, user_id, goal_count, nogoal_count FROM FIRSTLONGTRANS 
+WHERE user_id = 'id_yamada' AND (long_complete = 2 OR long_complete = 0) ORDER BY date DESC LIMIT 1; 
+
+
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',default,'sleep',1,10,2,'2022-06-16');
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',default,'salt',2,12,0,'2022-06-16');
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',default,'tabacco',2,12,1,'2022-06-16');
+INSERT INTO FirstLongTrans VALUES(null,'id_yamada',default,'liq',2,12,2,'2022-06-16');
+
+②その時点での最新アバターを表示
+最新の顔アバターを取得
+SELECT user_id, face_image,up_date FROM FACEIMAGE 
+WHERE user_id = '?' order by up_date desc LIMIT 1
+
+体アバターの幅を決定するために身長と本日の体重を取得
+SELECT Users.user_id, height, day_weight FROM Users
+INNER JOIN Mypage ON Users.user_id = Mypage.user_id
+WHERE Users.user_id = '?' ORDER BY date DESC LIMIT 1
+
+体アバターの色を決定するために未達の長期目標を取得
+select count(*) from FirstLongTrans
+where user_id = '?' AND long_complete = 0 OR 1;
+
+・体画像取得
+SELECT body_image FROM BodyImage WHERE bmi_id = ? and color_id = ?
