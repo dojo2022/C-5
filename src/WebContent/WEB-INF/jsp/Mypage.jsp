@@ -121,12 +121,59 @@
         </tr>
         </table>
 			</div>
-			<div class="panel tab-B">○○○○○○○○○○○○</div>
+				<div class="panel tab-B">
+				<canvas id="myChart" width ="830" height="330"></canvas>
+				</div>
 		</div>
 	</div>
 	<!-- ---------------------------------------------- -->
 
 	<!-- -------------------------------------------- -->
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/health_management/js/mypage.js"></script>
+<script>
+'use strict';
+const labels = Utils.months({count: 14});
+const labels = [
+    '2022-0616',
+    '2022-0617',
+    '2022-0618',
+    '2022-0619',
+    '2022-0621',
+    '2022-0622',
+    '2022-0623',
+    '2022-0624',
+    '2022-0625',
+    '2022-0626',
+    '2022-0627',
+    '2022-0628',
+    '2022-0629',
+    '2022-0630';
+    ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: '体重推移',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [65, 60, 62, 67, 65, 63, 61,62.5,59.9,61,2,68.4,62.0,63.1,67,6],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+  </script>
+  <script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+
 </html>
