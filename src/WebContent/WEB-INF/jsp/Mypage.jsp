@@ -51,7 +51,7 @@
 		<!--タブを切り替えて表示するコンテンツ-->
 		<div class="photo-group">
 			<div class="photo avater-now is-show-avater">
-			<img src="smile.png" alt="顔">現在</div>
+			<img src="smile.png" alt="顔"></div>
 			<div class="photo avater-ideal">理想</div>
 		</div>
 	</div>
