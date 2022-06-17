@@ -43,7 +43,6 @@ public class FirstLongMasterDAO{
 						rs.getString("type"),
 						rs.getString("first_test"),
 						rs.getString("long_goal")
-
 						//jspのNAMEとそろえる
 						);
 				questionList.add(question);
