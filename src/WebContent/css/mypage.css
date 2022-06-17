@@ -127,7 +127,7 @@ width:830px;
   display:none;
 }
 .tab.is-active{
-  background:yellow;
+  background:green;
   color:#FFF;
   transition: all 0.2s ease-out;
 }
@@ -168,18 +168,25 @@ width:830px;
   display:none;
 }
 .avater.is-active-avater{
-  background:yellow;
+  background:green;
   color:#FFF;
   transition: all 0.2s ease-out;
 }
 .photo.is-show-avater{
   display:block;
 }
+
+
+
 /*-------------------------------------*/
+
+
 /*#switch1{
 	 display: block;
   list-style: none;
   padding: 0;
+  ーーposition:fixed;
+	text-align:center;
   margin: 0 auto;
   overflow: hidden;
 }

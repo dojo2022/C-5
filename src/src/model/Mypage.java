@@ -1,15 +1,16 @@
 package model;
 import java.io.Serializable;
+import java.util.Date;
 public class Mypage implements Serializable{
 //宣言
 	private int id;
 	private String user_id;
-	private String date;
+	private Date date;
 	private double day_weight;
 	private double bmi;
 
 //コンストラクタ
-	public Mypage(int id, String user_id, String date, double day_weight, double bmi) {
+	public Mypage(int id, String user_id, Date date, double day_weight, double bmi) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
@@ -21,7 +22,7 @@ public class Mypage implements Serializable{
 	public Mypage(){
 		super();
 		this.user_id = "";
-		this.date = "";
+		this.date = null;
 		this.day_weight =0;
 	}
 //ゲッターとセッター
@@ -37,10 +38,10 @@ public class Mypage implements Serializable{
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public double getDay_eight() {

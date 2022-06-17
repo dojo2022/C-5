@@ -1,17 +1,18 @@
 package model;
 import java.io.Serializable;
+import java.util.Date;
 public class ShortTrans implements Serializable{
 
 
 	private int id;
 	private String user_id;
-	private int date;
+	private Date date;
 	private int counter;
 	private String type;
 	private int no;
 	private int short_complete;
 
-	public ShortTrans(int id, String user_id, int date, int counter, String type, int no, int short_complete) {
+	public ShortTrans(int id, String user_id, Date date, int counter, String type, int no, int short_complete) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
@@ -26,7 +27,7 @@ public class ShortTrans implements Serializable{
 		super();
 		this.id = 0;
 		this.user_id = "";
-		this.date = 0;
+		this.date = null;
 		this.counter =0;
 		this.type = "";
 		this.no = 0;
@@ -49,11 +50,11 @@ public class ShortTrans implements Serializable{
 		this.user_id = user_id;
 	}
 
-	public int getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(int date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

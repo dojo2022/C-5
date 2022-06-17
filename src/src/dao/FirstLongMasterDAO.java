@@ -12,23 +12,23 @@ import model.Bc;
 
 
 //書き足し
-public class BcDAO {
+public class FirstLongMaster{
 
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
 
-		public List<Bc> display() {
+		public List display() {
 			Connection conn = null;
-			List<Bc> cardList = new ArrayList<Bc>();
+			List<Bc>  = new ArrayList<Bc>();
 
 			try {
 				// JDBCドライバを読み込む
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 				// SQL文を準備する　改造
-				String sql = "select * FROM Bc ORDER BY date DESC LIMIT 10 OFFSET 0";
+				String sql = "";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 
@@ -36,26 +36,11 @@ public class BcDAO {
 				ResultSet rs = pStmt.executeQuery();
 				//RESULTSETクラスのインスタンスとして得られる
 
-				//改造
-				// 結果表をコレクションにコピーする
-				//RESULTSETに入ってたやつをARRYに入れなおしている
-				//ネクスト…順番に返してくれる
-				//CHAR,は文字列として取り出す
+
 				while (rs.next()) {
-					Bc card = new Bc(
-					rs.getString("number"),
-					rs.getString("name"),
-					rs.getString("ruby"),
-					rs.getString("company"),
-					rs.getString("department"),
-					rs.getString("date"),
-					rs.getString("address"),
-					rs.getString("tel"),
-					rs.getString("email"),
-					rs.getString("fax"),
-					rs.getString("postal"),
-					rs.getString("memo")
-					);
+					FirstLongMaster question = new FirstLongMaster(
+					rs.getString("first_test"),
+
 					cardList.add(card);
 				}
 				}
