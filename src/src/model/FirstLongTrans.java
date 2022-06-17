@@ -1,6 +1,9 @@
 package model;
 
-public class FirstLongTrans {
+import java.io.Serializable;
+import java.util.Date;
+
+public class FirstLongTrans implements Serializable{
 private int id;
 private String user_id;
 private int counter;
@@ -8,10 +11,10 @@ private String type;
 private int long_complete;
 private int goal_count;
 private int nogoal_count;
-private int date;
+private Date date;
 
 public FirstLongTrans(int id, String user_id, int counter, String type, int long_complete, int goal_count,
-		int nogoal_count, int date) {
+		int nogoal_count, Date date) {
 	super();
 	this.id = id;
 	this.user_id = user_id;
@@ -33,7 +36,7 @@ public FirstLongTrans() {
 	this.long_complete = 0;
 	this.goal_count = 0;
 	this.nogoal_count = 0;
-	this.date = 0;
+	this.date = null;
 }
 
 
@@ -79,10 +82,10 @@ public int getNogoal_count() {
 public void setNogoal_count(int nogoal_count) {
 	this.nogoal_count = nogoal_count;
 }
-public int getDate() {
+public Date getDate() {
 	return date;
 }
-public void setDate(int date) {
+public void setDate(Date date) {
 	this.date = date;
 }
 
