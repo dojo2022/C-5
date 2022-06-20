@@ -12,7 +12,7 @@ import model.Users;
 public class UsersDAO {
 
 //ログイン
-	// ログインできるならtrueを返す*要質問
+	// ログインできるならtrueを返す
 	public boolean isLoginOK(Users users) {
 		Connection conn = null;
 		boolean loginResult = false;
@@ -63,5 +63,87 @@ public class UsersDAO {
 		// 結果を返す
 		return loginResult;
 	}
+
+/*
+//新規登録
+// 引数usersで指定されたレコードを登録し、成功したらtrueを返す
+public boolean insert(Users users) {
+	Connection conn = null;
+	boolean result = false;
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+
+		// SQL文を準備する<ここを改造する>
+		String sql = "INSERT INTO Users (user_id, password, user_name, height, weight) values (?, ?, ?, ?, ?)";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		// SQL文を完成させる
+		if (users.getUser_id() != null && !users.getUser_id().equals("")) {
+			pStmt.setString(1, users.getUser_id());
+		}
+		else {
+			pStmt.setString(1, null);
+		}
+		if (users.getPassword() != null && !users.getPassword().equals("")) {
+			pStmt.setString(2, users.getPassword());
+		}
+		else {
+			pStmt.setString(2, null);
+		}
+		if (users.getUser_name() != null && !users.getUser_name().equals("")) {
+			pStmt.setString(3, users.getUser_name());
+		}
+		else {
+			pStmt.setString(3, null);
+		}
+		if (users.getHeight() != null && !users.getHeight() == ("")) {
+			pStmt.setDouble(4, users.getHeight());
+		}
+		else {
+			pStmt.setString(4, null);
+		}
+		if (users.getWeight() != null && !users.getWeight() == ("")) {
+			pStmt.setDouble(5, users.getWeight());
+		}
+		else {
+			pStmt.setString(5, null);
+		}
+
+
+		// SQL文を実行する
+		if (pStmt.executeUpdate() == 1) {
+			result = true;
+		}
+	}
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+	finally {
+		// データベースを切断
+		if (conn != null) {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// 結果を返す
+	return result;
 }
-	
+*/
+}
+
+
+
+
