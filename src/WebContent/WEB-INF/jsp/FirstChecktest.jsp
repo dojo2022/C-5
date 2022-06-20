@@ -15,9 +15,13 @@
 	</h1>
 	<h2>初期チェックリスト</h2>
 	<h4>
-		あなたの長期目標は以下の〇点です<br> この2週間の長期目標を一つ選択してください
+		初期チェック説明の文章<br> 初期チェック説明の文章
 	</h4>
 
+	<!--初期チェックテストのid・項目・チェックボックスを繰り返し表示
+	チェックボックスの番号も繰り返すことで、データが別々に格納される-->
+		<!-- ここの値をFirstChecktestServletのdoPostで処理 -->
+	<form method="POST" action="/health_management/FirstChecktestServlet">
 	<c:forEach var="question" items="${questionList}">
 		<table>
 			<tr>
@@ -28,14 +32,14 @@
 			</tr>
 		</table>
 	</c:forEach>
-	<form method="POST" action="/health_management/RegisterServlet">
+	<!-- methodでPOST使う時はDo POSTで送る -->
+		<input type="submit" name="" value="次へ進む">
+	</form>
 
+		<form method="GET" action="/health_management/RegisterServlet">
 		<input type="submit" name="" value="戻る">
 	</form>
 
-	<form method="GET" action="/health_management/LongChecklistServlet">
-		<input type="submit" name="" value="次へ進む">
-	</form>
 
 </body>
 <script src="/health_management/js/checklist.js"></script>
