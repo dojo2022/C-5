@@ -18,6 +18,7 @@ public class Mypage implements Serializable{
 		this.day_weight = day_weight;
 		this.bmi = bmi;
 	}
+
 //デフォルトコンストラクタ
 	public Mypage(){
 		super();
