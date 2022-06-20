@@ -30,7 +30,7 @@ public class FirstChecktestServlet extends HttpServlet {
 			return;
 
 		}*/
-
+		//サーブレットによってDAOとjspをつなぐ処理
 		FirstLongMasterDAO FlmDao = new FirstLongMasterDAO();
 		List<FirstLongMaster> questionList = FlmDao.first_display();
 
@@ -46,6 +46,8 @@ public class FirstChecktestServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		/*ここで初期チェック（FirstCheckTest.jsp）の値をDBに格納*/
+
 	}
 
 }

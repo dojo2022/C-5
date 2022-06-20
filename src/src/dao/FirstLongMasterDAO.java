@@ -17,9 +17,12 @@ public class FirstLongMasterDAO{
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
 
 	public List<FirstLongMaster> first_display() {
+//		FirstLongMaster型のList型のメソッド
+//		ここ
 		Connection conn = null;
+//		変数の箱だけ作ってnullにする
 		List<FirstLongMaster> questionList = new ArrayList<FirstLongMaster>();
-
+		//		FirstLongMaster型のArrayList questionListを生成
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
@@ -29,8 +32,10 @@ public class FirstLongMasterDAO{
 
 			// SQL文を準備する　改造
 			String sql = "select * from FirstLongMaster";
+//			変数sqlにSELECT文を格納
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-
+//			ここ
+//			PreparedStatementのインスタンスを生成
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -38,6 +43,7 @@ public class FirstLongMasterDAO{
 
 
 			while (rs.next()) {
+//				値が得られる（trueである）限り
 				FirstLongMaster question = new FirstLongMaster(
 						rs.getInt("id"),
 						rs.getString("type"),
@@ -76,4 +82,6 @@ public class FirstLongMasterDAO{
 		// 結果を返す
 		return questionList;
 	}
+
+
 }

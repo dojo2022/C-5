@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +15,17 @@
 	</h1>
 長期目標設定
 
-<form method = "GET" action = "/health_management/FirstChecktestServlet">
-
+<form method = "POST" action = "/health_management/LongChecklistServlet">
+<c:forEach var="question" items="${questionList}">
+		<table>
+			<tr>
+				<th>${question.id}</th>
+				<td>${question.long_goal}</td>
+				<td><input type="checkbox" name="first_ans"
+					value="${question.id}"></td>
+			</tr>
+		</table>
+	</c:forEach>
 <input type = "submit" name = "" value = "戻る">
 </form>
 

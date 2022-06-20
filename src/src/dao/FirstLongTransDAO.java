@@ -11,6 +11,44 @@ import java.util.List;
 import model.FirstLongTrans;
 
 public class FirstLongTransDAO {
+	//初期チェックテストの結果をDBに格納
+	public boolean first_insert(FirstLongTrans first_check) {
+		Connection conn = null;
+		boolean result = false;
+		try {
+//			JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+//			データベース接続
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+
+//			SQL文を準備する
+			String aql = "INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date) "
+					+ "values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?);"
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+//			SQL文を完成させる
+
+			if(first_check.getUser_id() != null && !first_check.getUser_id().equals("")) {
+				pStmt.setString(1, first_check.getUser_id());
+			}
+			else {
+				pStmt.setString(1, null);
+			}
+			id(first_check.getType())
+
+				(first_check.getDate())
+
+			ResultSet rs = pStmt.executeQuery();
+
+		}
+		catch{
+
+		}
+		finally {
+
+		}
+
+		return result;
+	}
 	//スタンプカード：スタンプを押すためのデータ取得する
 
 		//BcDAO.javaからいったんコピペ。
