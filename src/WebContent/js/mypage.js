@@ -1,3 +1,33 @@
+ const labels = [
+    '2022-0616',
+    '2022-0617',
+    '2022-0618',
+    '2022-0619',
+    '2022-0621',
+    '2022-0622',
+    '2022-0623',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: '体重推移',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [65, 60, 62, 67, 65, 63, 61],
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {}
+  };
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+/*---------------------------------------*/
 const ham = document.getElementById('ham');
 const menu_wrapper = document.getElementById('menu_wrapper');
 ham.addEventListener('click', function() {
