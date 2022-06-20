@@ -23,7 +23,7 @@ public class FirstLongTransDAO {
 
 //			SQL文を準備する
 			String sql = "INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date) "
-					+ "values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?)"
+					+ "values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?);"
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 //			SQL文を完成させる
 
@@ -40,6 +40,8 @@ public class FirstLongTransDAO {
 				pStmt.setString(2, null);
 			}
 			if(first_check.getDate()!= null && !first_check.getDate().equals("")) {
+				java.util.Date utilDate = new new Date();
+				java.util.sql sqlDate = new java.util.sqlDate(utilDate.getTime());
 					pStmt.setDate(3, first_check.getDate());
 				}
 				else {
