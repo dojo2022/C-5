@@ -26,12 +26,12 @@ public class MypageServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*if (session.getAttribute("id") == null) {
+		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/health_management/LoginServlet");
 			return;
 		}
 		// パーソナルデータページにフォワードする
-			else {*/	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+			else {	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
 				dispatcher.forward(request, response);
 	}
 //}
