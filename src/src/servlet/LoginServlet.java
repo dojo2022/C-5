@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
-import model.LoginUser;
-//import model.Result;
 import model.Users;
 
 /**
@@ -48,12 +46,14 @@ public class LoginServlet extends HttpServlet {
 		if (iDao.isLoginOK(new Users(user_id, password))) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("user_id", new LoginUser(user_id));
+			session.setAttribute("user_id", new Users(user_id));
 
 			//マイページサーブレットにリダイレクトする
 			response.sendRedirect("/health_management/MypageServlet");
 		}
 		else {									// ログイン失敗
+
+
 
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
