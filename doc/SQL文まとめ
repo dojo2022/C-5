@@ -12,11 +12,11 @@ password VARCHAR(20) NOT NULL,
 user_name VARCHAR(20) NOT NULL,
 height DOUBLE NOT NULL,
 weight DOUBLE NOT NULL,
-face_id VARCHAR(20) NOT NULL,
-body_id VARCHAR(20) NOT NULL
+bmi_id INT NOT NULL,
+color_id INT NOT NULL
 )
 テストデータ格納
-INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10, 'aaaa.png', 'bbbb.png');
+INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10, 2, 4);
 
 マイページ
 
