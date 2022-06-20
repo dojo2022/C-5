@@ -31,6 +31,11 @@ public Users(String user_id, String password) {
 	this.password = password;
 }
 
+/*public Users(String user_id) {
+	super();
+	this.user_id = user_id;
+}
+*/
 public Users() {
 	super();
 	this.id = 0;

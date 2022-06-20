@@ -16,7 +16,7 @@
 <hr>
 <h2>ログイン</h2>
 <h3>頑張れ！</h3>
-<form method = "POST" action ="/health_management/MypageServlet">
+<form method = "POST" action ="/health_management/LoginServlet">
 <table>
 <tr>
 <td><input type = "text" class = "" placeholder = "user_id"></td>
