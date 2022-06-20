@@ -19,16 +19,17 @@
 <form method = "POST" action ="/health_management/LoginServlet">
 <table>
 <tr>
-<td><input type = "text" class = "" placeholder = "user_id"></td>
+<td><input type = "text" class = "" placeholder = "user_id" name = "user_id"></td>
 </tr>
 <tr>
-<td><input type = "password" class = "" placeholder = "password"></td>
+<td><input type = "password" class = "" placeholder = "password" name = "password"></td>
 </tr>
 <tr>
 <td>
  <input type = "submit" name ="regist" value = "ログイン">
 </td>
 </tr>
+
 </table>
 </form>
 <a href = "/health_management/RegisterServlet" class = "toregister">新規登録</a>
