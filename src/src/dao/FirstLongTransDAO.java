@@ -22,8 +22,8 @@ public class FirstLongTransDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 //			SQL文を準備する
-			String aql = "INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date) "
-					+ "values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?);"
+			String sql = "INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date) "
+					+ "values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?)"
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 //			SQL文を完成させる
 
@@ -33,21 +33,48 @@ public class FirstLongTransDAO {
 			else {
 				pStmt.setString(1, null);
 			}
-			id(first_check.getType())
-
-				(first_check.getDate())
+			if(first_check.getType()!= null && !first_check.getType().equals("")) {
+				pStmt.setString(2, first_check.getType());
+			}
+			else {
+				pStmt.setString(2, null);
+			}
+			if(first_check.getDate()!= null && !first_check.getDate().equals("")) {
+					pStmt.setDate(3, first_check.getDate());
+				}
+				else {
+					pStmt.setString(3, null);
+				}
 
 			ResultSet rs = pStmt.executeQuery();
 
-		}
-		catch{
 
+		// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
+		if (pStmt.executeUpdate() == 1) {
+			result = true;
+			//戻り値のリザルトをTRUEにする
 		}
-		finally {
-
+	}
+	//例外処理
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+	finally {
+		// データベースを切断
+		if (conn != null) {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return result;
+	}
 	}
 	//スタンプカード：スタンプを押すためのデータ取得する
 
