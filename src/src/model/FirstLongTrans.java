@@ -39,6 +39,11 @@ public FirstLongTrans() {
 	this.date = null;
 }
 
+// FirstLongTransDAOテスト用
+public FirstLongTrans(String usesr_id, String counter, String type, int long_comlete, String goal_count, String nogoal_count) {
+	// TODO 自動生成されたコンストラクター・スタブ
+}
+
 
 public int getId() {
 	return id;
