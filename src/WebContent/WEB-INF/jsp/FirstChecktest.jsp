@@ -28,7 +28,8 @@
 				<th>${question.id}</th>
 				<td>${question.first_test}</td>
 				<td><input type="checkbox" name="first_ans"
-					value="${question.id}"></td>
+					value="${question.type}"></td>
+					<!-- 値をとるためのvalueをid→typeに変更 -->
 			</tr>
 		</table>
 	</c:forEach>
