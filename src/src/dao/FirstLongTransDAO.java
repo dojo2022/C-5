@@ -96,7 +96,7 @@ public class FirstLongTransDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT user_id,counter,type,long_comlete,goal_count,nogoal_count FROM FirstLongTrans";
+					String sql = "SELECT user_id,counter,type,long_complete,goal_count,nogoal_count FROM FirstLongTrans WHERE user_id=? and long_complete=1";
 
 	                // SQLインジェクション防ぐ
 					PreparedStatement pStmt = conn.prepareStatement(sql);

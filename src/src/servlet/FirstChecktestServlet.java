@@ -73,10 +73,18 @@ public class FirstChecktestServlet extends HttpServlet {
 
 		//出力部
 
-		//リクエストスコープに入れるべきは、選択画面に表示する長期チェックの一覧を格納する
+		//リクエストスコープに入れるべきは、選択画面に表示する長期チェックの一覧
+//		入れるもの：checked_list(くり返し)
 
+
+		for(String checked_list : first_checked) {
+//			チェックされているtypeの行を生成
+			request.setAttribute("checked_list",checked_list);
+
+		}
 		//長期チェックリスト選択画面にフォーワードする。
-
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LongChecklist.jsp");
+		dispatcher.forward(request, response);
 
 
 

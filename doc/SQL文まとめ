@@ -387,7 +387,7 @@ WHERE long_complete = 2 AND user_id = ?
 
 【アニメーション】
 ・全期間の体重をグラフ化して表示
-SELECT day_weight FROM Mypage WHERE user_id = '?' ORDER BY date
+SELECT date,day_weight FROM Mypage WHERE user_id = '?' ORDER BY date
 →テスト
 SELECT day_weight FROM Mypage WHERE user_id = 'id_yamada' ORDER BY date
 【過去データ閲覧】
