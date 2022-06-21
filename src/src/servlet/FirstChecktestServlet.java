@@ -67,7 +67,7 @@ public class FirstChecktestServlet extends HttpServlet {
 		FirstLongTransDAO fst_ins = new FirstLongTransDAO();
 		for(String checked_list : first_checked) {
 //			チェックされているtypeの行を生成
-			fst_ins(user_id, checked_list, date);
+			fst_ins.first_insert("user_id", checked_list);
 		}
 
 

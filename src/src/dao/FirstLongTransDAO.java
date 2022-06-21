@@ -14,7 +14,7 @@ public class FirstLongTransDAO {
 	//初期チェックテストの結果をDBに格納
 
 	//first_check変数に格納されるデータ　→　servletが責任を持ってデータを集める。
-	public boolean first_insert(FirstLongTrans first_check) {
+	public boolean first_insert(String user_id, String type) {
 		Connection conn = null;
 		boolean result = false;
 		try {
@@ -26,7 +26,7 @@ public class FirstLongTransDAO {
 //			SQL文を準備する
 
 			//insertする項目だけを記述する。
-			String sql = "INSERT INTO FIRSTLONGTRANS (user_id, type, date) values (?,?,?)";
+			String sql = "INSERT INTO FIRSTLONGTRANS (user_id, type, date) values (?,?,CURDATE())";
 
 //必要な項目（insertする文のみ）記述する。
 //			String sql = "INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, date) "
@@ -36,26 +36,19 @@ public class FirstLongTransDAO {
 
 
 
-			if(first_check.getUser_id() != null && !first_check.getUser_id().equals("")) {
-				pStmt.setString(1, first_check.getUser_id());
+			if(user_id != null && !user_id.equals("")) {
+				pStmt.setString(1, user_id);
 			}
 			else {
 				pStmt.setString(1, null);
 			}
-			if(first_check.getType()!= null && !first_check.getType().equals("")) {
-				pStmt.setString(2, first_check.getType());
+			if(type!= null && !type.equals("")) {
+				pStmt.setString(2, type);
 			}
 			else {
 				pStmt.setString(2, null);
 			}
-			if(first_check.getDate()!= null && !first_check.getDate().equals("")) {
-					pStmt.setDate(3, first_check.getDate());
-					java.util.Date utilDate = new new Date();
-					java.util.sql sqlDate = new java.util.sqlDate(utilDate.getTime());
-				}
-				else {
-					pStmt.setString(3, null);
-				}
+
 
 		// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
 		if (pStmt.executeUpdate() == 1) {
@@ -70,7 +63,7 @@ public class FirstLongTransDAO {
 	catch (ClassNotFoundException e) {
 		e.printStackTrace();
 	}
-	finally {
+	/*finally {
 		// データベースを切断
 		if (conn != null) {
 			try {
@@ -79,11 +72,11 @@ public class FirstLongTransDAO {
 			catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 
 		return result;
 	}
-	}
+//}
 	//スタンプカード：スタンプを押すためのデータ取得する
 
 		//BcDAO.javaからいったんコピペ。
