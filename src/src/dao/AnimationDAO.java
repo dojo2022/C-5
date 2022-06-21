@@ -11,10 +11,11 @@ import java.util.List;
 import model.Mypage;
 
 public class AnimationDAO {
-	public List<Mypage> select(){
+	public List<Mypage> select(Mypage user_id){
 		Connection conn = null;
 //		変数の箱だけ作ってnullにする
 		List<Mypage> animationList = new ArrayList<Mypage>();
+
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
@@ -28,10 +29,12 @@ public class AnimationDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
+
+
 			while (rs.next()) {
 //				値が得られる（trueである）限り
 				Mypage animation = new Mypage(
-						rs.getDate("date"),
+						sql, rs.getDate("date"),
 						rs.getDouble("day_weight")
 						//jspのNAMEとそろえる
 						);
@@ -63,7 +66,4 @@ public class AnimationDAO {
 		// 結果を返す
 		return animationList;
 	}
-
-
-
 }
