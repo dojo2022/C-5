@@ -5,14 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 
-import model.Mypage;
-import model.FirstLongMaster;
 public class MypageDAO {
-	public List<Long> LongTarget(FirstLongmaster) {
+	public String LongTarget(String user_id) {
 		Connection conn = null;
+		String rsl = "";
 
 			// JDBCドライバを読み込む
 		try {
@@ -24,34 +22,39 @@ public class MypageDAO {
 							+ "ON  FirstLongMaster.type =  FirstLongTrans.type\r\n"
 							+ "where user_id = '?' and long_complete = 1;";
 
+					PreparedStatement pStmt = conn.prepareStatement(sqlLong);
+					// SELECT文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
 
-					PreparedStatement pStmtLong = conn.prepareStatement(sqlLong);
-					// SQL文を完成させる　改造
-					if (.getLong_goal() != null) {
-						pStmt.setString(1, "%" + .getLong_goal() + "%");
+					if(rs.next()) {
+						//データがあればココに入る。
+						 rsl= sqlLong;
 					}
-					//paramのゲット番号が空白でなけりゃ1-クエスチョンの番号
-					else {
-						pStmt.setString(1, "%");
-
-					Resultset rsLong =pStmtLong.executeQuery();
-
+					//else {
+						//データがなければココに入る。
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						rsl = null;
+					}
+					catch (ClassNotFoundException e) {
+						e.printStackTrace();
+						rsl = null;
 		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+					finally {}
 
-			}
-		// 結果を返す
-		return result;
+			return rsl;
 	}
+}
+
+
+
+	/*private static String getString(String string) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+
 
 
 	public boolean insert(){
@@ -109,4 +112,4 @@ public class MypageDAO {
 	}
 
 
-}
+}*/

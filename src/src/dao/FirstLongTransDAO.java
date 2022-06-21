@@ -12,7 +12,9 @@ import model.FirstLongTrans;
 
 public class FirstLongTransDAO {
 	//初期チェックテストの結果をDBに格納
-	public boolean first_insert(FirstLongTrans first_check) {
+
+	//first_check変数に格納されるデータ　→　servletが責任を持ってデータを集める。
+	public boolean first_insert(String user_id, String type) {
 		Connection conn = null;
 		boolean result = false;
 		try {
@@ -22,33 +24,30 @@ public class FirstLongTransDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 //			SQL文を準備する
-			String sql = "INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date) "
-					+ "values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?);"
+
+			//insertする項目だけを記述する。
+			String sql = "INSERT INTO FIRSTLONGTRANS (user_id, type, date) values (?,?,CURDATE())";
+
+//必要な項目（insertする文のみ）記述する。
+//			String sql = "INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, date) "
+//					+ "values (NULL, ?, DEFAULT, ?,  DEFAULT, ?)"
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 //			SQL文を完成させる
 
-			if(first_check.getUser_id() != null && !first_check.getUser_id().equals("")) {
-				pStmt.setString(1, first_check.getUser_id());
+
+
+			if(user_id != null && !user_id.equals("")) {
+				pStmt.setString(1, user_id);
 			}
 			else {
 				pStmt.setString(1, null);
 			}
-			if(first_check.getType()!= null && !first_check.getType().equals("")) {
-				pStmt.setString(2, first_check.getType());
+			if(type!= null && !type.equals("")) {
+				pStmt.setString(2, type);
 			}
 			else {
 				pStmt.setString(2, null);
 			}
-			if(first_check.getDate()!= null && !first_check.getDate().equals("")) {
-				java.util.Date utilDate = new new Date();
-				java.util.sql sqlDate = new java.util.sqlDate(utilDate.getTime());
-					pStmt.setDate(3, first_check.getDate());
-				}
-				else {
-					pStmt.setString(3, null);
-				}
-
-			ResultSet rs = pStmt.executeQuery();
 
 
 		// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
@@ -64,7 +63,7 @@ public class FirstLongTransDAO {
 	catch (ClassNotFoundException e) {
 		e.printStackTrace();
 	}
-	finally {
+	/*finally {
 		// データベースを切断
 		if (conn != null) {
 			try {
@@ -73,11 +72,11 @@ public class FirstLongTransDAO {
 			catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 
 		return result;
 	}
-	}
+//}
 	//スタンプカード：スタンプを押すためのデータ取得する
 
 		//BcDAO.javaからいったんコピペ。
@@ -97,7 +96,7 @@ public class FirstLongTransDAO {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT user_id,counter,type,long_comlete,goal_count,nogoal_count FROM FirstLongTrans";
+					String sql = "SELECT user_id,counter,type,long_complete,goal_count,nogoal_count FROM FirstLongTrans WHERE user_id=? and long_complete=1";
 
 	                // SQLインジェクション防ぐ
 					PreparedStatement pStmt = conn.prepareStatement(sql);

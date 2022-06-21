@@ -82,6 +82,10 @@ public class FirstLongMasterDAO{
 		// 結果を返す
 		return questionList;
 	}
+	
+//	チェックされた項目の長期目標を表示
+	
+	
 
 
 }
