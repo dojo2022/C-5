@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.FirstLongMasterDAO;
-import model.FirstLongMaster;
 
 /**
  * Servlet implementation class LongChecklistServlet
@@ -26,14 +25,7 @@ public class LongChecklistServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//長期目標チェックリストページへ
-		FirstLongMasterDAO FlmDao = new FirstLongMasterDAO();
-		List<FirstLongMaster> questionList = FlmDao.first_display();
 
-		request.setAttribute("questionList", questionList);
-//		"questionList"がjspの変数名、questionListがDAOの変数名
-		//目標チェックテストページへ
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LongChecklist.jsp");
-		dispatcher.forward(request, response);
 		//出力部
 
 				//リクエストスコープに入れるべきは、選択画面に表示する長期チェックの一覧
@@ -41,8 +33,14 @@ public class LongChecklistServlet extends HttpServlet {
 //		セッションスコープからuser_idを取り出す
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
-
+//		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
+
+		FirstLongMasterDAO FlmDao = new FirstLongMasterDAO();
+		List<String> longList = FlmDao.long_display("user_id");
+
+		request.setAttribute("longList", longList);
+//		FlmDAOからlong_displayメソッドを呼び出し、longList（user_id, type long_list）を貰ってきている
 
 //				for(String checked_list : first_checked) {
 ////					チェックされているtypeの行を生成
@@ -51,16 +49,14 @@ public class LongChecklistServlet extends HttpServlet {
 ////		request.setAttribute("格納するオブジェクト指すキー", "格納するオブジェクト");
 //		user_idをDAOに渡したい
 
-
-
+		//目標チェックテストページへ
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LongChecklist.jsp");
+		dispatcher.forward(request, response);
 
 				}
-////LongChecklistservletへリダイレクト
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LongChecklist.jsp");
-				dispatcher.forward(request, response);
 
 
-	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

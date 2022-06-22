@@ -177,13 +177,13 @@ values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?)
 
 【長期チェックリスト】
 ・初期で選ばれた項目に対応する項目を表示
-SELECT * FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
+SELECT user_id, FIRSTLONGTRANS.type, long_goal FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
 on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
 where user_id = '?'
  →テスト
- SELECT * FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
- on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
- where user_id = 'abe'
+SELECT user_id, FIRSTLONGTRANS.type, long_goal FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
+on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
+where user_id = 'id_yamada'
 
 ・選んだ長期目標（１こ）のデータを格納
 UPDATE FirstLongTrans SET long_complete = 1 WHERE type  = '?'

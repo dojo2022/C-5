@@ -36,6 +36,7 @@ public class FirstChecktestServlet extends HttpServlet {
 		List<FirstLongMaster> questionList = FlmDao.first_display();
 
 		request.setAttribute("questionList", questionList);
+//		"questionList"がjspの変数名、questionListがDAOの変数名
 		//初期目標チェックテストページへ
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/FirstChecktest.jsp");
 		dispatcher.forward(request, response);
@@ -72,7 +73,9 @@ public class FirstChecktestServlet extends HttpServlet {
 
 //		request.setAttribute("user_id",user_id);
 
-
+	//LongChecklistservletへリダイレクト
+//	URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる
+		response.sendRedirect("/health_management/LongChecklistServlet");
 
 
 	}
