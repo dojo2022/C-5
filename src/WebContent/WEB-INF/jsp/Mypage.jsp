@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,33 +12,32 @@
 <header class="globalMenuSp">
 	<div class="hamburger">
 		<div class="ham" id="ham">
-			<span class="ham_line ham_line1"></span>
-			<span class="ham_line ham_line2"></span>
-			<span class="ham_line ham_line3"></span>
+			<span class="ham_line ham_line1"></span> <span
+				class="ham_line ham_line2"></span> <span class="ham_line ham_line3"></span>
 		</div>
 
 
 		<div class="menu_wrapper" id="menu_wrapper">
 			<div class="menu">
-			    <ul>
-			    	<li><a href="/health_management/MypageServlet">マイページ</a></li>
-			        <li><a href="/health_management/PersonalServlet">パーソナルページ</a></li>
-			        <li><a href="/health_management/BacklogServlet">過去データ</a></li>
-			        <li><a href="/health_management/LogoutServlet">ログアウト</a></li>
-			    </ul>
+				<ul>
+					<li><a href="/health_management/MypageServlet">マイページ</a></li>
+					<li><a href="/health_management/PersonalServlet">パーソナルページ</a></li>
+					<li><a href="/health_management/BacklogServlet">過去データ</a></li>
+					<li><a href="/health_management/LogoutServlet">ログアウト</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
 	<h1>
-		<a href="/health_management/MypageServlet">
-		<img src="" alt="健康アプリ">
+		<a href="/health_management/MypageServlet"> <img src=""
+			alt="健康アプリ">
 		</a>
 	</h1>
 
 </header>
 <body>
 	<hr>
-
+    ${stampCard.type}
 
 	<!-- アバター表示用タブ---------------------------------- -->
 	<div class="avater_photo">
@@ -52,11 +52,11 @@
 		<div class="photo-group">
 			<div class="photo avater-now is-show-avater">現在</div>
 			<div class="photo avater-ideal">
-				<img class="idealface" src="/health_management/images/kao.png" alt="顔">
-				<img class="idealbody" src="/health_management/images/body1_0.png"
-					alt="体">
-				</div>
+				<img class="idealface" src="/health_management/images/kao.png"
+					alt="顔"> <img class="idealbody"
+					src="/health_management/images/body1_0.png" alt="体">
 			</div>
+		</div>
 	</div>
 
 
@@ -66,11 +66,11 @@
 		id="report">
 		<!-- <form method="POST" action="/health_management/ResultServlet" id="report"> -->
 		<ul class=first>
-			<li>長期目標 ○○ </li>
-			<li>短期目標 ○○ <input type="checkbox" name="short"value="check"></li>
+			<li>長期目標 ○○</li>
+			<li>短期目標 ○○ <input type="checkbox" name="short" value="check"></li>
 
-		<li>体重<input type="text" name="height" value="">kg
-		<input type="submit" name="report" value="報告"></li>
+			<li>体重<input type="text" name="height" value="">kg <input
+				type="submit" name="report" value="報告"></li>
 		</ul>
 	</form>
 
@@ -88,44 +88,70 @@
 		<!--タブを切り替えて表示するコンテンツ-->
 		<div class="panel-group">
 			<div class="panel tab-A is-show">
-			  <table border="1" class="stampcard">
-         <tr>
-          <td> <img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-         </tr>
-         <tr>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-          <td><img src="/health_management/images/taihennyokuganbarimasita.png"
-         alt="大変よく頑張りました！" class="stamp_image"></td>
-        </tr>
-        </table>
+				<table border="1" class="stampcard">
+					<tr>
+						<td>
+						  <!-- スタンプカード途中 -->
+						  <c:if test="${stamp1 == true}">
+							  <img
+								src="/health_management/images/taihennyokuganbarimasita.png"
+								alt="大変よく頑張りました！" class="stamp_image">
+							</c:if>
+							<c:if test="${stamp2 == true}">
+                <img
+                src="/health_management/images/taihennyokuganbarimasita.png"
+                alt="大変よく頑張りました！" class="stamp_image">
+              </c:if>
+							</td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+					</tr>
+					<tr>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+						<td><img
+							src="/health_management/images/taihennyokuganbarimasita.png"
+							alt="大変よく頑張りました！" class="stamp_image"></td>
+					</tr>
+				</table>
+				<!-- スタンプカード用のデータ取得 ページには出力せず、スタンプ押す押さないに反映-->
+
 			</div>
-				<div class="panel tab-B">
-				<canvas id="myChart" width ="830" height="330"></canvas>
-				</div>
+			<div class="panel tab-B">
+				<canvas id="myChart" width="830" height="330"></canvas>
+			</div>
 		</div>
 	</div>
 	<!-- ---------------------------------------------- -->
@@ -161,7 +187,7 @@ const days = [
     options: {}
   };
   </script> -->
- <script>
+<script>
   const myChart = new Chart(
     document.getElementById('myChart'),
     config
