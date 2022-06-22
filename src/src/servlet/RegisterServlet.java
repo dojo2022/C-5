@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
 import model.Users;
@@ -50,7 +51,13 @@ public class RegisterServlet extends HttpServlet {
 	UsersDAO bDao = new UsersDAO();
 	Users insRec = new Users(user_id, password, user_name, height,weight );
 	if (bDao.insert(insRec)) {
-		// 登録成功
+		// 登録成功したらユーザーIDをセッションスコープに入れる
+		HttpSession session = request.getSession();
+//		Users user = new Users(user_id);
+//		session.setAttribute("user_id", user);
+//		session.setAttribute("user_id", new Users(user_id));
+		session.setAttribute("user_id", user_id);
+
 		//初期チェックテストサーブレットへリダイレクトする
 		response.sendRedirect("/health_management/FirstChecktestServlet");
 	}
