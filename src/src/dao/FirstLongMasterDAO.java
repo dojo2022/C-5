@@ -85,7 +85,7 @@ public class FirstLongMasterDAO{
 
 //	チェックされた項目の長期目標を表示
 
-	public List<FirstLongTrans> long_display(FirstLongTrans lt) {
+	public List<FirstLongTrans> long_display(String user_id) {
 //		FirstLongMaster型のList型のメソッド
 //		ここ
 		Connection conn = null;
@@ -108,7 +108,7 @@ public class FirstLongMasterDAO{
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-				pStmt.setString(1, lt.getUser_id());
+				pStmt.setString(1, user_id);
 //			値が絶対入るように 条件分岐はしない
 
 //			PreparedStatementのインスタンスを生成

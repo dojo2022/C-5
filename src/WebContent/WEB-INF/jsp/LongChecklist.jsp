@@ -20,7 +20,7 @@
 <c:forEach var="long" items="${longList}">
 		<table>
 			<tr>
-				<th>${long.id}</th>
+				<!-- <th>${long.id}</th> -->
 				<td>${long.long_goal}</td>
 				<!-- <td><input type="checkbox" name="first_ans"
 					value="${long.id}"></td>  -->
