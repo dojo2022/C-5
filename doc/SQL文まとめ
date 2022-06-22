@@ -17,6 +17,7 @@ color_id INT default 0
 )
 テストデータ格納
 INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10, 2, 4);
+INSERT INTO Users values (NULL, 'id_saburi', 'aaaa', 'aaa', 100, 10, 2, 4);
 
 マイページ
 
