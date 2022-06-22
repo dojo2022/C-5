@@ -14,6 +14,7 @@ public class FirstLongMaster implements Serializable{
 		this.first_test = first_test;
 		this.long_goal = long_goal;
 	}
+
 	public FirstLongMaster() {
 		super();
 		this.id= 0 ;

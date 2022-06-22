@@ -16,13 +16,13 @@
 長期目標設定
 
 <form method = "POST" action = "/health_management/LongChecklistServlet">
-<c:forEach var="question" items="${questionList}">
+<c:forEach var="long" items="${longList}">
 		<table>
 			<tr>
-				<th>${question.id}</th>
-				<td>${question.long_goal}</td>
-				<td><input type="checkbox" name="first_ans"
-					value="${question.id}"></td>
+				<th>${long.id}</th>
+				<td>${long.long_goal}</td>
+				<!-- <td><input type="checkbox" name="first_ans"
+					value="${long.id}"></td>  -->
 			</tr>
 		</table>
 	</c:forEach>
