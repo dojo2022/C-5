@@ -14,7 +14,7 @@
 <body>
 <hr>
  体重推移アニメーション
- ｛ユーザーネーム｝さんの軌跡<br>
+ <c:out value="${e.user_id}"></c:out>さんの軌跡<br>
  <div class="image-horizontal-scroll">
 				<canvas id="myChart" class="box" width ="1030" height="330"></canvas>
 				</div>
@@ -29,23 +29,23 @@
 <script type="text/javascript">
 const labels = [
 
-	<c:forEach var="e" items="${cardList}">
+	<c:forEach var="e" items="${animationList}">
 		${e.date}
 	</c:forEach>
 
   ];
-
+const weight =  [
+	 <c:forEach var="e" items="${animationList}">
+	    	  ${e.day_weight}
+	    	  </c:forEach>
+	      ];
 const data = {
 	    labels: labels,
 	    datasets: [{
 	      label: '体重推移',
 	      backgroundColor: 'rgb(255, 99, 132)',
 	      borderColor: 'rgb(255, 99, 132)',
-	      data: [
-	 <c:forEach var="e" items="${cardList}">
-	    	  ${e.day_weight}
-	    	  </c:forEach>
-	      ],
+	      data: weight
 	    }]
 	  };
 

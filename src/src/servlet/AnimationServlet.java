@@ -42,7 +42,7 @@ public class AnimationServlet extends HttpServlet {
 		request.setAttribute("user_id", user_id);
 
 		AnimationDAO aDao = new AnimationDAO();
-		List<Mypage> animationList = aDao.select("user_id");
+		List<Mypage> animationList = aDao.select(user_id);
 
 
 		request.setAttribute("animationList", animationList);

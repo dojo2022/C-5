@@ -24,10 +24,12 @@ public class AnimationDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 			// SQL文を準備する　改造
-			String sql = "SELECT date,day_weight FROM Mypage WHERE user_id = '?' ORDER BY date ASC";
+			String sql = "SELECT user_id ,date,day_weight FROM Mypage WHERE user_id = ? ORDER BY date ASC";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, user_id);
+			//?はあるけど、''で囲むと文字列として解釈されて
+			//PreparedStatementの対象にならない
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
@@ -36,6 +38,7 @@ public class AnimationDAO {
 //				値が得られる（trueである）限り
 				Mypage animation = new Mypage(
 						//jspのNAMEとそろえる
+						rs.getString("user_id"),
 						rs.getDate("date"),
 						rs.getDouble("day_weight")
 						//jspのNAMEとそろえる
@@ -46,6 +49,7 @@ public class AnimationDAO {
 
 		catch (SQLException e) {
 			e.printStackTrace();
+			//コンソールからログを確認する
 			animationList = null;
 		}
 		catch (ClassNotFoundException e) {
