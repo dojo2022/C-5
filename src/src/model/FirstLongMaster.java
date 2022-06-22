@@ -5,7 +5,7 @@ public class FirstLongMaster implements Serializable{
 	private String type;
 	private String first_test;
 	private String long_goal;
-
+	private String user_id;
 
 	public FirstLongMaster(int id, String type, String first_test, String long_goal) {
 		super();

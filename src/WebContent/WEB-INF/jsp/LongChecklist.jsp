@@ -16,6 +16,7 @@
 長期目標設定
 
 <form method = "POST" action = "/health_management/LongChecklistServlet">
+
 <c:forEach var="long" items="${longList}">
 		<table>
 			<tr>
