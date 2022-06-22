@@ -40,10 +40,10 @@
 					<th>体重</th>
 					<td><input type="text" name="weight" required></td>
 				</tr>
-				<!--  <tr>
-				<th>顔画像</th>
-				<td><input type="file" name="face_id"></td>
-			</tr>-->
+				<tr>
+					<th>顔画像</th>
+					<td><input type="file" name="face_id"></td>
+				</tr>
 
 				<tr>
 					<td><input type="submit" name="SUBMIT" value="初期チェックテストへ">
@@ -54,7 +54,9 @@
 
 
 		</form>
-
+ <a href="/health_management/LoginServlet">
+  <button type="button">ログインページに戻る</button>
+</a>
 
 
 		<!-- <a href ="/health_management/FirstChecktest">初期チェックテストへ</a> -->

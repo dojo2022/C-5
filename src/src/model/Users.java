@@ -43,6 +43,7 @@ public Users(String user_id, String password, String user_name, double height, d
 	this.user_name = user_name;
 	this.height = height;
 	this.weight = weight;
+
 }
 
 public Users() {

@@ -44,6 +44,8 @@ public class RegisterServlet extends HttpServlet {
 
 
 
+
+
 	// 登録処理を行う
 	UsersDAO bDao = new UsersDAO();
 	Users insRec = new Users(user_id, password, user_name, height,weight );
