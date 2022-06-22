@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UsersDAO;
+import model.Users;
+
+
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -20,7 +24,7 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 登録ページにフォワードする
+		// 新規登録ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Register.jsp");
 				dispatcher.forward(request, response);
 	}
@@ -28,9 +32,31 @@ public class RegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	// リクエストパラメータを取得する
+	request.setCharacterEncoding("UTF-8");
+	String user_id = request.getParameter("user_id");
+	String password = request.getParameter("password");
+	String user_name = request.getParameter("user_name");
+	Double height = Double.parseDouble(request.getParameter("height"));
+	Double weight = Double.parseDouble(request.getParameter("weight"));
+
+
+
+	// 登録処理を行う
+	UsersDAO bDao = new UsersDAO();
+	if (bDao.insert(new Users(user_id, password, user_name, height, weight ))) {	// 登録成功
+		//初期チェックテストサーブレットへリダイレクトする
+		response.sendRedirect("/health_management/FirstChecktestServlet");
 	}
+	else {												// 登録失敗
+		//新規登録ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Register.jsp");
+		dispatcher.forward(request, response);
+	}
+
+
+}
 
 }

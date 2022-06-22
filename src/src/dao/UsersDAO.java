@@ -64,7 +64,7 @@ public class UsersDAO {
 		return loginResult;
 	}
 
-/*
+
 //新規登録
 // 引数usersで指定されたレコードを登録し、成功したらtrueを返す
 public boolean insert(Users users) {
@@ -76,7 +76,7 @@ public boolean insert(Users users) {
 		Class.forName("org.h2.Driver");
 
 		// データベースに接続する
-		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 		// SQL文を準備する<ここを改造する>
 		String sql = "INSERT INTO Users (user_id, password, user_name, height, weight) values (?, ?, ?, ?, ?)";
@@ -101,18 +101,13 @@ public boolean insert(Users users) {
 		else {
 			pStmt.setString(3, null);
 		}
-		if (users.getHeight() != null && !users.getHeight() == ("")) {
-			pStmt.setDouble(4, users.getHeight());
-		}
-		else {
-			pStmt.setString(4, null);
-		}
-		if (users.getWeight() != null && !users.getWeight() == ("")) {
-			pStmt.setDouble(5, users.getWeight());
-		}
-		else {
-			pStmt.setString(5, null);
-		}
+
+		pStmt.setDouble(4, users.getHeight());
+
+		pStmt.setDouble(5, users.getWeight());
+
+
+
 
 
 		// SQL文を実行する
@@ -141,7 +136,7 @@ public boolean insert(Users users) {
 	// 結果を返す
 	return result;
 }
-*/
+
 }
 
 
