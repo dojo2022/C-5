@@ -46,7 +46,9 @@ public class RegisterServlet extends HttpServlet {
 
 	// 登録処理を行う
 	UsersDAO bDao = new UsersDAO();
-	if (bDao.insert(new Users(user_id, password, user_name, height, weight ))) {	// 登録成功
+	Users insRec = new Users(user_id, password, user_name, height,weight );
+	if (bDao.insert(insRec)) {
+		// 登録成功
 		//初期チェックテストサーブレットへリダイレクトする
 		response.sendRedirect("/health_management/FirstChecktestServlet");
 	}

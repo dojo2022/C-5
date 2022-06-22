@@ -15,7 +15,7 @@
 	</h1>
 <hr>
 <h2>新規登録</h2>
-<form method = "POST" action ="/health_management/FirstChecktestServlet">
+<form method = "POST" action ="/health_management/RegisterServlet">
 
  <table>
  			<tr>
