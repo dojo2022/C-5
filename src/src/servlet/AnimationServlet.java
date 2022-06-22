@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.AnimationDAO;
 import model.Mypage;
@@ -32,16 +31,18 @@ public class AnimationServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
 		/*if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/health_management/LoginServlet");
 			return;
 		}*/
-
-
+		//HttpSession session = request.getSession();
+		String user_id ="id_kanehira";  //(String)session.getAttribute("user_id");
+//		リクエストスコープにuser_idを入れる
+		request.setAttribute("user_id", user_id);
 
 		AnimationDAO aDao = new AnimationDAO();
-		List<Mypage> animationList = aDao.select(new Mypage(null,0));
+		List<Mypage> animationList = aDao.select("user_id");
 
 
 		request.setAttribute("animationList", animationList);

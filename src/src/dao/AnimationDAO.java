@@ -11,7 +11,7 @@ import java.util.List;
 import model.Mypage;
 
 public class AnimationDAO {
-	public List<Mypage> select(Mypage user_id){
+	public List<Mypage> select(String user_id){
 		Connection conn = null;
 //		変数の箱だけ作ってnullにする
 		List<Mypage> animationList = new ArrayList<Mypage>();
@@ -27,6 +27,7 @@ public class AnimationDAO {
 			String sql = "SELECT date,day_weight FROM Mypage WHERE user_id = '?' ORDER BY date ASC";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, user_id);
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
@@ -34,6 +35,7 @@ public class AnimationDAO {
 			while (rs.next()) {
 //				値が得られる（trueである）限り
 				Mypage animation = new Mypage(
+
 						rs.getDate("date"),
 						rs.getDouble("day_weight")
 						//jspのNAMEとそろえる

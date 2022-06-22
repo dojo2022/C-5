@@ -13,13 +13,14 @@ public class Mypage implements Serializable{
 	public Mypage(int id, String user_id, Date date, double day_weight, double bmi) {
 		super();
 		this.id = id;
-		this.user_id = user_id;
+
 		this.date = date;
 		this.day_weight = day_weight;
 		this.bmi = bmi;
 	}
 	public Mypage(Date date, double day_weight) {
 		super();
+
 		this.date = date;
 		this.day_weight = day_weight;
 	}
