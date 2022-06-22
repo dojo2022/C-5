@@ -34,7 +34,7 @@ public class AnimationDAO {
 			while (rs.next()) {
 //				値が得られる（trueである）限り
 				Mypage animation = new Mypage(
-						sql, rs.getDate("date"),
+						rs.getDate("date"),
 						rs.getDouble("day_weight")
 						//jspのNAMEとそろえる
 						);
