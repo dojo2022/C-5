@@ -17,13 +17,13 @@
 
 <form method = "POST" action = "/health_management/LongChecklistServlet">
 
-<c:forEach var="long" items="${longList}">
+<c:forEach var="longitem" items="${longList}">
 		<table>
 			<tr>
-				<!-- <th>${long.id}</th> -->
-				<td>${long.long_goal}</td>
-				<!-- <td><input type="checkbox" name="first_ans"
-					value="${long.id}"></td>  -->
+				 <th>${longitem.id}</th>
+				<td>${longitem.long_goal}</td>
+				<td><input type="checkbox" name="first_ans"
+					value="${longitem.id}"></td>
 			</tr>
 		</table>
 	</c:forEach>
