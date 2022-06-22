@@ -27,7 +27,7 @@ public class AnimationDAO {
 			String sql = "SELECT date,day_weight FROM Mypage WHERE user_id = '?' ORDER BY date ASC";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			//pStmt.setString(1, user_id);
+			pStmt.setString(1, user_id);
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
