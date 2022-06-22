@@ -43,10 +43,17 @@ public class LoginServlet extends HttpServlet {
 
 		// ログイン処理を行う
 		UsersDAO iDao = new UsersDAO();
-		if (iDao.isLoginOK(new Users(user_id, password))) {	// ログイン成功
+		Users aa = new Users(user_id, password);
+
+		if (iDao.isLoginOK(aa)) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("user_id", new Users(user_id));
+
+			Users user = new Users(user_id);
+			session.setAttribute("user_id", user);
+//			session.setAttribute("user_id", new Users(user_id));
+			session.setAttribute("user_id", user_id);
+
 
 			//マイページサーブレットにリダイレクトする
 			response.sendRedirect("/health_management/MypageServlet");
