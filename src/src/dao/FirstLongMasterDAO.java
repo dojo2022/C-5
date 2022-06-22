@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.FirstLongMaster;
-
+import model.FirstLongTrans;
 
 //書き足し
 public class FirstLongMasterDAO{
@@ -85,12 +85,12 @@ public class FirstLongMasterDAO{
 
 //	チェックされた項目の長期目標を表示
 
-	public List<String> long_display(String user_id) {
+	public List<FirstLongTrans> long_display(FirstLongTrans lt) {
 //		FirstLongMaster型のList型のメソッド
 //		ここ
 		Connection conn = null;
 //		変数の箱だけ作ってnullにする
-		List<String> longList = new ArrayList<String>();
+		List<FirstLongTrans> longList = new ArrayList<FirstLongTrans>();
 		//		FirstLongMaster型のArrayList longListを生成
 		try {
 			// JDBCドライバを読み込む
@@ -108,7 +108,7 @@ public class FirstLongMasterDAO{
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-				pStmt.setString(1, user_id);
+				pStmt.setString(1, lt.getUser_id());
 //			値が絶対入るように 条件分岐はしない
 
 //			PreparedStatementのインスタンスを生成
@@ -120,16 +120,16 @@ public class FirstLongMasterDAO{
 
 			while (rs.next()) {
 //				値が得られる（trueである）限り
-//				String user_id = (String)session.getAttribute("user_id"); (LCServletより引用)
-				String id =(String)rs.getString("id");
-				rs.getString("user_id");
-				String type = (String)rs.getString("type");
-				String long_goal = (String)rs.getString("long_goal");
+				FirstLongTrans long_list = new FirstLongTrans(
+						rs.getInt("id"),
+						rs.getString("user_id"),
+						rs.getString("type"),
+						rs.getString("long_goal")
+						);
+
+				longList.add(long_list);
 				//jspのNAMEとそろえる
-				longList.add(id);
-				longList.add(user_id);
-				longList.add(type);
-				longList.add(long_goal);
+
 			}
 		}
 

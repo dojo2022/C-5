@@ -12,6 +12,7 @@ private int long_complete;
 private int goal_count;
 private int nogoal_count;
 private Date date;
+private String long_goal;
 
 public FirstLongTrans(int id, String user_id, int counter, String type, int long_complete, int goal_count,
 		int nogoal_count, Date date) {
@@ -26,6 +27,13 @@ public FirstLongTrans(int id, String user_id, int counter, String type, int long
 	this.date = date;
 }
 
+public FirstLongTrans(int id, String user_id, String type, String long_goal) {
+	super();
+	this.id = id;
+	this.user_id = user_id;
+	this.type = type;
+	this.long_goal = long_goal;
+}
 
 public FirstLongTrans() {
 	super();
@@ -92,6 +100,14 @@ public Date getDate() {
 }
 public void setDate(Date date) {
 	this.date = date;
+}
+
+public String getLong_goal() {
+	return long_goal;
+}
+
+public void setLong_goal(String long_goal) {
+	this.long_goal = long_goal;
 }
 
 }

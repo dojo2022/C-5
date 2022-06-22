@@ -60,15 +60,19 @@ public class FirstChecktestServlet extends HttpServlet {
 		String user_id = (String)session.getAttribute("user_id");
 
 		//画面から選択された長期チェックを取得しましょう。
-		String[] first_checked = request.getParameterValues("first_ans");
+		//String[] first_checked = request.getParameterValues("first_ans");
+		String[] first_checked  = { "true", "false" };
 
 		//処理部
 		//firstlongtransDaoのfirst_insertメソッドを繰返し呼ぶ！？
 //		くり返し値をDAOに渡したい
 		FirstLongTransDAO fst_ins = new FirstLongTransDAO();
+
+
+
 		for(String checked_list : first_checked) {
 //			チェックされているtypeの行を、チェックされた分だけ生成
-			fst_ins.first_insert("user_id", checked_list);
+			fst_ins.first_insert(user_id, checked_list);
 		}
 
 //		request.setAttribute("user_id",user_id);

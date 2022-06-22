@@ -38,6 +38,15 @@ public class LongChecklistServlet extends HttpServlet {
 
 		FirstLongMasterDAO FlmDao = new FirstLongMasterDAO();
 		List<String> longList = FlmDao.long_display("user_id");
+		//longList = ["id","user_id","type","long_goal","id","user_id","type","long_goal"]
+		
+		//longList.add(id);
+		//longList.add(user_id);
+		//longList.add(type);
+		//longList.add(long_goal);
+		
+		//longList = ["id","user_id","type","long_goal"]
+		
 
 		request.setAttribute("longList", longList);
 //		FlmDAOからlong_displayメソッドを呼び出し、longList（user_id, type long_list）を貰ってきている
