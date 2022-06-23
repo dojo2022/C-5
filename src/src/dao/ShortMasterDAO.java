@@ -18,8 +18,9 @@ public class ShortMasterDAO {
 	//	・どの長期目標が選択されたか情報を持ってくる
 	//	・それに応じた短期目標を全表示
 
-	public List<ShortMaster> short_display(){
+	public List<ShortMaster> short_display(String user_id){
 		//	短期目標を表示するためのメソッドshort_display()
+		//引数にはuser_idが入るようにしたいのでString user_id
 		//	値をid,type,short_goalのセットで返すためbeanを型にしている
 
 		Connection conn = null;
@@ -44,6 +45,10 @@ public class ShortMasterDAO {
 
 			//	PreparedStatementのインスタンスを生成
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+//			SQL文を完成させる
+//			user_idをWHERE句にセット
+			pStmt.setString(1, user_id);
 
 			// SQL文を実行し、結果表を取得する
 			// RESULTSETクラスのインスタンスとして得られる
