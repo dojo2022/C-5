@@ -51,7 +51,7 @@ public class Mypage implements Serializable{
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public double getDay_eight() {
+	public double getDay_weight() {
 		return day_weight;
 	}
 	public void setDay_weight(double day_weight) {
