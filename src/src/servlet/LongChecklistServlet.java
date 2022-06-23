@@ -83,23 +83,23 @@ public class LongChecklistServlet extends HttpServlet {
 //		HttpSession（インターフェース）型のオブジェクトrequestを生成
 //		requestオブジェクトが持つgetSessionメソッドのインスタンスsessionを生成
 //		セッションスコープにアクセスするための権利はリクエストスコープが持っている
-//		session.getAttribute("　　　");で値をセッションスコープから取り出す
-//		HttpSession session = request.getSession();
-//		String user_id = (String)session.getAttribute("user_id");
+////		session.getAttribute("　　　");で値をセッションスコープから取り出す
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("user_id");
 
 //		画面から選択された長期チェックを取得しましょう。
-		String type= request.getParameter("type");
+		String long_checked= request.getParameter("long_ans");
 //		方法②
 //		String[] long_checked = request.getParameterValues("long_ans");
 //		仕様上この配列には一つのデータしか入らないはず
 
 		//処理部
 		FirstLongTransDAO lng_upd = new FirstLongTransDAO();
-		lng_upd.long_update(type);
+		lng_upd.long_update(user_id, long_checked);
 //		方法②
 //		lng_upd.long_update(long_checked[0]);
 
-
+//		request.setAttribute("user_id", user_id);
 
 //		LongChecklistservletへリダイレクト
 //		URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる

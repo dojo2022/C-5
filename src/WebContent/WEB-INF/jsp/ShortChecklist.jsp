@@ -15,7 +15,7 @@
 	</h1>
 今日の目標設定
 
-<form method = "GET" action = "/health_management/LongChecklistServlet">
+<form method = "POST" action = "/health_management/MypageServlet">
 <!--
 やること
 ・リストの名前決める
@@ -29,18 +29,18 @@
   <c:forEach var="shortitem" items="${shortList}">
 		<table>
 			<tr>
-				 <th>${shortitem.id}</th>
-				<td>${shortitem.long_goal}</td>
-				<td><input type="checkbox" name="first_ans"
+				 <th>${shortitem.no}</th>
+				<td>${shortitem.short_goal}</td>
+				<td><input type="checkbox" name="short_ans"
 					value="${shortitem.id}"></td>
 			</tr>
 		</table>
 	</c:forEach>
-<input type = "submit" name = "" value = "戻る">
+<input type = "submit" name = "" value = "確定">
 </form>
 
 <form method = "GET" action = "/health_management/MypageServlet">
-<input type = "submit" name = "" value = "確定">
+<input type = "submit" name = "" value = "戻る">
 </form>
 
 

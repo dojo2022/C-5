@@ -31,6 +31,7 @@ public class ShortChecklistServlet extends HttpServlet {
 		//セッションスコープからuser_idを取り出す
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
+
 		//		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
 
@@ -40,12 +41,13 @@ public class ShortChecklistServlet extends HttpServlet {
 		List<ShortMaster> shortList = StmDao.short_display(user_id);
 
 
+		//		リクエストスコープに短期目標のリストをセット
+		request.setAttribute("shortList", shortList);
+
 		//今日の目標チェックリストへフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ShortChecklist.jsp");
 		dispatcher.forward(request, response);
 
-		//		リクエストスコープに短期目標のリストをセット
-		request.setAttribute("shortList", shortList);
 	}
 
 	/**

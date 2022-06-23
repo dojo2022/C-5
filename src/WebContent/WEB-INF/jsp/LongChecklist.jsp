@@ -28,11 +28,11 @@
 			</tr>
 		</table>
 	</c:forEach>
-<input type = "submit" name = "" value = "戻る">
+<input type = "submit" name = "" value = "次へ進む">
 </form>
 
-<form method = "GET" action = "/health_management/ShortChecklistServlet">
-<input type = "submit" name = "" value = "次へ進む">
+<form method = "GET" action = "/health_management/LongChecklistServlet">
+<input type = "submit" name = "" value = "戻る">
 </form>
 </body>
 

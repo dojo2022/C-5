@@ -78,7 +78,7 @@ public class FirstLongTransDAO {
 	}
 //}
 
-	public boolean long_update(String type) {
+	public boolean long_update(String user_id, String type) {
 		Connection conn = null;
 		boolean result = false;
 		try {
@@ -89,11 +89,12 @@ public class FirstLongTransDAO {
 
 //			SQL文を準備する
 //			insertする項目だけを記述する。
-			String sql = "UPDATE FirstLongTrans SET long_complete = 1 WHERE type  = ?";
+			String sql = "UPDATE FirstLongTrans SET long_complete = 1 WHERE user_id = ? and type  = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 //			SQL文を完成させる
-			pStmt.setString(1, type);
+			pStmt.setString(1, user_id);
+			pStmt.setString(2, type);
 
 //			 SQL文を実行する 検索時はxecuteQuwryだったがここは違う
 		if (pStmt.executeUpdate() == 1) {

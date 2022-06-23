@@ -16,12 +16,13 @@ public class ShortMaster implements Serializable{
 		this.short_goal = short_goal;
 	}
 
-	public ShortMaster(int id, String type,String short_goal, String user_id) {
+	public ShortMaster(int id, String type,String short_goal, String user_id, int no) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.short_goal = short_goal;
 		this.user_id = user_id;
+		this.no = no;
 	}
 
 	public ShortMaster() {
