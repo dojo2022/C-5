@@ -217,7 +217,6 @@ const labels = [
   ];
 const data = {
 	    labels: labels,
-
 	    datasets: [{
 	      label: '体重推移',
 	      backgroundColor: 'rgb(255, 99, 132)',
