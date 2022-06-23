@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.FirstLongMasterDAO;
+import dao.FirstLongTransDAO;
 import model.FirstLongTrans;
 
 /**
@@ -72,8 +73,47 @@ public class LongChecklistServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		/*ここで初期チェック（FirstCheckTest.jsp）の値をDBに格納*/
+
+
+		//入力部
+		//セッションからログインしているユーザーidを取得しましょう
+
+//		HttpSession（インターフェース）型のオブジェクトrequestを生成
+//		requestオブジェクトが持つgetSessionメソッドのインスタンスsessionを生成
+//		セッションスコープにアクセスするための権利はリクエストスコープが持っている
+//		session.getAttribute("　　　");で値をセッションスコープから取り出す
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("user_id");
+
+		//画面から選択された長期チェックを取得しましょう。
+		String[] long_checked = request.getParameterValues("first_ans");
+//		String[] first_checked  = { "veg", "fat", "cal" };
+
+		//処理部
+		//firstlongtransDaoのfirst_insertメソッドを繰返し呼ぶ！？
+//		くり返し値をDAOに渡したい
+		FirstLongTransDAO fst_ins = new FirstLongTransDAO();
+
+
+
+		for(String checked_list : first_checked) {
+//			チェックされているtypeの行を、チェックされた分だけ生成
+			fst_ins.first_insert(user_id, checked_list);
+		}
+
+//		request.setAttribute("user_id",user_id);
+
+	//LongChecklistservletへリダイレクト
+//	URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる
+		response.sendRedirect("/health_management/LongChecklistServlet");
+
 
 	}
 
+
+
+
 }
+
