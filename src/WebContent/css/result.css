@@ -1,1 +1,135 @@
 @charset "UTF-8";
+
+h1{
+	text-align:center;
+}
+
+h2 {
+	font-size: 40px; text-align : center;
+	color: #191970;
+	text-decoration-line: underline;
+	text-underline-offset: 5px;
+	text-decoration-thickness: 2px;
+	text-align: center;
+}
+
+.avater_photo{
+
+	display: flex;
+}
+.photo-group{
+  text-align:center;
+  padding: 0 1em 0 0;
+  height:100px;
+  border:solid 1px #CCC;
+  border-top:none;
+  background:#eee;
+  width:340px;
+  height:650px;
+}
+
+.result_message {
+	float:left;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    border: double 5px #4ec4d3;
+}
+.result_message p {
+    margin: 0;
+    padding: 0;
+}
+.score {
+	text-align: center;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #FFF;
+    background: #6eb7ff;
+    border-bottom: solid 6px #3f87ce;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+.score p {
+    margin: 0;
+    padding: 0;
+}
+.next {
+  float:right;
+  font-weight: bold;
+  padding: 1em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #ff7f7f;
+  transition: .4s;
+
+}
+
+.next > span {
+  border-bottom: solid 2px #FFF;
+  border-top: solid 2px #FFF;
+}
+
+.next span {
+  padding: 0.1em 0;
+
+}
+
+.label {
+	text-align: center;
+    padding: 0.5em 1em;
+    margin: 8em 15em 0  10em;
+    color: #FFF;
+    background: #6eb7ff;
+    border-bottom: solid 6px #3f87ce;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+.label p {
+    margin: 0;
+    padding: 0;
+}
+
+.tab-group{
+  display: flex;
+  text-align:left;
+  justify-content: center;
+	width:300px;
+	height:40px;
+	margin: 0 0 0 0 ;
+}
+.tab{
+  flex-grow: 1;
+  padding:5px;
+  list-style:none;
+  border:solid 1px #CCC;
+  text-align:center;
+  cursor:pointer;
+  display:inline;
+}
+/*---------------------------*/
+.panel-group{
+  height:100px;
+  border:solid 1px #CCC;
+  border-top:none;
+  background:#eee;
+width:750px;
+ height:380px;
+}
+.panel{
+  display:none;
+}
+.tab.is-active{
+  background:green;
+  color:#FFF;
+  transition: all 0.2s ease-out;
+}
+.panel.is-show{
+  display:block;
+}
+.stampcard{
+	width:330px;
+ height:380px;
+}
+.stamp_image{
+	width:100px;
+ height:50px;
+}
