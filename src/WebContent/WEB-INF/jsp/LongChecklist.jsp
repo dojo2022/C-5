@@ -23,7 +23,8 @@
 				 <th>${longitem.id}</th>
 				<td>${longitem.long_goal}</td>
 				<td><input type="checkbox" name="long_ans"
-					value="${longitem.id}"></td>
+					value="${longitem.type}"></td>
+					<!-- 値をとるためのvalueをid→typeへと変更-->
 			</tr>
 		</table>
 	</c:forEach>
@@ -35,6 +36,6 @@
 </form>
 </body>
 
-<script src = "/health_management/js/checklist.js">
+<script src = "/health_management/js/LongChecklist.js">
 </script>
 </html>

@@ -84,36 +84,29 @@ public class LongChecklistServlet extends HttpServlet {
 //		requestオブジェクトが持つgetSessionメソッドのインスタンスsessionを生成
 //		セッションスコープにアクセスするための権利はリクエストスコープが持っている
 //		session.getAttribute("　　　");で値をセッションスコープから取り出す
-		HttpSession session = request.getSession();
-		String user_id = (String)session.getAttribute("user_id");
+//		HttpSession session = request.getSession();
+//		String user_id = (String)session.getAttribute("user_id");
 
-		//画面から選択された長期チェックを取得しましょう。
-		String[] long_checked = request.getParameterValues("long_ans");
-//		String[] first_checked  = { "veg", "fat", "cal" };
+//		画面から選択された長期チェックを取得しましょう。
+		String type= request.getParameter("type");
+//		方法②
+//		String[] long_checked = request.getParameterValues("long_ans");
+//		仕様上この配列には一つのデータしか入らないはず
 
 		//処理部
-		//firstlongtransDaoのfirst_insertメソッドを繰返し呼ぶ！？
-//		くり返し値をDAOに渡したい
-		FirstLongTransDAO fst_ins = new FirstLongTransDAO();
+		FirstLongTransDAO lng_upd = new FirstLongTransDAO();
+		lng_upd.long_update(type);
+//		方法②
+//		lng_upd.long_update(long_checked[0]);
 
 
 
-		for(String checked_list : long_checked) {
-//			チェックされているtypeの行を、チェックされた分だけ生成
-			fst_ins.first_insert(user_id, checked_list);
-		}
-
-//		request.setAttribute("user_id",user_id);
-
-	//LongChecklistservletへリダイレクト
-//	URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる
-		response.sendRedirect("/health_management/LongChecklistServlet");
+//		LongChecklistservletへリダイレクト
+//		URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる
+		response.sendRedirect("/health_management/ShortChecklistServlet");
 
 
 	}
-
-
-
-
 }
+
 
