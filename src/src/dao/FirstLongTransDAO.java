@@ -18,21 +18,21 @@ public class FirstLongTransDAO {
 		Connection conn = null;
 		boolean result = false;
 		try {
-//			JDBCドライバを読み込む
+			//			JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
-//			データベース接続
+			//			データベース接続
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
-//			SQL文を準備する
+			//			SQL文を準備する
 
 			//insertする項目だけを記述する。
 			String sql = "INSERT INTO FIRSTLONGTRANS (user_id, type, date) values (?,?,CURDATE())";
 
-//必要な項目（insertする文のみ）記述する。
-//			String sql = "INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, date) "
-//					+ "values (NULL, ?, DEFAULT, ?,  DEFAULT, ?)"
+			//必要な項目（insertする文のみ）記述する。
+			//			String sql = "INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, date) "
+			//					+ "values (NULL, ?, DEFAULT, ?,  DEFAULT, ?)"
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-//			SQL文を完成させる
+			//			SQL文を完成させる
 
 
 
@@ -50,20 +50,20 @@ public class FirstLongTransDAO {
 			}
 
 
-		// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
-		if (pStmt.executeUpdate() == 1) {
-			result = true;
-			//戻り値のリザルトをTRUEにする
+			// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+				//戻り値のリザルトをTRUEにする
+			}
 		}
-	}
-	//例外処理
-	catch (SQLException e) {
-		e.printStackTrace();
-	}
-	catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-	/*finally {
+		//例外処理
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		/*finally {
 		// データベースを切断
 		if (conn != null) {
 			try {
@@ -76,40 +76,40 @@ public class FirstLongTransDAO {
 
 		return result;
 	}
-//}
+	//}
 
 	public boolean long_update(String user_id, String type) {
 		Connection conn = null;
 		boolean result = false;
 		try {
-//			JDBCドライバを読み込む
+			//			JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
-//			データベース接続
+			//			データベース接続
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
-//			SQL文を準備する
-//			insertする項目だけを記述する。
+			//			SQL文を準備する
+			//			insertする項目だけを記述する。
 			String sql = "UPDATE FirstLongTrans SET long_complete = 1 WHERE user_id = ? and type  = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-//			SQL文を完成させる
+			//			SQL文を完成させる
 			pStmt.setString(1, user_id);
 			pStmt.setString(2, type);
 
-//			 SQL文を実行する 検索時はxecuteQuwryだったがここは違う
-		if (pStmt.executeUpdate() == 1) {
-			result = true;
-			//戻り値のリザルトをTRUEにする
+			//			 SQL文を実行する 検索時はxecuteQuwryだったがここは違う
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+				//戻り値のリザルトをTRUEにする
+			}
 		}
-	}
-	//例外処理
-	catch (SQLException e) {
-		e.printStackTrace();
-	}
-	catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-	/*finally {
+		//例外処理
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		/*finally {
 		// データベースを切断
 		if (conn != null) {
 			try {
@@ -122,76 +122,93 @@ public class FirstLongTransDAO {
 
 		return result;
 	}
-//}
+	//}
 
 	//スタンプカード：スタンプを押すためのデータ取得する
 
-		//BcDAO.javaからいったんコピペ。
-		//cardがよくわからず変更していない
+	//BcDAO.javaからいったんコピペ。
+	//cardがよくわからず変更していない
 
-		 // 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
-			//selectで検索する（SQLの命令と同じ）
-			public List<FirstLongTrans> select(String user_id) {
-				Connection conn = null;
-				List<FirstLongTrans> stampcard = new ArrayList<FirstLongTrans>();
+	// 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
+	//selectで検索する（SQLの命令と同じ）
+	public List<FirstLongTrans> select(String user_id) {
+		Connection conn = null;
+		List<FirstLongTrans> stampcard = new ArrayList<FirstLongTrans>();
 
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
+
+			// SQL文を準備する
+			String sql = "SELECT user_id,counter,type,long_complete,goal_count,nogoal_count FROM FirstLongTrans WHERE user_id=? and long_complete=1";
+
+			// SQLインジェクション防ぐ
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setString(1,user_id);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			// FirstLongTransでjavabeansのコンストラクタを全部順番通り呼ぶ
+			while (rs.next()) {
+				FirstLongTrans scdata = new FirstLongTrans();
+				scdata.setUser_id(rs.getString("user_id"));
+				scdata.setCounter(rs.getInt("counter"));
+				scdata.setType(rs.getString("type"));
+				scdata.setLong_complete(rs.getInt("long_comlete"));
+				scdata.setGoal_count(rs.getInt("goal_count"));
+				scdata.setNogoal_count(rs.getInt("nogoal_count"));
+
+				stampcard.add(scdata);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			stampcard = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			stampcard = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
 				try {
-					// JDBCドライバを読み込む
-					Class.forName("org.h2.Driver");
-
-					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
-
-					// SQL文を準備する
-					String sql = "SELECT user_id,counter,type,long_complete,goal_count,nogoal_count FROM FirstLongTrans WHERE user_id=? and long_complete=1";
-
-	                // SQLインジェクション防ぐ
-					PreparedStatement pStmt = conn.prepareStatement(sql);
-
-					// SQL文を完成させる
-					pStmt.setString(1,user_id);
-
-					// SQL文を実行し、結果表を取得する
-					ResultSet rs = pStmt.executeQuery();
-
-					// 結果表をコレクションにコピーする
-					// FirstLongTransでjavabeansのコンストラクタを全部順番通り呼ぶ
-					while (rs.next()) {
-						FirstLongTrans scdata = new FirstLongTrans();
-					    scdata.setUser_id(rs.getString("user_id"));
-					    scdata.setCounter(rs.getInt("counter"));
-						scdata.setType(rs.getString("type"));
-						scdata.setLong_complete(rs.getInt("long_comlete"));
-						scdata.setGoal_count(rs.getInt("goal_count"));
-						scdata.setNogoal_count(rs.getInt("nogoal_count"));
-
-						stampcard.add(scdata);
-					}
+					conn.close();
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
 					stampcard = null;
 				}
-				catch (ClassNotFoundException e) {
-					e.printStackTrace();
-					stampcard = null;
-				}
-				finally {
-					// データベースを切断
-					if (conn != null) {
-						try {
-							conn.close();
-						}
-						catch (SQLException e) {
-							e.printStackTrace();
-							stampcard = null;
-						}
-					}
-				}
-
-				// 結果を返す
-				return stampcard;
 			}
+		}
+
+		// 結果を返す
+		return stampcard;
+	}
 
 
+
+	public boolean updateGoalCount(String user_id ,String exe_date, String type) {
+		 //String sql1 = "UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?;"
+		//準備して、用意して、実行。
+
+		 //String sql2 = "UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = ? and type=?;"
+		//準備して、用意して、実行。
+		return false;
+	}
+
+	public boolean updateNoGoalCount(String user_id ,String exe_date, String type) {
+		//UPDATE ShortTrans SET short_complete = 2 WHERE user_id = ? and exe_date =?;
+
+		//UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id = ? and type=?;
+
+		return false;
+	}
 }

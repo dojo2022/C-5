@@ -232,21 +232,30 @@ ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type
 where user_id = 'id_yamada' and exe_date = '2022-06-15';
 
 ・短期目標達成回数（スタンプカードに使用）
-	・チェックしたときに情報をShortTransに格納
-	   UPDATE ShortTrans SET short_complete = 1 WHERE exe_date ='?';
-	   UPDATE ShortTrans SET short_complete = 2 WHERE exe_date ='?';
+	・チェックしたときに情報をShortTransに格納（H2未確認）
+	   チェックあり
+	   UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?;
+	　 UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = ? and type=?;
+
+	   チェックなし
+	　　UPDATE ShortTrans SET short_complete = 2 WHERE user_id = ? and exe_date =?; 
+	　　UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id = ? and type=?;
+
 	   →テスト
 	   UPDATE ShortTrans SET short_complete = 2 WHERE exe_date ='2022-06-15';
+
+	（みんなで頑張ったけど使えなかったところ　はじめ）
 	・チェックしたときに情報をFirstLongTransに格納
 	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans 
 	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
 	   WHERE user_id = '?' and long_complete = 1 and short_complete;
-	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = '?' and long_complete = 1;
+	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = ? and long_complete = 1;
 	　→テスト
 	　(エラー出る)UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans 
 	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
 	   WHERE FIRSTLONGTRANS.user_id = 'id_saburi' and long_complete = 1 and short_complete=1;
 	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
+	（みんなで頑張ったところ　おわり）
 
 ・毎日の体重データを格納する
 INSERT INTO Mypage (id, user_id, date, day_weight) VALUES (NULL, '?', '?', '?')
