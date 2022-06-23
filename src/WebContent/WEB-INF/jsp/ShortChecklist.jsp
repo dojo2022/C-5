@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,26 @@
 今日の目標設定
 
 <form method = "GET" action = "/health_management/LongChecklistServlet">
-
+<!--
+やること
+・リストの名前決める
+・アイテムの名前決める
+・foreachで短期目標をくり返し取り出す
+・チェックボックスを用意し、idで値を取得
+・値の送り先を指定
+※foreachのインポート？忘れずに！
+次はmodelを確認しよう
+  -->
+  <c:forEach var="shortitem" items="${shortList}">
+		<table>
+			<tr>
+				 <th>${shortitem.id}</th>
+				<td>${shortitem.long_goal}</td>
+				<td><input type="checkbox" name="first_ans"
+					value="${shortitem.id}"></td>
+			</tr>
+		</table>
+	</c:forEach>
 <input type = "submit" name = "" value = "戻る">
 </form>
 

@@ -20,7 +20,12 @@ public class ShortChecklistServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//今日の目標チェックリストへ
+//やりたいこと
+//・shortMasterDAOからデータを持ってきてjspに渡す（出力部）
+
+セッションスコープからuser_idを取り出す
+
+		//今日の目標チェックリストへフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ShortChecklist.jsp");
 		dispatcher.forward(request, response);
 	}
