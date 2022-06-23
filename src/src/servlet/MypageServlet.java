@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.AnimationDAO;
+import dao.FirstLongTransDAO;
 import model.Mypage;
 /**
  * Servlet implementation class MypageServlet
@@ -39,8 +41,8 @@ public class MypageServlet extends HttpServlet {
 		//sessionスコープからuser_idを取得する
 //----------------------------------------------------
 		//一時的に無効にしているだけなので悪しからず
-		/*HttpSession session = request.getSession();
-		String user_id = (String)session.getAttribute("user_id");*/
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("user_id");
 
 //		Users user = new Users(user_id);
 //		session.setAttribute("user_id", user);
@@ -52,10 +54,12 @@ public class MypageServlet extends HttpServlet {
 		/*この部分は金指がテスト上コメントアウトしています。
 		 * 片付いたので記号消してOKです*/
 //------------------------------------------------------
+//		スタンプカード
+
 		// 報告確定ボタンの処理ができるまでは手書きでスタンプを指定
-		request.setAttribute("stamp1", true);
+/*		request.setAttribute("stamp1", true);
 		request.setAttribute("stamp2", true);
-		request.setAttribute("stamp3", false);
+		request.setAttribute("stamp3", true);
 		request.setAttribute("stamp4", true);
 		request.setAttribute("stamp5", true);
 		request.setAttribute("stamp6", true);
@@ -67,11 +71,18 @@ public class MypageServlet extends HttpServlet {
 		request.setAttribute("stamp12", true);
 		request.setAttribute("stamp13", true);
 		request.setAttribute("stamp14", true);
+*/
+		//やりたいこと
+		//firstlongtransのgoal_countとnogoal_countをマイページのスタンプカードに反映させる
+		//やること
+		//firstlongtransDAOからuser_idとgoal_count、nogoal_countを取得(firstlongtransDAOをインポート、変数名stampcard)
+		//firstlongtransDAOのgoal_countが1増えたらtrue（スタンプ画像表示）
+		//firstlongtransDAOのnogoal_countが1増えたらfalse（スタンプ押さない）
 
-//      報告確定ボタンでgoal_countとgoal_countを処理できるようになったら
 //		//リクエストスコープに格納する
-		//3，8週目で失敗、他成功
-//		request.setAttribute("stampCard", stampCard);
+		FirstLongTransDAO fDao = new FirstLongTransDAO();
+		fDao.select(user_id);
+		request.setAttribute("stampcard", stampcard);
 //		for (int i = 1; i < 14; i++) {
 //			request.setAttribute("stamp"+i, false);
 //			//成功数2,失敗数3
@@ -80,7 +91,7 @@ public class MypageServlet extends HttpServlet {
 //			//stamp3	false
 //			// ...
 //		}
-
+// ---------------------------------------------------------------------------------------------------
 		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
 //		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", animation_id);

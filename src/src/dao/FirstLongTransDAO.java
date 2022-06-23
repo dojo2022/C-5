@@ -131,7 +131,7 @@ public class FirstLongTransDAO {
 
 		 // 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
 			//selectで検索する（SQLの命令と同じ）
-			public List<FirstLongTrans> select(FirstLongTrans param) {
+			public List<FirstLongTrans> select(String user_id) {
 				Connection conn = null;
 				List<FirstLongTrans> stampcard = new ArrayList<FirstLongTrans>();
 
@@ -147,6 +147,9 @@ public class FirstLongTransDAO {
 
 	                // SQLインジェクション防ぐ
 					PreparedStatement pStmt = conn.prepareStatement(sql);
+
+					// SQL文を完成させる
+					pStmt.setString(1,user_id);
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
