@@ -15,9 +15,9 @@
 	</h1>
 今日の目標設定
 
-<form method = "POST" action = "/health_management/MypageServlet">
+<form method = "POST" action = "/health_management/ShortChecklistServlet">
 <!--
-やること
+doGetやること
 ・リストの名前決める
 ・アイテムの名前決める
 ・foreachで短期目標をくり返し取り出す
@@ -29,12 +29,20 @@
   <c:forEach var="shortitem" items="${shortList}">
 		<table>
 			<tr>
-				 <th>${shortitem.no}</th>
+				<td>
+				 	${shortitem.no}
+				</td>
+
 				<td>${shortitem.short_goal}</td>
-				<td><input type="checkbox" name="short_ans"
-					value="${shortitem.id}"></td>
+				<td>
+					<input type="checkbox" name="short_ans" value="${shortitem.no},${shortitem.type}">
+				</td>
+					<!-- valueをid→noに変更 短期は一種類のtypeしか持ってこないので、noでも良いと考えた -->
 			</tr>
 		</table>
+<!--
+doPostやること
+・idでtrue/falseを取得 -->
 	</c:forEach>
 <input type = "submit" name = "" value = "確定">
 </form>
@@ -45,7 +53,7 @@
 
 
 </body>
-<script src = "/health_management/js/checklist.js">
+<script src = "/health_management/js/ShortChecklist.js">
 </script>
 
 </html>

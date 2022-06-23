@@ -6,28 +6,34 @@ public class ShortTrans implements Serializable{
 
 	private int id;
 	private String user_id;
-	private Date date;
+	private Date exe_date;
 	private int counter;
 	private String type;
 	private int no;
 	private int short_complete;
 
-	public ShortTrans(int id, String user_id, Date date, int counter, String type, int no, int short_complete) {
+	public ShortTrans(int id, String user_id, Date exe_date, int counter, String type, int no, int short_complete) {
 		super();
 		this.id = id;
 		this.user_id = user_id;
-		this.date = date;
+		this.exe_date = exe_date;
 		this.counter = counter;
 		this.type = type;
 		this.no = no;
 		this.short_complete = short_complete;
 	}
 
+	public ShortTrans(int id, String user_id, Date exe_date, String type, int no) {
+		super();
+		this.user_id = user_id;
+		this.type = type;
+		this.no = no;
+	}
 	public ShortTrans() {
 		super();
 		this.id = 0;
 		this.user_id = "";
-		this.date = null;
+		this.exe_date = null;
 		this.counter =0;
 		this.type = "";
 		this.no = 0;
@@ -50,12 +56,12 @@ public class ShortTrans implements Serializable{
 		this.user_id = user_id;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getExe_date() {
+		return exe_date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setExe_date(Date exe_date) {
+		this.exe_date = exe_date;
 	}
 
 	public int getCounter() {
