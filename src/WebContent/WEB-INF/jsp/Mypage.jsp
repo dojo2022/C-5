@@ -206,71 +206,39 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/health_management/js/mypage.js"></script>
-<!-- <script>
-'use strict';
-const days = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
 
-  const datas = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-  };
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-  </script> -->
-<script>
+<script type="text/javascript">
 const labels = [
-    '2022-0616',
-    '2022-0617',
-    '2022-0618',
-    '2022-0619',
-    '2022-0620',
-    '2022-0621',
-    '2022-0622',
-    '2022-0623',
-    '2022-0624',
-    '2022-0625',
-    '2022-0626',
-    '2022-0627',
-    '2022-0628',
-    '2022-0629'
+
+	<c:forEach var="e" end='13' items="${animationList}">
+		'${e.date}',
+	</c:forEach>
+
   ];
+const data = {
+	    labels: labels,
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: '体重推移',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [65.2, 60.0, 62.4, 67.4, 65.7, 63.3, 61.0,
-             68.1, 62.0, 63.2, 69.4, 67.7, 64.3, 66.0],
-    }]
-  };
+	    datasets: [{
+	      label: '体重推移',
+	      backgroundColor: 'rgb(255, 99, 132)',
+	      borderColor: 'rgb(255, 99, 132)',
+		data: [
+	 <c:forEach var="e" end='13' items="${animationList}">
+	    ${e.day_weight},
+	 </c:forEach>
+	      ]
+	    }]
+	  };
 
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
+	  const config = {
+	    type: 'line',
+	    data: data,
+	    options: {}
+	  };
+	  const myChart = new Chart(
+	    document.getElementById('myChart'),
+	    config
+	  );
 
 </script>
 

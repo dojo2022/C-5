@@ -22,7 +22,7 @@
 			<tr>
 				 <th>${longitem.id}</th>
 				<td>${longitem.long_goal}</td>
-				<td><input type="checkbox" name="first_ans"
+				<td><input type="checkbox" name="long_ans"
 					value="${longitem.id}"></td>
 			</tr>
 		</table>
