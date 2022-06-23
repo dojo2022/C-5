@@ -88,7 +88,7 @@ public class LongChecklistServlet extends HttpServlet {
 		String user_id = (String)session.getAttribute("user_id");
 
 		//画面から選択された長期チェックを取得しましょう。
-		String[] long_checked = request.getParameterValues("first_ans");
+		String[] long_checked = request.getParameterValues("long_ans");
 //		String[] first_checked  = { "veg", "fat", "cal" };
 
 		//処理部
@@ -98,7 +98,7 @@ public class LongChecklistServlet extends HttpServlet {
 
 
 
-		for(String checked_list : first_checked) {
+		for(String checked_list : long_checked) {
 //			チェックされているtypeの行を、チェックされた分だけ生成
 			fst_ins.first_insert(user_id, checked_list);
 		}
