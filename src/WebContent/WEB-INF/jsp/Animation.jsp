@@ -23,27 +23,29 @@
 </a>
 
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!--<script src="/health_management/js/animation.js"></script>-->
 
 <script type="text/javascript">
+
+var countAnimation=function(){
 const labels = [
 
-	<c:forEach var="e" end='13' items="${animationList}">
-		'${e.date}',
+	<c:forEach var="e" begin='0' end='13' items="${animationList}">
+	'${e.date}',
 	</c:forEach>
 
   ];
-const data = {
+  const data = {
 	    labels: labels,
-
 	    datasets: [{
 	      label: '体重推移',
 	      backgroundColor: 'rgb(255, 99, 132)',
 	      borderColor: 'rgb(255, 99, 132)',
 		data: [
-	 <c:forEach var="e" end='13' items="${animationList}">
-	    ${e.day_weight},
+	 <c:forEach var="e" begin='0' end='13' items="${animationList}">
+	 '${e.day_weight}',
 	 </c:forEach>
 	      ]
 	    }]
@@ -58,6 +60,9 @@ const data = {
 	    document.getElementById('myChart'),
 	    config
 	  );
+	  //count++;
+	  //}
+	  //setInterval(countAnimation,1000)
 </script>
 
 </html>
