@@ -238,10 +238,14 @@ where user_id = 'id_yamada' and exe_date = '2022-06-15';
 	   →テスト
 	   UPDATE ShortTrans SET short_complete = 2 WHERE exe_date ='2022-06-15';
 	・チェックしたときに情報をFirstLongTransに格納
-	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 WHERE user_id = '?' and long_complete = 1;
+	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans 
+	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
+	   WHERE user_id = '?' and long_complete = 1 and short_complete;
 	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = '?' and long_complete = 1;
 	　→テスト
-	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
+	　(エラー出る)UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans 
+	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
+	   WHERE FIRSTLONGTRANS.user_id = 'id_saburi' and long_complete = 1 and short_complete=1;
 	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
 
 ・毎日の体重データを格納する
