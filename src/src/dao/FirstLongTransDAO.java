@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.FirstLongTrans;
 
@@ -131,9 +129,10 @@ public class FirstLongTransDAO {
 
 	// 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
 	//selectで検索する（SQLの命令と同じ）
-	public List<FirstLongTrans> select(String user_id) {
+	public FirstLongTrans select(String user_id) {
 		Connection conn = null;
-		List<FirstLongTrans> stampcard = new ArrayList<FirstLongTrans>();
+		//List<FirstLongTrans> stampcard1 = null;
+		FirstLongTrans stampcard = null;
 
 		try {
 			// JDBCドライバを読み込む
@@ -156,16 +155,17 @@ public class FirstLongTransDAO {
 
 			// 結果表をコレクションにコピーする
 			// FirstLongTransでjavabeansのコンストラクタを全部順番通り呼ぶ
-			while (rs.next()) {
-				FirstLongTrans scdata = new FirstLongTrans();
-				scdata.setUser_id(rs.getString("user_id"));
-				scdata.setCounter(rs.getInt("counter"));
-				scdata.setType(rs.getString("type"));
-				scdata.setLong_complete(rs.getInt("long_comlete"));
-				scdata.setGoal_count(rs.getInt("goal_count"));
-				scdata.setNogoal_count(rs.getInt("nogoal_count"));
+			if (rs.next()) {
+				//FirstLongTrans scdata = new FirstLongTrans();
+				stampcard = new FirstLongTrans();
+				stampcard.setUser_id(rs.getString("user_id"));
+				stampcard.setCounter(rs.getInt("counter"));
+				stampcard.setType(rs.getString("type"));
+				stampcard.setLong_complete(rs.getInt("long_comlete"));
+				stampcard.setGoal_count(rs.getInt("goal_count"));
+				stampcard.setNogoal_count(rs.getInt("nogoal_count"));
 
-				stampcard.add(scdata);
+				//stampcard.add(scdata);
 			}
 		}
 		catch (SQLException e) {
