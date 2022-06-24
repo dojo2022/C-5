@@ -154,7 +154,7 @@ public class MypageDAO {
 
 //--------------------------------------------------------------------------------------------------------
 //(安部)マイページServletのdoGetで体アバターを表示する
-public Double newbmi() {
+public Double newbmi(String user_id) {
 	Connection conn = null;
 	Double newbmi =0.0;
 
@@ -164,15 +164,18 @@ public Double newbmi() {
 		// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
-				String sql="SELECT bmi FROM Mypage ORDER BY date DESC LIMIT 1";
+				String sql="SELECT bmi FROM Mypage WHERE user_id = ? ORDER BY date DESC LIMIT 1";
 				PreparedStatement pStmt1 = conn.prepareStatement(sql);
+
+				//SQLを完成させる
+				pStmt1.setString(1,user_id);
 
 				// SELECT文を実行し、結果表を取得する
 				ResultSet rs = pStmt1.executeQuery();
 
 				if(rs.next()) {
 					//データがあればココに入る。
-					 newbmi=Double.parseDouble(sql) ;
+					 newbmi=rs.getDouble("bmi") ;
 				}
 				else {
 					//データがなければココに入る。
@@ -191,7 +194,7 @@ public Double newbmi() {
 
 }
 
-public Double oldbmi() {
+public Double oldbmi(String user_id) {
 	Connection conn = null;
 	Double oldbmi =0.0;
 
@@ -201,15 +204,18 @@ public Double oldbmi() {
 		// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
-				String sql="SELECT bmi FROM Mypage ORDER BY date DESC LIMIT 1";
-				PreparedStatement pStmt1 = conn.prepareStatement(sql);
+				String sql="SELECT bmi FROM Mypage WHERE user_id = ? ORDER BY date DESC LIMIT 1";
+				PreparedStatement pStmt2 = conn.prepareStatement(sql);
+
+				//SQLを完成させる
+				pStmt2.setString(1,user_id);
 
 				// SELECT文を実行し、結果表を取得する
-				ResultSet rs = pStmt1.executeQuery();
+				ResultSet rs = pStmt2.executeQuery();
 
 				if(rs.next()) {
 					//データがあればココに入る。
-					 oldbmi=Double.parseDouble(sql) ;
+					 oldbmi=rs.getDouble("bmi") ;
 				}
 				else {
 					//データがなければココに入る。
