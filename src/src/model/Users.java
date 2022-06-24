@@ -36,6 +36,7 @@ public Users(String user_id) {
 	this.user_id = user_id;
 }
 
+
 public Users(String user_id, String password, String user_name, double height, double weight) {
 	super();
 	this.user_id = user_id;

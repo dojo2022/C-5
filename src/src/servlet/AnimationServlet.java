@@ -45,9 +45,6 @@ public class AnimationServlet extends HttpServlet {
 		List<Mypage> animationList = aDao.select(user_id);
 		request.setAttribute("animationList", animationList);
 
-		AnimationDAO uDao = new AnimationDAO();
-		String userName =uDao.usersName(user_id);
-		request.setAttribute("username",userName);
 
 
 		// 体重推移アニメーションページにフォワードする
