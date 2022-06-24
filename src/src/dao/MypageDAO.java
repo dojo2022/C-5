@@ -84,7 +84,6 @@ public class MypageDAO {
 
 			return rs2;
 	}
-}
 
 
 
@@ -153,6 +152,8 @@ public class MypageDAO {
 
 }*/
 
+//安部
+//マイページServletのdoGetで体アバターを表示する
 public Double newbmi() {
 	Connection conn = null;
 	Double newbmi =0.0;
@@ -227,6 +228,53 @@ public Double oldbmi() {
 
 }
 
+public boolean bmi_update(int bmi) {
+	Connection conn = null;
+	boolean result = false;
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+
+		// SQL文を準備する
+		String sql = "UPDATE Users SET bmi_id = ?";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		// SQL文を完成させる
+		pStmt.setString(1, "bmi");
+
+		if (pStmt.executeUpdate() == 1) {
+			result = true;
+		}
+
+	}
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+	finally {
+		// データベースを切断
+		if (conn != null) {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// 結果を返す
+	return result;
+}
+
+//（安部）
+//------------------------------------------------------------------------------------------------------------------
 
 public ShortMaster mp_st_display(String user_id){
 	//	shortmaster型なのでshortmasterのBeanについか
