@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,12 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.AnimationDAO;
-import dao.FirstLongTransDAO;
 import dao.MypageDAO;
 import dao.UsersDAO;
-import model.FirstLongTrans;
-import model.Mypage;
+import model.ShortMaster;
 /**
  * Servlet implementation class MypageServlet
  */
@@ -31,12 +27,34 @@ public class MypageServlet extends HttpServlet {
 	// もしもログインしていなかったらログインサーブレットにリダイレクトする
 	// sessionスコープからuser_idを取得する
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//		ユーザーidを取得
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
+
+
 		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/health_management/LoginServlet");
 			return;
 		}
+
+//		短期・長期目標表示（兼平）
+
+		//		リクエストスコープにuser_idを入れる 上記で取得済み
+		request.setAttribute("user_id", user_id);
+
+
+		//		DAOの処理をする（DAOの処理に）引数を渡す
+		MypageDAO mpStmDao = new MypageDAO();
+		ShortMaster mp_st_item = mpStmDao.mp_st_display(user_id);
+
+
+		//		リクエストスコープに短期目標のリストをセット
+		request.setAttribute("mp_st_item", mp_st_item);
+
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+		dispatcher.forward(request, response);
 
 
 		//----------------------------------------------------
@@ -77,9 +95,9 @@ public class MypageServlet extends HttpServlet {
 		//やること
 		// 済　firstlongtransDAOからuser_idとgoal_count、nogoal_countを取得
 		//jspに渡したい値をリクエストスコープに格納する
-		FirstLongTransDAO fDao = new FirstLongTransDAO();
-		FirstLongTrans stampcard = fDao.select(user_id);
-		request.setAttribute("stampcard", stampcard);
+//		FirstLongTransDAO fDao = new FirstLongTransDAO();
+//		FirstLongTrans stampcard = fDao.select(user_id);
+//		request.setAttribute("stampcard", stampcard);
 
 		//		for (int i = 1; i < 14; i++) {
 		//			request.setAttribute("stamp"+i, false);
@@ -112,30 +130,32 @@ public class MypageServlet extends HttpServlet {
 		else {
 			bmi = 1;
 		}
-		mdao.bmi_upd(bmi);
-		//その変数をDAOのアップデートに与える
+		mdao.bmi_update(bmi,user_id);
+//		//その変数をDAOのアップデートに与える
 
 
 
 
 		// ---------------------------------------------------------------------------------------------------
-		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
-		//		リクエストスコープにuser_idを入れる
-		request.setAttribute("user_id", animation_id);
+//		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
+//		//		リクエストスコープにuser_idを入れる
+//		request.setAttribute("user_id", animation_id);
 
-		AnimationDAO aDao = new AnimationDAO();
-		List<Mypage> animationList = aDao.select(animation_id);
+//		AnimationDAO aDao = new AnimationDAO();
+//		List<Mypage> animationList = aDao.select(animation_id);
 
-		request.setAttribute("animationList", animationList);
+	//	request.setAttribute("animationList", animationList);
 		// パーソナルデータページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
-		dispatcher.forward(request, response);
+	//	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+	//	dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
 
 
 //-----------------------------------------------------------------------------------------------------------------
@@ -148,13 +168,17 @@ public class MypageServlet extends HttpServlet {
 		String shortbox = request.getParameter("shortbox");
 		Double day_weight = Double.parseDouble("weight");
 
-		Double height = UsersDAO.height();
+		UsersDAO udao = new UsersDAO();
+		Double height = udao.height(user_id);
 
 
 		Double a = height/100;
 		Double b = a*a;
 		Double bmi = day_weight/b;
 
+
+		MypageDAO mdao = new MypageDAO();
+		mdao.insert_weights(user_id,day_weight,bmi);
 
 
 

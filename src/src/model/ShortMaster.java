@@ -7,7 +7,7 @@ public class ShortMaster implements Serializable{
 	private int no;
 	private String short_goal;
 	private String user_id;
-	private int long_goal;
+	private String long_goal;
 
 	public ShortMaster(int id, String type, int no, String short_goal) {
 		super();
@@ -26,7 +26,7 @@ public class ShortMaster implements Serializable{
 		this.no = no;
 	}
 
-	public ShortMaster(String user_id, int long_goal) {
+	public ShortMaster(String user_id, String long_goal) {
 		super();
 		this.long_goal = long_goal;
 	}
@@ -79,11 +79,11 @@ public class ShortMaster implements Serializable{
 		this.user_id = user_id;
 	}
 
-	public int getLong_goal() {
+	public String getLong_goal() {
 		return long_goal;
 	}
 
-	public void setLong_goal(int long_goal) {
+	public void setLong_goal(String long_goal) {
 		this.long_goal = long_goal;
 	}
 

@@ -15,6 +15,12 @@ public class FirstLongMaster implements Serializable{
 		this.long_goal = long_goal;
 	}
 
+	public FirstLongMaster(String user_id,String long_goal) {
+		super();
+		this.user_id = user_id;
+		this.long_goal = long_goal;
+	}
+
 	public FirstLongMaster() {
 		super();
 		this.id= 0 ;
@@ -41,6 +47,16 @@ public class FirstLongMaster implements Serializable{
 	public void setFirst_test(String first_test) {
 		this.first_test = first_test;
 	}
+
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
 	public String getLong_goal() {
 		return long_goal;
 	}

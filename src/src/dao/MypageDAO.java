@@ -9,81 +9,81 @@ import java.sql.SQLException;
 import model.ShortMaster;
 
 public class MypageDAO {
-	public String LongTarget(String user_id) {
-		Connection conn = null;
-		String rs1 = "";
-
-			// JDBCドライバを読み込む
-		try {
-			Class.forName("org.h2.Driver");
-			// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
-					String sqlLong="SELECT  long_goal FROM FirstLongMaster "
-							+ "INNER JOIN FirstLongTrans ON"
-							+ "  FirstLongMaster.type ="
-							+ "  FirstLongTrans.type where user_id ="
-							+ " ? and long_complete = 1";
-					PreparedStatement pStmt = conn.prepareStatement(sqlLong);
-					// SELECT文を実行し、結果表を取得する
-					ResultSet rsl = pStmt.executeQuery();
-
-					if(rsl.next()) {
-						//データがあればココに入る。
-						 rs1= sqlLong;
-					}
-					//else {
-						//データがなければココに入る。
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-						rs1 = null;
-					}
-					catch (ClassNotFoundException e) {
-						e.printStackTrace();
-						rs1 = null;
-		}
-					finally {}
-
-			return rs1;
-	}
-	public String ShortTarget(String user_id,Date date) {
-		Connection conn = null;
-		String rs2 = "";
-;
-			// JDBCドライバを読み込む
-		try {
-			Class.forName("org.h2.Driver");
-			// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
-					String sqlShort="SELECT  short_goal "
-							+ "FROM ShortMaster INNER JOIN "
-							+ "ShortTrans ON ShortMaster.no =  "
-							+ "ShortTrans.no and ShortMaster.type =  ShortTrans.type "
-							+ "where user_id = ? and exe_date = ?";
-
-					PreparedStatement pStmt = conn.prepareStatement(sqlShort);
-					// SELECT文を実行し、結果表を取得する
-					ResultSet rss = pStmt.executeQuery();
-
-					if(rss.next()) {
-						//データがあればココに入る。
-						 rs2= sqlShort;
-					}
-					//else {
-						//データがなければココに入る。
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-						rs2 = null;
-					}
-					catch (ClassNotFoundException e) {
-						e.printStackTrace();
-						rs2 = null;
-		}
-					finally {}
-
-			return rs2;
-	}
+//	public String LongTarget(String user_id) {
+//		Connection conn = null;
+//		String rs1 = "";
+//
+//			// JDBCドライバを読み込む
+//		try {
+//			Class.forName("org.h2.Driver");
+//			// データベースに接続する
+//					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+//					String sqlLong="SELECT  long_goal FROM FirstLongMaster "
+//							+ "INNER JOIN FirstLongTrans ON"
+//							+ "  FirstLongMaster.type ="
+//							+ "  FirstLongTrans.type where user_id ="
+//							+ " ? and long_complete = 1";
+//					PreparedStatement pStmt = conn.prepareStatement(sqlLong);
+//					// SELECT文を実行し、結果表を取得する
+//					ResultSet rsl = pStmt.executeQuery();
+//
+//					if(rsl.next()) {
+//						//データがあればココに入る。
+//						 rs1= sqlLong;
+//					}
+//					//else {
+//						//データがなければココに入る。
+//					}
+//					catch (SQLException e) {
+//						e.printStackTrace();
+//						rs1 = null;
+//					}
+//					catch (ClassNotFoundException e) {
+//						e.printStackTrace();
+//						rs1 = null;
+//		}
+//					finally {}
+//
+//			return rs1;
+//	}
+//	public String ShortTarget(String user_id,Date date) {
+//		Connection conn = null;
+//		String rs2 = "";
+//;
+//			// JDBCドライバを読み込む
+//		try {
+//			Class.forName("org.h2.Driver");
+//			// データベースに接続する
+//					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+//					String sqlShort="SELECT  short_goal "
+//							+ "FROM ShortMaster INNER JOIN "
+//							+ "ShortTrans ON ShortMaster.no =  "
+//							+ "ShortTrans.no and ShortMaster.type =  ShortTrans.type "
+//							+ "where user_id = ? and exe_date = ?";
+//
+//					PreparedStatement pStmt = conn.prepareStatement(sqlShort);
+//					// SELECT文を実行し、結果表を取得する
+//					ResultSet rss = pStmt.executeQuery();
+//
+//					if(rss.next()) {
+//						//データがあればココに入る。
+//						 rs2= sqlShort;
+//					}
+//					//else {
+//						//データがなければココに入る。
+//					}
+//					catch (SQLException e) {
+//						e.printStackTrace();
+//						rs2 = null;
+//					}
+//					catch (ClassNotFoundException e) {
+//						e.printStackTrace();
+//						rs2 = null;
+//		}
+//					finally {}
+//
+//			return rs2;
+//	}
 
 
 
@@ -274,8 +274,59 @@ public boolean bmi_update(int bmi ,String user_id) {
 	return result;
 }
 
-//（安部）
+public boolean insert_weights(String user_id,Double day_weight, Double bmi) {
+	//データの登録
+	Connection conn = null;
+	boolean result = false;
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+
+		// SQL文を準備する ここを改造
+		String sql = "insert into Users(id,user_id,date,day_weights,bmi) values (null,?,CURDATE(),? ,?)";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		// SQL文を完成させる
+		pStmt.setString(1, user_id);
+		pStmt.setDouble(2, day_weight);
+		pStmt.setDouble(3, bmi);
+
+		// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
+		if (pStmt.executeUpdate() == 1) {
+			result = true;
+			//戻り値のリザルトをTRUEにする
+		}
+	}
+	//例外処理
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+	finally {
+		// データベースを切断
+		if (conn != null) {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// 結果を返す
+	return result;
+}
+
+//（安部↑）
 //------------------------------------------------------------------------------------------------------------------
+//(兼平↓)
 
 public ShortMaster mp_st_display(String user_id){
 	//	shortmaster型なのでshortmasterのBeanについか
@@ -295,7 +346,7 @@ public ShortMaster mp_st_display(String user_id){
 		//	SQL文を準備する
 		//	今回は選択された長期に対応する短期目標をすべて
 		//	取り出す項目はtype, user_id, 短期目標のid, 短期目標
-		String sql = "SELECT user_id, long_goal FROM FirstLongMaster INNER JOIN FirstLongTrans ON  FirstLongMaster.type =  FirstLongTrans.type where user_id = '?' and long_complete = 1;";
+		String sql = "SELECT user_id, long_goal FROM FirstLongMaster INNER JOIN FirstLongTrans ON  FirstLongMaster.type =  FirstLongTrans.type where user_id =  ? and long_complete = 1;";
 
 		//	PreparedStatementのインスタンスを生成
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -312,7 +363,7 @@ public ShortMaster mp_st_display(String user_id){
 		if(rs.next()) {
 			mp_short =new ShortMaster(
 					rs.getString("user_id"),
-					rs.getInt("long_goal")
+					rs.getString("long_goal")
 					);
 		}
 
