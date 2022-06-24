@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,12 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.AnimationDAO;
-import dao.FirstLongTransDAO;
 import dao.MypageDAO;
-import dao.UsersDAO;
-import model.FirstLongTrans;
-import model.Mypage;
+import model.ShortMaster;
 /**
  * Servlet implementation class MypageServlet
  */
@@ -31,12 +26,34 @@ public class MypageServlet extends HttpServlet {
 	// もしもログインしていなかったらログインサーブレットにリダイレクトする
 	// sessionスコープからuser_idを取得する
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//		ユーザーidを取得
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
+
+
 		if (session.getAttribute("user_id") == null) {
 			response.sendRedirect("/health_management/LoginServlet");
 			return;
 		}
+
+//		短期・長期目標表示（兼平）
+
+		//		リクエストスコープにuser_idを入れる 上記で取得済み
+		request.setAttribute("user_id", user_id);
+
+
+		//		DAOの処理をする（DAOの処理に）引数を渡す
+		MypageDAO mpStmDao = new MypageDAO();
+		ShortMaster mp_st_item = mpStmDao.mp_st_display(user_id);
+
+
+		//		リクエストスコープに短期目標のリストをセット
+		request.setAttribute("mp_st_item", mp_st_item);
+
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+		dispatcher.forward(request, response);
 
 
 		//----------------------------------------------------
@@ -77,9 +94,9 @@ public class MypageServlet extends HttpServlet {
 		//やること
 		// 済　firstlongtransDAOからuser_idとgoal_count、nogoal_countを取得
 		//jspに渡したい値をリクエストスコープに格納する
-		FirstLongTransDAO fDao = new FirstLongTransDAO();
-		FirstLongTrans stampcard = fDao.select(user_id);
-		request.setAttribute("stampcard", stampcard);
+//		FirstLongTransDAO fDao = new FirstLongTransDAO();
+//		FirstLongTrans stampcard = fDao.select(user_id);
+//		request.setAttribute("stampcard", stampcard);
 
 		//		for (int i = 1; i < 14; i++) {
 		//			request.setAttribute("stamp"+i, false);
@@ -93,43 +110,43 @@ public class MypageServlet extends HttpServlet {
 		//firstlongtransDAOのnogoal_countが1増えたらfalse（スタンプ押さない）
 //-------------------------------------------------------------------------------------------------------------------
 //（安部・小島作業）アバターbody表示
-
-		MypageDAO mdao = new MypageDAO();
-		Double newbmi = mdao.newbmi();
-		Double oldbmi = mdao.oldbmi();
-		int bmi ;
-
-		if(newbmi > oldbmi) {
-			bmi = 4;
-			//変数に４を代入
-		}
-		else if(newbmi - oldbmi < 1) {
-			bmi = 3;
-		}
-		else if(newbmi - oldbmi < 2) {
-			bmi = 2;
-		}
-		else {
-			bmi = 1;
-		}
-		mdao.bmi_upd(bmi);
-		//その変数をDAOのアップデートに与える
+//
+//		MypageDAO mdao = new MypageDAO();
+//		Double newbmi = mdao.newbmi();
+//		Double oldbmi = mdao.oldbmi();
+//		int bmi ;
+//
+//		if(newbmi > oldbmi) {
+//			bmi = 4;
+//			//変数に４を代入
+//		}
+//		else if(newbmi - oldbmi < 1) {
+//			bmi = 3;
+//		}
+//		else if(newbmi - oldbmi < 2) {
+//			bmi = 2;
+//		}
+//		else {
+//			bmi = 1;
+//		}
+//		mdao.bmi_upd(bmi);
+//		//その変数をDAOのアップデートに与える
 
 
 
 
 		// ---------------------------------------------------------------------------------------------------
-		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
-		//		リクエストスコープにuser_idを入れる
-		request.setAttribute("user_id", animation_id);
-
-		AnimationDAO aDao = new AnimationDAO();
-		List<Mypage> animationList = aDao.select(animation_id);
-
-		request.setAttribute("animationList", animationList);
-		// パーソナルデータページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
-		dispatcher.forward(request, response);
+//		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
+//		//		リクエストスコープにuser_idを入れる
+//		request.setAttribute("user_id", animation_id);
+//
+//		AnimationDAO aDao = new AnimationDAO();
+//		List<Mypage> animationList = aDao.select(animation_id);
+//
+//		request.setAttribute("animationList", animationList);
+//		// パーソナルデータページにフォワードする
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+//		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -138,27 +155,29 @@ public class MypageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
+
+
 //-----------------------------------------------------------------------------------------------------------------
 // （安部・小島）その日の体重と短期目標にチェックしたか否かを取り出す
 //		→取り出したその日の体重からその日のBMIを計算→マイページトランザクションにINSERT
 
-		HttpSession session = request.getSession();
-		String user_id = (String)session.getAttribute("user_id");
-
-		String shortbox = request.getParameter("shortbox");
-		Double day_weight = Double.parseDouble("weight");
-
-		Double height = UsersDAO.height();
-
-
-		Double a = height/100;
-		Double b = a*a;
-		Double bmi = day_weight/b;
-
-
-
-
-
+//		HttpSession session = request.getSession();
+//		String user_id = (String)session.getAttribute("user_id");
+//
+//		String shortbox = request.getParameter("shortbox");
+//		Double day_weight = Double.parseDouble("weight");
+//
+//		Double height = UsersDAO.height();
+//
+//
+//		Double a = height/100;
+//		Double b = a*a;
+//		Double bmi = day_weight/b;
+//
+//
+//
+//
+//
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
 		dispatcher.forward(request, response);
