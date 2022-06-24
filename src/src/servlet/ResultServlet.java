@@ -76,7 +76,10 @@ public class ResultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+				//長期目標ページへとリダイレクト
+				//long_completeを1→2にする処理はmypageservletのdopostで行う（長期目標達成時に達成評価ページのアバターの色を変えるならば）
+				response.sendRedirect("/health_management/LomgChecklistlistServlet");
 	}
 
 }
