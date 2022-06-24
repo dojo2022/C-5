@@ -25,7 +25,7 @@ public class BacklogServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String user_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
+		String user_id ="id_taro"; //(String)session.getAttribute("user_id");//
 //		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
 

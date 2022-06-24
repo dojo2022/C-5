@@ -37,7 +37,7 @@ public class AnimationServlet extends HttpServlet {
 			return;
 		}*/
 		//HttpSession session = request.getSession();
-		String user_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
+		String user_id ="id_taro"; //(String)session.getAttribute("user_id");//
 //		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
 

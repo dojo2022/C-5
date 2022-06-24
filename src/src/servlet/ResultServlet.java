@@ -29,7 +29,7 @@ public class ResultServlet extends HttpServlet {
 		//ログインしていない状態なので便宜上id_kanehira
 				String result_title="";
 				String message="";
-				String result_id ="id_yamada"; //(String)session.getAttribute("user_id");//
+				String result_id ="id_taro"; //(String)session.getAttribute("user_id");//
 		//-------------------------------------------------------
 				//		リクエストスコープにuser_idを入れる 疑似的にuser_id入れてるので悪しからず
 				request.setAttribute("result_id", result_id);
