@@ -38,10 +38,10 @@ public class ShortMasterDAO {
 			//	SQL文を準備する
 			//	今回は選択された長期に対応する短期目標をすべて
 			//	取り出す項目はtype, user_id, 短期目標のid, 短期目標
-			String sql = "SELECT FIRSTLONGTRANS .type, FIRSTLONGTRANS.user_id, SHORTMASTER.id, SHORTMASTER.short_goal, SHORTMASTER.no\r\n"
-					+ "FROM ShortMaster INNER JOIN FirstLongTrans ON\r\n"
-					+ "ShortMaster.type = FirstLongTrans.type\r\n"
-					+ "where user_id = ? and long_complete = 1;";
+			String sql = "SELECT FIRSTLONGTRANS .type, FIRSTLONGTRANS.user_id, SHORTMASTER.id, SHORTMASTER.short_goal, SHORTMASTER.no, FirstLongTrans.long_complete\r\n"
+					+ "					FROM ShortMaster INNER JOIN FirstLongTrans ON\r\n"
+					+ "					ShortMaster.type = FirstLongTrans.type\r\n"
+					+ "					where user_id = ?  and long_complete = 1;";
 
 			//	PreparedStatementのインスタンスを生成
 			PreparedStatement pStmt = conn.prepareStatement(sql);
