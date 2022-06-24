@@ -232,7 +232,7 @@ ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type
 where user_id = 'id_yamada' and exe_date = '2022-06-15';
 
 ・短期目標達成回数（スタンプカードに使用）
-	・チェックしたときに情報をShortTransに格納（H2未確認）
+	・チェックしたときに情報をShortTransに格納
 	   チェックあり
 	   UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?;
 	　 UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = ? and type=?;
@@ -242,7 +242,13 @@ where user_id = 'id_yamada' and exe_date = '2022-06-15';
 	　　UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id = ? and type=?;
 
 	   →テスト
-	   UPDATE ShortTrans SET short_complete = 2 WHERE exe_date ='2022-06-15';
+	  チェックあり
+	 　UPDATE ShortTrans SET short_complete = 1 WHERE user_id = 'id_saburi' and exe_date ='2022-06-23';
+	　 UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = 'id_saburi' and type='motion';
+	　チェックなし
+	   UPDATE ShortTrans SET short_complete = 2 WHERE user_id = 'id_saburi' and exe_date ='2022-06-23'; 
+	　 UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id =  'id_saburi' and type='motion';
+
 
 	（みんなで頑張ったけど使えなかったところ　はじめ）
 	・チェックしたときに情報をFirstLongTransに格納
