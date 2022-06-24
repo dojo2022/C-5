@@ -176,10 +176,8 @@ public class UsersDAO {
 			return height;
 
 	}
+
 }
-
-
-
 
 
 
