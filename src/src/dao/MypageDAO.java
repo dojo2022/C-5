@@ -274,8 +274,59 @@ public boolean bmi_update(int bmi ,String user_id) {
 	return result;
 }
 
-//（安部）
+public boolean insert_weights(String user_id,Double day_weight, Double bmi) {
+	//データの登録
+	Connection conn = null;
+	boolean result = false;
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+
+		// SQL文を準備する ここを改造
+		String sql = "insert into Users(id,user_id,date,day_weights,bmi) values (null,?,CURDATE(),? ,?)";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		// SQL文を完成させる
+		pStmt.setString(1, user_id);
+		pStmt.setDouble(2, day_weight);
+		pStmt.setDouble(3, bmi);
+
+		// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
+		if (pStmt.executeUpdate() == 1) {
+			result = true;
+			//戻り値のリザルトをTRUEにする
+		}
+	}
+	//例外処理
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	}
+	finally {
+		// データベースを切断
+		if (conn != null) {
+			try {
+				conn.close();
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// 結果を返す
+	return result;
+}
+
+//（安部↑）
 //------------------------------------------------------------------------------------------------------------------
+//(兼平↓)
 
 public ShortMaster mp_st_display(String user_id){
 	//	shortmaster型なのでshortmasterのBeanについか

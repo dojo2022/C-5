@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.MypageDAO;
+import dao.UsersDAO;
 import model.ShortMaster;
 /**
  * Servlet implementation class MypageServlet
@@ -110,26 +111,26 @@ public class MypageServlet extends HttpServlet {
 		//firstlongtransDAOのnogoal_countが1増えたらfalse（スタンプ押さない）
 //-------------------------------------------------------------------------------------------------------------------
 //（安部・小島作業）アバターbody表示
-//
-//		MypageDAO mdao = new MypageDAO();
-//		Double newbmi = mdao.newbmi();
-//		Double oldbmi = mdao.oldbmi();
-//		int bmi ;
-//
-//		if(newbmi > oldbmi) {
-//			bmi = 4;
-//			//変数に４を代入
-//		}
-//		else if(newbmi - oldbmi < 1) {
-//			bmi = 3;
-//		}
-//		else if(newbmi - oldbmi < 2) {
-//			bmi = 2;
-//		}
-//		else {
-//			bmi = 1;
-//		}
-//		mdao.bmi_upd(bmi);
+
+		MypageDAO mdao = new MypageDAO();
+		Double newbmi = mdao.newbmi();
+		Double oldbmi = mdao.oldbmi();
+		int bmi ;
+
+		if(newbmi > oldbmi) {
+			bmi = 4;
+			//変数に４を代入
+		}
+		else if(newbmi - oldbmi < 1) {
+			bmi = 3;
+		}
+		else if(newbmi - oldbmi < 2) {
+			bmi = 2;
+		}
+		else {
+			bmi = 1;
+		}
+		mdao.bmi_update(bmi,user_id);
 //		//その変数をDAOのアップデートに与える
 
 
@@ -139,14 +140,14 @@ public class MypageServlet extends HttpServlet {
 //		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
 //		//		リクエストスコープにuser_idを入れる
 //		request.setAttribute("user_id", animation_id);
-//
+
 //		AnimationDAO aDao = new AnimationDAO();
 //		List<Mypage> animationList = aDao.select(animation_id);
-//
-//		request.setAttribute("animationList", animationList);
-//		// パーソナルデータページにフォワードする
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
-//		dispatcher.forward(request, response);
+
+	//	request.setAttribute("animationList", animationList);
+		// パーソナルデータページにフォワードする
+	//	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+	//	dispatcher.forward(request, response);
 	}
 
 	/**
@@ -161,23 +162,27 @@ public class MypageServlet extends HttpServlet {
 // （安部・小島）その日の体重と短期目標にチェックしたか否かを取り出す
 //		→取り出したその日の体重からその日のBMIを計算→マイページトランザクションにINSERT
 
-//		HttpSession session = request.getSession();
-//		String user_id = (String)session.getAttribute("user_id");
-//
-//		String shortbox = request.getParameter("shortbox");
-//		Double day_weight = Double.parseDouble("weight");
-//
-//		Double height = UsersDAO.height();
-//
-//
-//		Double a = height/100;
-//		Double b = a*a;
-//		Double bmi = day_weight/b;
-//
-//
-//
-//
-//
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("user_id");
+
+		String shortbox = request.getParameter("shortbox");
+		Double day_weight = Double.parseDouble("weight");
+
+		UsersDAO udao = new UsersDAO();
+		Double height = udao.height(user_id);
+
+
+		Double a = height/100;
+		Double b = a*a;
+		Double bmi = day_weight/b;
+
+
+		MypageDAO mdao = new MypageDAO();
+		mdao.insert_weights(user_id,day_weight,bmi);
+
+
+
+
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
 		dispatcher.forward(request, response);
