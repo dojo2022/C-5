@@ -117,14 +117,16 @@ public class MypageServlet extends HttpServlet {
 		Double oldbmi = mdao.oldbmi(user_id);
 		int bmi ;
 
+		double a = oldbmi-newbmi;
+
 		if(newbmi > oldbmi) {
 			bmi = 4;
 			//変数に４を代入
 		}
-		else if(newbmi - oldbmi < 1) {
+		else if(a < 1) {
 			bmi = 3;
 		}
-		else if(newbmi - oldbmi < 2) {
+		else if(a < 2) {
 			bmi = 2;
 		}
 		else {
@@ -165,7 +167,7 @@ public class MypageServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
 
-		String shortbox = request.getParameter("shortbox");
+//		String shortbox = request.getParameter("shortbox");
 		Double day_weight = Double.parseDouble("weight");
 
 		UsersDAO udao = new UsersDAO();

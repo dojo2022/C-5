@@ -204,7 +204,7 @@ public Double oldbmi(String user_id) {
 		// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
-				String sql="SELECT bmi FROM Mypage WHERE user_id = ? ORDER BY date DESC LIMIT 1";
+				String sql="SELECT bmi FROM Mypage WHERE user_id = ? ORDER BY date ASC LIMIT 1";
 				PreparedStatement pStmt2 = conn.prepareStatement(sql);
 
 				//SQLを完成させる

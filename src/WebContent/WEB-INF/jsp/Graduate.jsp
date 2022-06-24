@@ -6,9 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
-	href="/health_management/css/common.css">
-<link rel="stylesheet" type="text/css"
 	href="/health_management/css/graduate.css">
+<link rel="stylesheet" type="text/css"
+	href="/health_management/css/common.css">
+
 </head>
 <body>
 	<h1>日日減るすチェック</h1>
