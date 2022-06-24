@@ -285,9 +285,6 @@ SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = '
 →テスト
 SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = 'id_yamada';
 
-・短期目標達成可否をスタンプカードとして表示する（6/16）
-SELECT short_complete,exe_date FROM ShortTrans
-
 今までの体重
 SELECT date, day_weight FROM Mypage WHERE user_id = ?;
 個々人で挿入した顔画像
