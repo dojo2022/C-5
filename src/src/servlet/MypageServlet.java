@@ -113,8 +113,8 @@ public class MypageServlet extends HttpServlet {
 //（安部・小島作業）アバターbody表示
 
 		MypageDAO mdao = new MypageDAO();
-		Double newbmi = mdao.newbmi();
-		Double oldbmi = mdao.oldbmi();
+		Double newbmi = mdao.newbmi(user_id);
+		Double oldbmi = mdao.oldbmi(user_id);
 		int bmi ;
 
 		if(newbmi > oldbmi) {

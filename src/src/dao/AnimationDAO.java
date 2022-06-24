@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Mypage;
-
 public class AnimationDAO {
 	public List<Mypage> select(String user_id){
 		Connection conn = null;
@@ -72,38 +71,4 @@ public class AnimationDAO {
 		// 結果を返す
 		return animationList;
 	}
-	public String usersName(String user_id) {
-		Connection conn = null;
-		String uname = "";
-
-			// JDBCドライバを読み込む
-		try {
-			Class.forName("org.h2.Driver");
-			// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
-					String sqlName="SELECT  USER_NAME FROM USERS WHERE USER_ID = ?";
-					PreparedStatement pStmt = conn.prepareStatement(sqlName);
-					// SELECT文を実行し、結果表を取得する
-					ResultSet name = pStmt.executeQuery();
-
-					if(name.next()) {
-						//データがあればココに入る。
-						 uname= sqlName;
-					}
-					//else {
-						//データがなければココに入る。
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-						uname = null;
-					}
-					catch (ClassNotFoundException e) {
-						e.printStackTrace();
-						uname = null;
-		}
-					finally {}
-
-			return uname;
-	}
-
-	}
+}
