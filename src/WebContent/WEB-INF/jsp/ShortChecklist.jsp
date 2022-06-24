@@ -35,7 +35,7 @@ doGetやること
 
 				<td>${shortitem.short_goal}</td>
 				<td>
-					<input type="checkbox" name="short_ans" value="${shortitem.no},${shortitem.type},${shortitem.long_complete}">
+					<input type="checkbox" name="short_ans" value="${shortitem.no},${shortitem.type}">
 				</td>
 					<!-- valueをid→noに変更 短期は一種類のtypeしか持ってこないので、noでも良いと考えた -->
 			</tr>

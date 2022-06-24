@@ -67,7 +67,7 @@
 		<!-- <form method="POST" action="/health_management/ResultServlet" id="report"> -->
 		<ul class=first>
 			<li>長期目標 ○○</li>
-			<li>短期目標 ○○ <input type="checkbox" name="shortbox" value="check"></li>
+			<li>短期目標 ${mp_st_item}<input type="checkbox" name="shortbox" value="check"></li>
 
 			<li>体重<input type="text" name="weight" value="">kg <input
 				type="submit" name="report" value="報告"></li>

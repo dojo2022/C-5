@@ -80,7 +80,6 @@ public class ShortChecklistServlet extends HttpServlet {
 		String[] tmp = short_checked.split(",");	//	3,veg →	["3", "veg"]
 		int no = Integer.parseInt(tmp[0]);
 		String type = tmp[1];
-		int long_complete = Integer.parseInt(tmp[2]);
 
 
 
@@ -105,7 +104,7 @@ public class ShortChecklistServlet extends HttpServlet {
 
 //		short_insertメソッドを使用し、値を格納
 		ShortTransDAO srt_ins = new ShortTransDAO();
-		srt_ins.short_insert(user_id, type, no,long_complete);
+		srt_ins.short_insert(user_id, type, no);
 
 
 //		URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる

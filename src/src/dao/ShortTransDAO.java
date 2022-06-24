@@ -14,7 +14,7 @@ public class ShortTransDAO {
 //	・どの短期目標が選択されたかを取得
 //	・それをテーブルに格納
 
-	public boolean short_insert(String user_id, String type, int no, int long_complete){
+	public boolean short_insert(String user_id, String type, int no){
 //		最終的には行が得られたか（格納できたか）の真偽値を返す のでboolean
 
 		Connection conn = null;
