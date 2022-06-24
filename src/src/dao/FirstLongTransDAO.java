@@ -10,7 +10,7 @@ import model.FirstLongTrans;
 
 public class FirstLongTransDAO {
 	//初期チェックテストの結果をDBに格納
-
+//--------------------------------------------------------------------------------
 	//first_check変数に格納されるデータ　→　servletが責任を持ってデータを集める。
 	public boolean first_insert(String user_id, String type) {
 		Connection conn = null;
@@ -75,7 +75,7 @@ public class FirstLongTransDAO {
 		return result;
 	}
 	//}
-
+//----------------------------------------------------------------------------------
 	public boolean long_update(String user_id, String type) {
 		Connection conn = null;
 		boolean result = false;
@@ -126,14 +126,13 @@ public class FirstLongTransDAO {
 
 	//BcDAO.javaからいったんコピペ。
 	//cardがよくわからず変更していない
-
+//-------------------------------------------------------------------------------------
 	// 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
 	//selectで検索する（SQLの命令と同じ）
 	public FirstLongTrans select(String user_id) {
 		Connection conn = null;
 		//List<FirstLongTrans> stampcard1 = null;
 		FirstLongTrans stampcard = null;
-
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
@@ -167,6 +166,7 @@ public class FirstLongTransDAO {
 
 				//stampcard.add(scdata);
 			}
+
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -193,7 +193,7 @@ public class FirstLongTransDAO {
 		return stampcard;
 	}
 
-
+//----------------------------------------------------------------------------------
 
 	public boolean updateGoalCount(String user_id ,String exe_date, String type) {
 		 //String sql1 = "UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?;"

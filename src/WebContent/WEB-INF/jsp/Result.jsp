@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css"
-	href="/health_management/css/common.css">
-<link rel="stylesheet" type="text/css"
 	href="/health_management/css/result.css">
 </head>
 <body>
@@ -18,7 +16,8 @@
 	<hr>
 	<div class="result_title">
 		<h2>
-			長期目標達成おめでとう!!!<!-- or 残念、次回は頑張ろう！ -->
+
+			<!--長期目標達成おめでとう!!! or 残念、次回は頑張ろう！ -->
 
 			<c:out value="${result.title}" />
 		</h2>
@@ -32,13 +31,14 @@
 		<div class="text">
 			<div class="result_message">
 				<p>
-					この二週間よく頑張りました！ あなたはまた1歩健康へと近づいた!
+				<c:out value="${message.message}" >
+					<!-- この二週間よく頑張りました！ あなたはまた1歩健康へと近づいた!
 					けれどもっともっとできるはずだ…
-					習慣を続けることに終わりはない! 引き続き頑張っていこう!!!
+					習慣を続けることに終わりはない! 引き続き頑張っていこう!!!-->
 					<!-- or今回は失敗しちゃったけど、諦めちゃだめだよ！
 					また明日から頑張ろう！ -->
-
-					<c:out value="${result.title}" />
+				</c:out>
+					<!--<c:out value="${result.title}" />-->
 				</p>
 
 			</div>
