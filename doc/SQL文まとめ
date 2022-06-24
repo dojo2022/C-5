@@ -12,12 +12,12 @@ password VARCHAR(20) NOT NULL,
 user_name VARCHAR(20) NOT NULL,
 height DOUBLE NOT NULL,
 weight DOUBLE NOT NULL,
-bmi_id INT  default 0,
+bmi_id INT  default 3,
 color_id INT default 0
 )
 テストデータ格納
 INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10, 2, 4);
-INSERT INTO Users values (NULL, 'id_saburi', 'aaaa', 'aaa', 100, 10, 2, 4);
+INSERT INTO Users values (NULL, 'id_saburi', 'aaaa', 'aaa', 100, 10, default, default);
 
 マイページ
 

@@ -205,7 +205,7 @@
 	<!-- -------------------------------------------- -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/health_management/js/mypage.js"></script>
+<script src="/health_management/js/backlog.js"></script>
 
 <script type="text/javascript">
 const labels = [
