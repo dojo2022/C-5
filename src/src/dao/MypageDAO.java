@@ -149,3 +149,92 @@ public class MypageDAO {
 
 
 }*/
+
+public Double newbmi() {
+	Connection conn = null;
+	Double newbmi =0.0;
+
+		// JDBCドライバを読み込む
+	try {
+		Class.forName("org.h2.Driver");
+		// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+
+				String sql="SELECT bmi FROM Mypage ORDER BY date DESC LIMIT 1";
+				PreparedStatement pStmt1 = conn.prepareStatement(sql);
+
+				// SELECT文を実行し、結果表を取得する
+				ResultSet rs = pStmt1.executeQuery();
+
+				if(rs.next()) {
+					//データがあればココに入る。
+					 newbmi=Double.parseDouble(sql) ;
+				}
+				else {
+					//データがなければココに入る。
+				}
+	}
+
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+	}
+				finally {}
+
+		return newbmi;
+
+}
+
+public Double oldbmi() {
+	Connection conn = null;
+	Double oldbmi =0.0;
+
+		// JDBCドライバを読み込む
+	try {
+		Class.forName("org.h2.Driver");
+		// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+
+				String sql="SELECT bmi FROM Mypage ORDER BY date DESC LIMIT 1";
+				PreparedStatement pStmt1 = conn.prepareStatement(sql);
+
+				// SELECT文を実行し、結果表を取得する
+				ResultSet rs = pStmt1.executeQuery();
+
+				if(rs.next()) {
+					//データがあればココに入る。
+					 oldbmi=Double.parseDouble(sql) ;
+				}
+				else {
+					//データがなければココに入る。
+				}
+	}
+
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+	}
+				finally {}
+
+		return oldbmi;
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
