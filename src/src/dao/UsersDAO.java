@@ -138,9 +138,47 @@ public class UsersDAO {
 		return result;
 	}
 
+	//身長を取り出す
+	public Double height(String user_id) {
+		Connection conn = null;
+		Double height =0.0;
+
+			// JDBCドライバを読み込む
+		try {
+			Class.forName("org.h2.Driver");
+			// データベースに接続する
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+
+					String sql="SELECT height FROM Users WEHER user_id = ?";
+					PreparedStatement pStmt = conn.prepareStatement(sql);
+
+					//SQLを完成させる
+					pStmt.setString(1,user_id);
+
+					// SELECT文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
+
+					if(rs.next()) {
+						//データがあればココに入る。
+						 height=Double.parseDouble(sql) ;
+					}
+
+		}
+
+					catch (SQLException e) {
+						e.printStackTrace();
+					}
+					catch (ClassNotFoundException e) {
+						e.printStackTrace();
+		}
+					finally {}
+
+			return height;
+
+	}
 }
 
-//BMI登録
+
 
 
 
