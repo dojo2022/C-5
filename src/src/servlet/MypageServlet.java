@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.FirstLongTransDAO;
 import dao.MypageDAO;
 import dao.UsersDAO;
+import model.FirstLongTrans;
 import model.ShortMaster;
 /**
  * Servlet implementation class MypageServlet
@@ -95,9 +98,9 @@ public class MypageServlet extends HttpServlet {
 		//やること
 		// 済　firstlongtransDAOからuser_idとgoal_count、nogoal_countを取得
 		//jspに渡したい値をリクエストスコープに格納する
-//		FirstLongTransDAO fDao = new FirstLongTransDAO();
-//		FirstLongTrans stampcard = fDao.select(user_id);
-//		request.setAttribute("stampcard", stampcard);
+		FirstLongTransDAO fDao = new FirstLongTransDAO();
+		FirstLongTrans stampcard = fDao.select(user_id);
+		request.setAttribute("stampcard", stampcard);
 
 		//		for (int i = 1; i < 14; i++) {
 		//			request.setAttribute("stamp"+i, false);
@@ -108,7 +111,19 @@ public class MypageServlet extends HttpServlet {
 		//			// ...
 		//		}
 		//firstlongtransDAOのgoal_countが1増えたらtrue（スタンプ画像表示）
+		//　UPDATE文を呼び出す（updateGoalCount）
+		FirstLongTransDAO fDao2 = new FirstLongTransDAO();
+		Date exe_date = new Date(System.currentTimeMillis());
+		String type = new String();
+		boolean updateGoalCount = fDao2.updateGoalCount(user_id,exe_date,type);
+		request.setAttribute("updateGoalCount", updateGoalCount);
+
 		//firstlongtransDAOのnogoal_countが1増えたらfalse（スタンプ押さない）
+		//　UPDATE文を呼び出す（updateNoGoalCount）
+		FirstLongTransDAO fDao3 = new FirstLongTransDAO();
+		boolean updateNoGoalCount = fDao3.updateNoGoalCount(user_id,exe_date,type);
+		request.setAttribute("updateNoGoalCount", updateNoGoalCount);
+
 //-------------------------------------------------------------------------------------------------------------------
 //（安部・小島作業）アバターbody表示
 
