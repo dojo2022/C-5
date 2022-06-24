@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,7 @@ import model.FirstLongTrans;
 
 public class FirstLongTransDAO {
 	//初期チェックテストの結果をDBに格納
-//--------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------
 	//first_check変数に格納されるデータ　→　servletが責任を持ってデータを集める。
 	public boolean first_insert(String user_id, String type) {
 		Connection conn = null;
@@ -61,21 +62,21 @@ public class FirstLongTransDAO {
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		/*finally {
-		// データベースを切断
-		if (conn != null) {
-			try {
-				conn.close();
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}*/
-
+		}
 		return result;
+
 	}
-	//}
-//----------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------
 	public boolean long_update(String user_id, String type) {
 		Connection conn = null;
 		boolean result = false;
@@ -107,26 +108,23 @@ public class FirstLongTransDAO {
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		/*finally {
-		// データベースを切断
-		if (conn != null) {
-			try {
-				conn.close();
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}*/
-
+		}
 		return result;
 	}
-	//}
+
 
 	//スタンプカード：スタンプを押すためのデータ取得する
-
-	//BcDAO.javaからいったんコピペ。
-	//cardがよくわからず変更していない
-//-------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------
 	// 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
 	//selectで検索する（SQLの命令と同じ）
 	public FirstLongTrans select(String user_id) {
@@ -193,22 +191,129 @@ public class FirstLongTransDAO {
 		return stampcard;
 	}
 
-//----------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------
 
-	public boolean updateGoalCount(String user_id ,String exe_date, String type) {
-		 //String sql1 = "UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?;"
-		//準備して、用意して、実行。
+	public boolean updateGoalCount(String user_id ,Date exe_date, String type) {
+		boolean result = false;
+		Connection conn = null;
 
-		 //String sql2 = "UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = ? and type=?;"
-		//準備して、用意して、実行。
-		return false;
+		try {
+			// JDBC ドライバを読み込む
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
+
+			// SQL文を準備する
+			String sql1 = "UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?";
+
+			// SQLインジェクション防ぐ
+			PreparedStatement pStmt = conn.prepareStatement(sql1);
+
+			// SQL文を完成させる
+			pStmt.setString(1,user_id);
+			pStmt.setDate(2,exe_date);
+
+
+			//String sql1 = "UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?;"
+			//準備して、用意して、実行。
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+				//戻り値のリザルトをTRUEにする
+			}
+			// SQL文を準備する
+			String sql2 = "UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = ? and type=?";
+			// SQLインジェクション防ぐ
+			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+			// SQL文を完成させる
+			pStmt2.setString(1,user_id);
+			pStmt2.setString(2,type);
+			// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
+			if (pStmt2.executeUpdate() == 1) {
+				result = true;
+				//戻り値のリザルトをTRUEにする
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			//オブジェクト型は変数が確保したメモリの領域にアドレスを保存　→nullを入れることができる
+			//基本型は変数が確保したメモリの領域に値を保存 →基本型にはnullを入れることができない。
+			//int,double,boolean,char・・・・
+			result = false;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					result = false;
+				}
+			}
+		}
+		return result;
+	}
+	public boolean updateNoGoalCount(String user_id ,Date exe_date, String type) {
+		boolean result = false;
+		Connection conn = null;
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+			// SQL文を準備する
+			String sql1 = "UPDATE ShortTrans SET short_complete = 2 WHERE user_id = ? and exe_date =?";
+			// SQLインジェクション防ぐ
+			PreparedStatement pStmt = conn.prepareStatement(sql1);
+			// SQL文を完成させる
+			pStmt.setString(1,user_id);
+			pStmt.setDate(2,exe_date);
+			// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+				//戻り値のリザルトをTRUEにする
+			}
+			// SQL文を準備する
+			String sql2 = "UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id = ? and type=?";
+			// SQLインジェクション防ぐ
+			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+			// SQL文を完成させる
+			pStmt2.setString(1,user_id);
+			pStmt2.setString(2,type);
+			// SQL文を実行する 検索時はxecuteQuwryだったがここは違う
+			if (pStmt2.executeUpdate() == 1) {
+				result = true;
+				//戻り値のリザルトをTRUEにする
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			//オブジェクト型は変数が確保したメモリの領域にアドレスを保存　→nullを入れることができる
+			//基本型は変数が確保したメモリの領域に値を保存 →基本型にはnullを入れることができない。
+			//int,double,boolean,char・・・・
+			result = false;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			result = false;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					result = false;
+				}
+			}
+		}
+		return result;
 	}
 
-	public boolean updateNoGoalCount(String user_id ,String exe_date, String type) {
-		//UPDATE ShortTrans SET short_complete = 2 WHERE user_id = ? and exe_date =?;
-
-		//UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id = ? and type=?;
-
-		return false;
-	}
 }
