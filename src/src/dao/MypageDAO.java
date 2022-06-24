@@ -228,7 +228,7 @@ public Double oldbmi() {
 
 }
 
-public boolean bmi_update(int bmi) {
+public boolean bmi_update(int bmi ,String user_id) {
 	Connection conn = null;
 	boolean result = false;
 
@@ -240,11 +240,12 @@ public boolean bmi_update(int bmi) {
 		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 		// SQL文を準備する
-		String sql = "UPDATE Users SET bmi_id = ?";
+		String sql = "UPDATE Users SET  bmi_id = ? WHERE user_id = ?";
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 
 		// SQL文を完成させる
-		pStmt.setString(1, "bmi");
+		pStmt.setInt(1, bmi);
+		pStmt.setString(2, user_id);
 
 		if (pStmt.executeUpdate() == 1) {
 			result = true;
