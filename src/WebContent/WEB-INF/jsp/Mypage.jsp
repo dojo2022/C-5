@@ -30,7 +30,7 @@
 	</div>
 	<h1>
 		<a href="/health_management/MypageServlet"> <img src=""
-			alt="健康アプリ">
+			alt="日日減るすチェック">
 		</a>
 	</h1>
 
