@@ -238,7 +238,7 @@ where user_id = 'id_yamada' and exe_date = '2022-06-15';
 	　 UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = ? and type=?;
 
 	   チェックなし
-	　　UPDATE ShortTrans SET short_complete = 2 WHERE user_id = ? and exe_date =?; 
+	　　UPDATE ShortTrans SET short_complete = 2 WHERE user_id = ? and exe_date =?;
 	　　UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id = ? and type=?;
 
 	   →テスト
@@ -246,18 +246,18 @@ where user_id = 'id_yamada' and exe_date = '2022-06-15';
 	 　UPDATE ShortTrans SET short_complete = 1 WHERE user_id = 'id_saburi' and exe_date ='2022-06-23';
 	　 UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = 'id_saburi' and type='motion';
 	　チェックなし
-	   UPDATE ShortTrans SET short_complete = 2 WHERE user_id = 'id_saburi' and exe_date ='2022-06-23'; 
+	   UPDATE ShortTrans SET short_complete = 2 WHERE user_id = 'id_saburi' and exe_date ='2022-06-23';
 	　 UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id =  'id_saburi' and type='motion';
 
 
 	（みんなで頑張ったけど使えなかったところ　はじめ）
 	・チェックしたときに情報をFirstLongTransに格納
-	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans 
+	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans
 	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
 	   WHERE user_id = '?' and long_complete = 1 and short_complete;
 	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = ? and long_complete = 1;
 	　→テスト
-	　(エラー出る)UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans 
+	　(エラー出る)UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans
 	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
 	   WHERE FIRSTLONGTRANS.user_id = 'id_saburi' and long_complete = 1 and short_complete=1;
 	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
@@ -318,11 +318,11 @@ SELECT * FROM HealthImage WHERE user_id = 'id_yamada' ORDER BY up_date
 
 SELECT date, user_id, goal_count, nogoal_count, long_complete
 FROM FIRSTLONGTRANS
-WHERE  user_id = '?'  and long_complete =  0 OR long_complete = 2 ORDER BY date desc LIMIT 1
+WHERE  user_id = '?' ORDER BY date desc LIMIT 1
 →テスト
 SELECT date, user_id, goal_count, nogoal_count, long_complete
 FROM FIRSTLONGTRANS
-WHERE  user_id = 'id_yamada'  and long_complete =  0 OR long_complete = 2 ORDER BY date desc LIMIT 1
+WHERE  user_id = 'id_yamada' ORDER BY date desc LIMIT 1
 
 INSERT INTO FirstLongTrans VALUES(null,'id_yamada',default,'sleep',1,10,2,'2022-06-16');
 INSERT INTO FirstLongTrans VALUES(null,'id_yamada',default,'salt',2,12,0,'2022-06-16');

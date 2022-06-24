@@ -29,6 +29,13 @@ public class ShortTrans implements Serializable{
 		this.type = type;
 		this.no = no;
 	}
+
+	public ShortTrans(String user_id, Date exe_date) {
+		super();
+		this.user_id = user_id;
+		this.exe_date = exe_date;
+	}
+
 	public ShortTrans() {
 		super();
 		this.id = 0;
