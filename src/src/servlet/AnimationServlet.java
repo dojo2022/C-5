@@ -43,9 +43,13 @@ public class AnimationServlet extends HttpServlet {
 
 		AnimationDAO aDao = new AnimationDAO();
 		List<Mypage> animationList = aDao.select(user_id);
-
-
 		request.setAttribute("animationList", animationList);
+
+		AnimationDAO uDao = new AnimationDAO();
+		String userName =uDao.usersName(user_id);
+		request.setAttribute("username",userName);
+
+
 		// 体重推移アニメーションページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Animation.jsp");
 				dispatcher.forward(request, response);

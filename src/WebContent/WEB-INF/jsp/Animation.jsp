@@ -14,7 +14,7 @@
 <body>
 <hr>
  体重推移アニメーション<br>
- <c:out value='${e.user_id}'>○○</c:out>さんの軌跡<br>
+ <c:out value='${userName}'></c:out>さんの軌跡<br>
  <div class="image-horizontal-scroll">
 				<canvas id="myChart" class="box" width ="1030" height="330"></canvas>
 				</div>
