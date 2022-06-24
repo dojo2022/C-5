@@ -20,9 +20,11 @@ public class Mypage implements Serializable{
 	}
 	public Mypage(String user_id ,Date date, double day_weight) {
 		super();
+		this.id=0;
 		this.user_id=user_id;
 		this.date = date;
 		this.day_weight = day_weight;
+		this.bmi =0;
 	}
 
 //デフォルトコンストラクタ

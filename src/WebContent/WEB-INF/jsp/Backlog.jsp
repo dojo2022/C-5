@@ -9,12 +9,34 @@
 <!--  <link rel="stylesheet" href="/health_management/css/common.css">-->
 <link rel="stylesheet" href="/health_management/css/backlog.css">
 </head>
-<body>
-<h1  >
-	<a href="/health_management/MypageServlet">
-	<img src="" alt="健康アプリ">
-	</a>
+<header class="globalMenuSp">
+	<div class="hamburger">
+		<div class="ham" id="ham">
+			<span class="ham_line ham_line1"></span> <span
+				class="ham_line ham_line2"></span> <span class="ham_line ham_line3"></span>
+		</div>
+
+
+		<div class="menu_wrapper" id="menu_wrapper">
+			<div class="menu">
+				<ul>
+					<li><a href="/health_management/MypageServlet">マイページ</a></li>
+					<li><a href="/health_management/PersonalServlet">パーソナルページ</a></li>
+					<li><a href="/health_management/BacklogServlet">過去データ</a></li>
+					<li><a href="/health_management/LogoutServlet">ログアウト</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<h1>
+		<a href="/health_management/MypageServlet"> <img src=""
+			alt="日日減るすチェック">
+		</a>
 	</h1>
+
+</header>
+<body>
+
 <hr>
 
 過去データ閲覧
