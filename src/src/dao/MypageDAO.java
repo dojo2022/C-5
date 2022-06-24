@@ -152,8 +152,8 @@ public class MypageDAO {
 
 }*/
 
-//安部
-//マイページServletのdoGetで体アバターを表示する
+//--------------------------------------------------------------------------------------------------------
+//(安部)マイページServletのdoGetで体アバターを表示する
 public Double newbmi() {
 	Connection conn = null;
 	Double newbmi =0.0;
