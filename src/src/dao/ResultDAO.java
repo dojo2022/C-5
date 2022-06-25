@@ -20,12 +20,10 @@ public class ResultDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT date, user_id, goal_count, nogoal_count, long_complete\r\n"
-					+ "FROM FIRSTLONGTRANS\r\n"
-					+ "WHERE  user_id = ? ORDER BY date desc LIMIT 1";
+			String sql = "SELECT date, user_id, goal_count, nogoal_count, long_complete FROM FIRSTLONGTRANS WHERE  user_id = ? ORDER BY date desc LIMIT 1";
 
 			// SQLインジェクション防ぐ
 			PreparedStatement pStmt = conn.prepareStatement(sql);
