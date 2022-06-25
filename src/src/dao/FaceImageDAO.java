@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.AvaterHead;
-//現状、おそらくDAOに問題あり
+
 public class FaceImageDAO {
 	// 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
 		//selectで検索する（SQLの命令と同じ）
