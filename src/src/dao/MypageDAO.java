@@ -420,7 +420,7 @@ public ShortMaster mp_st_display(String user_id, Date exe_date){
 		//	SQL文を準備する
 		//	今回は選択された長期に対応する短期目標をすべて
 		//	取り出す項目はtype, user_id, 短期目標のid, 短期目標
-		String sql = "SELECT user_id, long_goal FROM FirstLongMaster INNER JOIN FirstLongTrans ON  FirstLongMaster.type =  FirstLongTrans.type where user_id =  ? and long_complete = 1;";
+		String sql = "SELECT user_id, short_goal FROM ShortMaster INNER JOIN ShortTrans ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type where user_id = ? and exe_date = ?;";
 
 		//	PreparedStatementのインスタンスを生成
 		PreparedStatement pStmt = conn.prepareStatement(sql);
