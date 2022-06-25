@@ -160,7 +160,7 @@ public class FirstLongTransDAO {
 				stampcard.setUser_id(rs.getString("user_id"));
 				stampcard.setCounter(rs.getInt("counter"));
 				stampcard.setType(rs.getString("type"));
-				stampcard.setLong_complete(rs.getInt("long_comlete"));
+				stampcard.setLong_complete(rs.getInt("long_complete"));
 				stampcard.setGoal_count(rs.getInt("goal_count"));
 				stampcard.setNogoal_count(rs.getInt("nogoal_count"));
 
