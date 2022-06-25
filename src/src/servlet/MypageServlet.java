@@ -155,9 +155,7 @@ public class MypageServlet extends HttpServlet {
 		mdao.bmi_update(bmi,user_id);
 //		//その変数をDAOのアップデートに与える
 
-
-
-
+//安部さんがSELECTで持ってきたbmi=idとcolor_idをjspに渡す
 		// ---------------------------------------------------------------------------------------------------
 //		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
 //		//		リクエストスコープにuser_idを入れる
@@ -216,27 +214,42 @@ public class MypageServlet extends HttpServlet {
 		Result goalSet = tran.evaluate(user_id);
 
 		int goal_count = goalSet.getGoal_count();
+		int nogoal_count = goalSet.getNogoal_count();
 
-//		if() {
-////			達成評価に飛ぶ
-//
-//			if() {
-//				//達成メッセージ
-//			}else {
-//				//未達成メッセージ
-//
-//			}
-//
-//			//result.jspへフォワード
-//		} else {
+		String title = "";
+		String message = "";
 
-////	達成評価に飛ばず、マイページのまま
-		response.sendRedirect("/health_management/MypageServlet");
+		if(goal_count == 12 || nogoal_count == 3) {
+
+			if(goal_count == 12 && nogoal_count <= 3) {
+				//達成メッセージ
+				title = "長期目標達成おめでとう!!!";
+
+				message = "この二週間よく頑張りました！ あなたはまた1歩健康へと近づいた!\"\r\n"
+						+ "					+ \"	けれどもっともっとできるはずだ…\"\r\n"
+						+ "					+ \"	習慣を続けることに終わりはない! 引き続き頑張っていこう!!!";
+//ここにlong_completeをUPDATEする処理（安部さん）
+			}else {
+				//未達成メッセージ
+				title = "残念、次回は頑張ろう！";
+				message = "\"今回は失敗しちゃったけど、諦めちゃだめだよ！\"\r\n"
+						+ "					+ \"	また明日から頑張ろう！\";";
+
+			}
+
+			request.setAttribute("title", title);
+			request.setAttribute("message", message);
+			//result.jspへフォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
+				dispatcher.forward(request, response);
+
+		} else {
+
+			//	達成評価に飛ばず、マイページのまま
+			response.sendRedirect("/health_management/MypageServlet");
 
 
-
-
-//}
+		}
 
 	}
 
