@@ -287,6 +287,9 @@ public class MypageServlet extends HttpServlet {
 		} else {
 
 			//	達成評価に飛ばず、マイページのまま
+
+			//次の日の短期目標を表示する画面に遷移するように変更
+
 			response.sendRedirect("/health_management/MypageServlet");
 
 

@@ -31,14 +31,14 @@
 		<div class="text">
 			<div class="result_message">
 				<p>
-				<c:out value="${message.message}" >
+				<c:out value="${message}" >
 					<!-- この二週間よく頑張りました！ あなたはまた1歩健康へと近づいた!
 					けれどもっともっとできるはずだ…
 					習慣を続けることに終わりはない! 引き続き頑張っていこう!!!-->
 					<!-- or今回は失敗しちゃったけど、諦めちゃだめだよ！
 					また明日から頑張ろう！ -->
 				</c:out>
-					<!--<c:out value="${result.title}" />-->
+					<c:out value="${result.title}" />
 				</p>
 
 			</div>

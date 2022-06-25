@@ -1,10 +1,10 @@
-SQL
+//SQL
 
-テーブル作成・テストデータ格納
-テーブルを削除
+//テーブル作成・テストデータ格納
+//テーブルを削除
 DROP TABLE IF EXISTS Users;
 
-Usersテーブル
+//Usersテーブル
 CREATE TABLE Users (
 id INT PRIMARY KEY AUTO_INCREMENT,
 user_id VARCHAR(20) UNIQUE NOT NULL,
@@ -14,14 +14,17 @@ height DOUBLE NOT NULL,
 weight DOUBLE NOT NULL,
 bmi_id INT  default 3,
 color_id INT default 0
-)
-テストデータ格納
+);
+//テストデータ格納
 INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10, 2, 4);
 INSERT INTO Users values (NULL, 'id_saburi', 'aaaa', 'aaa', 100, 10, default, default);
-※
+//※
 INSERT INTO Users values (NULL, 'id_taro', 'pass', 'tarotaro', 170, 70, default, default);
 
-マイページ
+
+
+//マイページ
+DROP TABLE IF EXISTS mypage;
 
 CREATE TABLE Mypage(
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -32,7 +35,7 @@ bmi DOUBLE
 );
 INSERT INTO Mypage(id,user_id,date,day_weight,bmi)
 VALUES(null,'janes','2022-06-14',120.8,22);
-※
+//※
 INSERT INTO Mypage VALUES (null,'id_taro','2022-06-01',70.0,24.22);
 INSERT INTO Mypage VALUES (null,'id_taro','2022-06-02',69.4,24.01);
 INSERT INTO Mypage VALUES (null,'id_taro','2022-06-03',69.3,23.97);
@@ -65,7 +68,8 @@ INSERT INTO Mypage VALUES (null,'id_taro','2022-06-29',65.7,22.73);
 INSERT INTO Mypage VALUES (null,'id_taro','2022-06-30',64.1,22.17);
 
 
-初期長期マスターテーブル
+//初期長期マスターテーブル
+DROP TABLE IF EXISTS FirstLongMaster;
 
 CREATE TABLE FirstLongMaster(
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -82,7 +86,9 @@ INSERT INTO FirstLongMaster VALUES(6,'liq','お酒をよく飲んでいる','飲
 INSERT INTO FirstLongMaster VALUES(7,'tabacco','タバコをよく吸っている','タバコの量を減らそう！');
 INSERT INTO FirstLongMaster VALUES(8,'motion','あまり運動をしていない','運動習慣を身につけよう！');
 
-初期長期トランザクションテーブル※
+//初期長期トランザクションテーブル※
+DROP TABLE IF EXISTS FirstLongTrans;
+
 CREATE TABLE FirstLongTrans(
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 user_id VARCHAR(20) NOT NULL,
@@ -95,7 +101,7 @@ date DATETIME NOT NULL
 );
 
 
-※
+//※
 INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'veg',2,12,1,'2022-06-13');
 INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'salt',2,12,0,'2022-06-25');
 INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'cal',0,0,0,'2022-06-01');
@@ -103,10 +109,12 @@ INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'sleep',1,4,1,'2022-06
 INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'motion',0,0,0,'2022-06-01');
 
 
-短期マスタテーブル
+//短期マスタテーブル
 
   //テーブル作成
-	CREATE TABLE ShortMaster(
+DROP TABLE IF EXISTS ShortMaster;
+
+CREATE TABLE ShortMaster(
 	id INT PRIMARY KEY AUTO_INCREMENT not null,
 	type VARCHAR (10) not null,
 	no INT not null,
@@ -139,7 +147,9 @@ INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'motion',0,0,0,'2022-0
 	INSERT INTO ShortMaster values (23,'motion',2,'絶対に階段を使うんだ！');
 	INSERT INTO ShortMaster values (24,'motion',3,'腹筋と腕立てを50回やったるぜ！');
 
-  短期テストCREATE短期トランザクションテーブル
+ // 短期テストCREATE短期トランザクションテーブル
+DROP TABLE IF EXISTS ShortTrans;
+
   CREATE TABLE ShortTrans(
   id INT PRIMARY KEY AUTO_INCREMENT not null,
   user_id VARCHAR(20) not null,
@@ -148,11 +158,12 @@ INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'motion',0,0,0,'2022-0
   type VARCHAR(20) not null,
   no INT not null,
   short_complete INT default 0
-  )
-  短期テストINSERTテスト
+  );
+
+ // 短期テストINSERTテスト
   INSERT INTO ShortTrans values ( NULL, 'id_kanehira', '2022-06-14', 1, 'veg', 1,  DEFAULT);
 
-※
+//※
 INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-01',1,'veg',1,1);
 INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-02',1,'veg',1,1);
 INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-03',1,'veg',1,1);
@@ -186,7 +197,9 @@ INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-30',1,'slepp',2,1);
 
 
 
-健康診断画像ページ
+//健康診断画像ページ
+DROP TABLE IF EXISTS HealthImage;
+
 create table HealthImage (
 id int primary key auto_increment not null,
 user_id varchar(20) not null,
@@ -198,7 +211,9 @@ values (null, 'kanezashi', '2022-06-14', '101637.png') ;
 insert into healthimage (id, user_id, up_date, health_image)
 values (null, 'kojima', '2022-06-15', '154400.png') ;
 
-体画像
+//体画像
+DROP TABLE IF EXISTS BodyImage;
+
 create table BodyImage(
 id int primary key auto_increment not null,
 bmi_id INT NOT NULL,
@@ -208,7 +223,8 @@ body_image varchar(200) not null
 insert into bodyimage (id, bmi_id,color_id, body_image)
 values (null, 1,7, '101637.png') ;
 
-顔画像
+//顔画像
+DROP TABLE IF EXISTS Face_image;
 
 CREATE TABLE Face_image(
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -218,166 +234,183 @@ up_date DATE NOT NULL,
 face_image VARCHAR(200)
 );
 INSERT INTO Face_image(id,user_id,face_id,up_date,face_image)
-VALUES(null,'id_abe','null',CURDATE(),'111000.png');
+VALUES(null,'id_abe','null',CURDATE(),'kao.png');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 SELECT・INSERT・UPDATE文
-【ログイン】
-・user_idとpasswordが一致する行を取り出す
+//【ログイン】
+//・user_idとpasswordが一致する行を取り出す
 select count(*) from Users where user_id = ? and password = ?
 
-【新規登録】
-・新規登録の情報をUsersテーブルとFaceImageテーブルに格納
+//【新規登録】
+//・新規登録の情報をUsersテーブルとFaceImageテーブルに格納
 INSERT INTO Users VALUES(null,?,?,?,?,?,?)
-テスト
+//テスト
 INSERT INTO Users VALUES(null,'id_abe','aaaa','abe',150,70,'a1')
-・FaceImageテーブルにデータを格納
+//・FaceImageテーブルにデータを格納
 INSERT INTO FaceImage VALUES(null,'?','?','?')
 
-テスト
+//テスト
 INSERT INTO FaceImage VALUES(null,'aa1','111000.png','2022-06-16')
 
-【初期チェックテスト】
-・設問全表示
+//【初期チェックテスト】
+//・設問全表示
 select * from FirstLongMaster
 
-・選んだ項目の情報を初期＆長期トランザクションに格納
+//・選んだ項目の情報を初期＆長期トランザクションに格納
 INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date)
 values (NULL, ?, DEFAULT, ?, DEFAULT, DEFAULT, DEFAULT, ?)
- →格納テスト
+// →格納テスト
  INSERT INTO FIRSTLONGTRANS (id, user_id, counter, type, complete, goal_count, nogoal_count, date)
  values (NULL, 'abe', DEFAULT, 'veg', DEFAULT, DEFAULT, DEFAULT, CURDATE())
 
-【長期チェックリスト】
-・初期で選ばれた項目に対応する項目を表示
+//【長期チェックリスト】
+//・初期で選ばれた項目に対応する項目を表示
 SELECT user_id, FIRSTLONGTRANS.type, long_goal FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
 on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
 where user_id = '?'
- →テスト
+// →テスト
 SELECT user_id, FIRSTLONGTRANS.type, long_goal FROM FIRSTLONGTRANS inner join FIRSTLONGMASTER
 on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type
 where user_id = 'id_yamada'
 
-・選んだ長期目標（１こ）のデータを格納
+//・選んだ長期目標（１こ）のデータを格納
 UPDATE FirstLongTrans SET long_complete = 1 WHERE type  = '?'
-→テスト
+//→テスト
 UPDATE FirstLongTrans SET long_complete = 1 WHERE type  = 'veg'
 
-【短期チェックリスト】
-・短期目標を表示
+//【短期チェックリスト】
+//・短期目標を表示
 SELECT * FROM ShortMaster INNER JOIN FirstLongTrans ON
 ShortMaster.type = FirstLongTrans.type
 where user_id = '?' and long_complete = 1;
- →テスト
+// →テスト
  SELECT * FROM ShortMaster INNER JOIN FirstLongTrans ON
  ShortMaster.type = FirstLongTrans.type
  where user_id = 'id_yamada' and long_complete = 1;
 
-・選択された短期目標のデータを格納
-INSERT INTO ShortTrans (id, user_id, exe_date, counter, type, no, short_complete)
-values(NULL, ?, ?, DEFAULT, ?, ?, DEFAULT)
- →テスト
- INSERT INTO ShortTrans (id, user_id, exe_date, counter, type, no, short_complete)
- values(NULL, 'id_yamada', '2022-06-15', DEFAULT, 'veg', 2, DEFAULT)
+//・選択された短期目標のデータを格納
+//INSERT INTO ShortTrans (id, user_id, exe_date, counter, type, no, short_complete)
+//values(NULL, ?, ?, DEFAULT, ?, ?, DEFAULT)
+// →テスト
+// INSERT INTO ShortTrans (id, user_id, exe_date, counter, type, no, short_complete)
+// values(NULL, 'id_yamada', '2022-06-15', DEFAULT, 'veg', 2, DEFAULT)
 
-【マイページ】
-・選択した長期目標の表示
+//【マイページ】
+//・選択した長期目標の表示
 SELECT  long_goal FROM FirstLongMaster
 INNER JOIN FirstLongTrans
 ON  FirstLongMaster.type =  FirstLongTrans.type
 where user_id = '?' and long_complete = 1;
-→テスト
+//→テスト
 SELECT  long_goal FROM FirstLongMaster
 INNER JOIN FirstLongTrans
 ON  FirstLongMaster.type =  FirstLongTrans.type
 where user_id = 'id_yamada' and long_complete = 1;
 
-・選択した短期目標の表示
+//・選択した短期目標の表示
 SELECT  short_goal FROM ShortMaster
 INNER JOIN ShortTrans
 ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type
 where user_id = '?' and exe_date = '?';
-→テスト
+//→テスト
 SELECT  short_goal FROM ShortMaster
 INNER JOIN ShortTrans
 ON ShortMaster.no =  ShortTrans.no and ShortMaster.type =  ShortTrans.type
 where user_id = 'id_yamada' and exe_date = '2022-06-15';
 
-・短期目標達成回数（スタンプカードに使用）
-	・チェックしたときに情報をShortTransに格納
-	   チェックあり
-	   UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?;
-	　 UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = ? and type=?;
+//・短期目標達成回数（スタンプカードに使用）
+//	・チェックしたときに情報をShortTransに格納
+//	   チェックあり
+//	   UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?;
+//	　 UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = ? and type=?;
 
-	   チェックなし
-	　　UPDATE ShortTrans SET short_complete = 2 WHERE user_id = ? and exe_date =?;
-	　　UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id = ? and type=?;
+//	   チェックなし
+//	　　UPDATE ShortTrans SET short_complete = 2 WHERE user_id = ? and exe_date =?;
+//	　　UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id = ? and type=?;
 
-	   →テスト
-	  チェックあり
-	 　UPDATE ShortTrans SET short_complete = 1 WHERE user_id = 'id_saburi' and exe_date ='2022-06-23';
-	　 UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = 'id_saburi' and type='motion';
-	　チェックなし
-	   UPDATE ShortTrans SET short_complete = 2 WHERE user_id = 'id_saburi' and exe_date ='2022-06-23';
-	　 UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id =  'id_saburi' and type='motion';
+//	   →テスト
+//	  チェックあり
+//	 　UPDATE ShortTrans SET short_complete = 1 WHERE user_id = 'id_saburi' and exe_date ='2022-06-23';
+//	　 UPDATE FirstLongTrans set goal_count = goal_count + 1 WHERE user_id = 'id_saburi' and type='motion';
+//	　チェックなし
+//	   UPDATE ShortTrans SET short_complete = 2 WHERE user_id = 'id_saburi' and exe_date ='2022-06-23';
+//	　 UPDATE FirstLongTrans set nogoal_count = nogoal_count + 1 WHERE user_id =  'id_saburi' and type='motion';
 
 
-	（みんなで頑張ったけど使えなかったところ　はじめ）
-	・チェックしたときに情報をFirstLongTransに格納
-	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans
-	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
-	   WHERE user_id = '?' and long_complete = 1 and short_complete;
-	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = ? and long_complete = 1;
-	　→テスト
-	　(エラー出る)UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans
-	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
-	   WHERE FIRSTLONGTRANS.user_id = 'id_saburi' and long_complete = 1 and short_complete=1;
-	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
-	（みんなで頑張ったところ　おわり）
+//	（みんなで頑張ったけど使えなかったところ　はじめ）
+//	・チェックしたときに情報をFirstLongTransに格納
+//	　UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans
+//	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
+//	   WHERE user_id = '?' and long_complete = 1 and short_complete;
+//	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = ? and long_complete = 1;
+//	　→テスト
+//	　(エラー出る)UPDATE FirstLongTrans SET goal_count = goal_count + 1 FROM FirstLongTrans
+//	   INNER JOIN ShortTrans ON FirstLongTrans.user_id = ShortTrans.user_id
+//	   WHERE FIRSTLONGTRANS.user_id = 'id_saburi' and long_complete = 1 and short_complete=1;
+//	　UPDATE FirstLongTrans SET nogoal_count = nogoal_count + 1 WHERE user_id = 'id_yamada' and long_complete = 1;
+//	（みんなで頑張ったところ　おわり）
 
-・毎日の体重データを格納する
-INSERT INTO Mypage (id, user_id, date, day_weight) VALUES (NULL, '?', '?', '?')
-(JavaでBMIを算出)
-・BMIのデータを格納する
-UPDATE Mypage SET bmi = ? WHERE date = '?' users_id = '?'
+//・毎日の体重データを格納する
+//INSERT INTO Mypage (id, user_id, date, day_weight) VALUES (NULL, '?', '?', '?')
+//(JavaでBMIを算出)
+//・BMIのデータを格納する
+//UPDATE Mypage SET bmi = ? WHERE date = '?' users_id = '?'
 
-・身長と最新の体重を持ってくる
-SELECT Users.user_id, height, day_weight, Mypage.date FROM Users
-INNER JOIN Mypage
-ON Users.user_id = Mypage.user_id
-WHERE Users.user_id = '?' ORDER BY Mypage.date DESC LIMIT 1
+//・身長と最新の体重を持ってくる
+//SELECT Users.user_id, height, day_weight, Mypage.date FROM Users
+//INNER JOIN Mypage
+//ON Users.user_id = Mypage.user_id
+//WHERE Users.user_id = '?' ORDER BY Mypage.date DESC LIMIT 1
 
-・短期目標達成/未達の判定をする（6/16）
-SELECT goal_count, nogoal_count FROM FirstLongTrans WHERE long_complete
- = 1 and user_id = '?'
-→長期の達成/未達の判定に使う
+//・短期目標達成/未達の判定をする（6/16）
+//SELECT goal_count, nogoal_count FROM FirstLongTrans WHERE long_complete
+// = 1 and user_id = '?'
+//→長期の達成/未達の判定に使う
 
-・長期目標未達成数（アバターの首下の色に使用）
-SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = '?';
-→テスト
-SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = 'id_yamada';
+//・長期目標未達成数（アバターの首下の色に使用）
+//SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = '?';
+//→テスト
+//SELECT COUNT(*) FROM FirstLongTrans WHERE long_complete = 0 OR 1 and user_id = 'id_yamada';
 
-今までの体重
-SELECT date, day_weight FROM Mypage WHERE user_id = ?;
-個々人で挿入した顔画像
-SELECT face_image FROM FaceImage WHERE face_id = ?;
-SELECT face_image FROM FaceImage WHERE face_id = 'janes';
-身長・体重⇒BMIを反映するアバター（の幅）
-SELECT day_weight, height FROM
-Users INNER JOIN Mypage ON
-Users.user_id = Mypage.user_id
-WHERE date = ?
-SELECT day_weight, height FROM
-Users INNER JOIN Mypage ON
-Users.user_id = Mypage.user_id
-WHERE date = '2022-06-14'
+//今までの体重
+//SELECT date, day_weight FROM Mypage WHERE user_id = ?;
+//個々人で挿入した顔画像
+//SELECT face_image FROM FaceImage WHERE face_id = ?;
+//SELECT face_image FROM FaceImage WHERE face_id = 'janes';
+//身長・体重⇒BMIを反映するアバター（の幅）
+//SELECT day_weight, height FROM
+//Users INNER JOIN Mypage ON
+//Users.user_id = Mypage.user_id
+//WHERE date = ?
+//SELECT day_weight, height FROM
+//Users INNER JOIN Mypage ON
+//Users.user_id = Mypage.user_id
+//WHERE date = '2022-06-14'
 
-【パーソナルデータ】
-・画像のパス（ファイル名）とアップロード日とユーザー名を格納
-INSERT INTO HealthImage (id, user_id, up_date, health_image) VALUES
-(NULL, '?', '?', '?' )
-→テスト
-INSERT INTO HealthImage (id, user_id, up_date, health_image) VALUES
-(NULL, 'id_yamada', '2022-06-16', 'aaaa.png' )
+//【パーソナルデータ】
+//・画像のパス（ファイル名）とアップロード日とユーザー名を格納
+//INSERT INTO HealthImage (id, user_id, up_date, health_image) VALUES
+//(NULL, '?', '?', '?' )
+//→テスト
+//INSERT INTO HealthImage (id, user_id, up_date, health_image) VALUES
+//(NULL, 'id_yamada', '2022-06-16', 'aaaa.png' )
 
 ・アップロードされた健康診断画像を表示
 SELECT * FROM HealthImage WHERE user_id = '?' ORDER BY up_date
