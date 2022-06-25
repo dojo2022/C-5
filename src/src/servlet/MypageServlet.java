@@ -18,6 +18,7 @@ import dao.UsersDAO;
 import model.FirstLongMaster;
 import model.FirstLongTrans;
 import model.Result;
+import model.ShortMaster;
 /**
  * Servlet implementation class MypageServlet
  */
@@ -51,19 +52,15 @@ public class MypageServlet extends HttpServlet {
 
 		//		DAOの処理をする（DAOの処理に）引数を渡す
 		MypageDAO mpTgDao = new MypageDAO();
+		Date exe_date1 = new Date(System.currentTimeMillis());
+
 		FirstLongMaster mp_lg_item = mpTgDao.mp_lg_display(user_id);
-//		ShortMaster mp_st_item = mpTgDao.mp_st_display(user_id, exe_date); 短期用
+		ShortMaster mp_st_item = mpTgDao.mp_st_display(user_id, exe_date1);
 
 
 		//		リクエストスコープに短期目標のリストをセット
 		request.setAttribute("mp_lg_item", mp_lg_item);
-//		request.setAttribute("mp_st_item", mp_st_item); 短期用
-
-
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
-		dispatcher.forward(request, response);
-
+		request.setAttribute("mp_st_item", mp_st_item);
 
 		//----------------------------------------------------
 		//一時的に無効にしているだけなので悪しからず
@@ -115,19 +112,9 @@ public class MypageServlet extends HttpServlet {
 		//			//stamp3	false
 		//			// ...
 		//		}
-		//firstlongtransDAOのgoal_countが1増えたらtrue（スタンプ画像表示）
-		//　UPDATE文を呼び出す（updateGoalCount）
-		FirstLongTransDAO fDao2 = new FirstLongTransDAO();
-		Date exe_date = new Date(System.currentTimeMillis());
-		String type = new String(stampcard.getType());
-		boolean updateGoalCount = fDao2.updateGoalCount(user_id,exe_date,type);
-		request.setAttribute("updateGoalCount", updateGoalCount);
 
-		//firstlongtransDAOのnogoal_countが1増えたらfalse（スタンプ押さない）
-		//　UPDATE文を呼び出す（updateNoGoalCount）
-		FirstLongTransDAO fDao3 = new FirstLongTransDAO();
-		boolean updateNoGoalCount = fDao3.updateNoGoalCount(user_id,exe_date,type);
-		request.setAttribute("updateNoGoalCount", updateNoGoalCount);
+
+//		ここにスタンプ「表示」の処理がいる
 
 //-------------------------------------------------------------------------------------------------------------------
 //（安部・小島作業）アバターbody表示
@@ -156,6 +143,9 @@ public class MypageServlet extends HttpServlet {
 //		//その変数をDAOのアップデートに与える
 
 //安部さんがSELECTで持ってきたbmi=idとcolor_idをjspに渡す
+//体アバターが表示できるようになる
+
+
 		// ---------------------------------------------------------------------------------------------------
 //		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
 //		//		リクエストスコープにuser_idを入れる
@@ -168,6 +158,10 @@ public class MypageServlet extends HttpServlet {
 		// パーソナルデータページにフォワードする
 	//	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
 	//	dispatcher.forward(request, response);
+
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -186,38 +180,82 @@ public class MypageServlet extends HttpServlet {
 		String user_id = (String)session.getAttribute("user_id");
 
 		String shortbox = request.getParameter("shortbox");
-		Double day_weight = Double.parseDouble("weight");
+		//チェックボックスがチェックされていると、valueで設定された文字列を取得
+		//チェックボックスでチェックされていない場合、nullを取得
 
+		Double day_weight = Double.parseDouble(request.getParameter("weight"));
+
+		//入力された体重と計算したBMIをデータベースに格納する
 		UsersDAO udao = new UsersDAO();
 		Double height = udao.height(user_id);
-
 
 		Double a = height/100;
 		Double b = a*a;
 		Double bmi = day_weight/b;
 
-
 		MypageDAO mdao = new MypageDAO();
 		mdao.insert_weights(user_id,day_weight,bmi);
 
 
-//		FirstLongTrans tran = new FirstLongTrans();
-//		tran.setGoal_count(12);
-//		tran.setNogoal_count(1);
+
+		//短期目標を達成したか？達成していないか？をデータベースに格納する処理。
+		//shortboxで取得した値によって、処理を判定する。
+		if(shortbox != null) {
+			System.out.println("チェックボックスのチェックが入っているときの処理。");
+			//チェックボックスにチェックが入っている状態
+
+			//goal_countを+1かつ、短期目標の実績を格納する。
+
+			//firstlongtransDAOのgoal_countが1増えたらtrue（Mypageでスタンプ画像表示されるようになるはず）
+			//　UPDATE文を呼び出す（updateGoalCount）
+//			FirstLongTransDAO fDao2 = new FirstLongTransDAO();
+//			Date exe_date = new Date(System.currentTimeMillis());
+//			String type = new String(stampcard.getType());
+//			boolean updateGoalCount = fDao2.updateGoalCount(user_id,exe_date,type);
+//			request.setAttribute("updateGoalCount", updateGoalCount);
+
+
+		}else {
+			System.out.println("チェックボックスのチェックが入っていないときの処理。");
+			//チェックボックスにチェックが入っていない状態
+
+			//nogoal_countを+1かつ、短期目標の実績を格納する。
+
+			//firstlongtransDAOのnogoal_countが1増えたらfalse（Mypageでスタンプが増えないはず）
+			//　UPDATE文を呼び出す（updateNoGoalCount）
+//			FirstLongTransDAO fDao3 = new FirstLongTransDAO();
+//			boolean updateNoGoalCount = fDao3.updateNoGoalCount(user_id,exe_date,type);
+//			request.setAttribute("updateNoGoalCount", updateNoGoalCount);
+
+		}
 
 
 
+		//-----------------------------------------------------------------------------------------------------------------
 ////		達成評価に飛ぶ/飛ばない ＆ ほめページに飛ぶ/励ましページに飛ぶ（兼平）
 //		報告するたびにこの判定が行われるので、一番さいご
+
+
 
 		ResultDAO tran = new ResultDAO();
 		Result goalSet = tran.evaluate(user_id);
 
-		int goal_count = goalSet.getGoal_count();
-		int nogoal_count = goalSet.getNogoal_count();
+//		int goal_count = goalSet.getGoal_count();
+//		int nogoal_count = goalSet.getNogoal_count();
 
-		String title = "";
-		String message = "";
+
+		//Daoで行う事を疑似的にServlet書いている。
+		FirstLongTrans trans = new FirstLongTrans();
+		//FirstLongTrans trans = ●●Dao.select(user_id);
+		trans.setGoal_count(12);
+		trans.setNogoal_count(1);
+
+
+		int goal_count = 12;
+		int nogoal_count = 2;
+
+		String title;
+		String message ;
 
 		if(goal_count == 12 || nogoal_count == 3) {
 
@@ -225,16 +263,19 @@ public class MypageServlet extends HttpServlet {
 				//達成メッセージ
 				title = "長期目標達成おめでとう!!!";
 
-				message = "この二週間よく頑張りました！ あなたはまた1歩健康へと近づいた!\"\r\n"
-						+ "					+ \"	けれどもっともっとできるはずだ…\"\r\n"
-						+ "					+ \"	習慣を続けることに終わりはない! 引き続き頑張っていこう!!!";
-//ここにlong_completeをUPDATEする処理（安部さん）
+				message = "この二週間よく頑張りました！ あなたはまた1歩健康へと近づいた!\r\n"
+						+ "けれどもっともっとできるはずだ…\r\n"
+						+ "習慣を続けることに終わりはない! 引き続き頑張っていこう!!!";
+				//ここにlong_completeを2にUPDATEする処理（安部さん）
+				//long_complete=0 OR 1の数を数える
+				//その数をusersテーブルのcolor_idにUPDATEする
+
 			}else {
 				//未達成メッセージ
 				title = "残念、次回は頑張ろう！";
-				message = "\"今回は失敗しちゃったけど、諦めちゃだめだよ！\"\r\n"
-						+ "					+ \"	また明日から頑張ろう！\";";
-
+				message = "今回は失敗しちゃったけど、諦めちゃだめだよ！\r\n"
+						+ "また明日から頑張ろう！";
+				//ここにlong_completeを0にUPDATEする処理（安部さん）
 			}
 
 			request.setAttribute("title", title);
