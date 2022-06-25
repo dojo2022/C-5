@@ -234,7 +234,7 @@ up_date DATE NOT NULL,
 face_image VARCHAR(200)
 );
 INSERT INTO Face_image(id,user_id,face_id,up_date,face_image)
-VALUES(null,'id_abe','null',CURDATE(),'kao.png');
+VALUES(null,'id_taro',null,CURDATE(),'kao.png');
 
 
 
