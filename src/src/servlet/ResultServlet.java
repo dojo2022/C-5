@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.AnimationDAO;
 import dao.AvaterDAO;
@@ -74,11 +73,11 @@ public class ResultServlet extends HttpServlet {
 //---------------------------------------------------------------------------------------------
 //		（安部）
 //		アバターを表示する
-		HttpSession session = request.getSession();
-		String user_id = (String)session.getAttribute("user_id");
+//		HttpSession session = request.getSession();
+//		String user_id = (String)session.getAttribute("user_id");
 
 		AvaterDAO avaDao = new AvaterDAO();
-		Users ids = avaDao.select_bodyids(user_id);
+		Users ids = avaDao.select_bodyids(result_id);
 
 		int bmi_id =ids.getBmi_id();
 		int color_id =ids.getColor_id();
