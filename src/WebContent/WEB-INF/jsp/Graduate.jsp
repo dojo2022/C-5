@@ -24,7 +24,7 @@
 		<div class="photo-group">
 			<div class="photo avater-first is-show-avater">初日</div>
 			<div class="photo avater-ideal">
-			<img class="idealface" src="/health_management/images/${firstFaceImage}" alt="顔">
+			<img class="idealface" src="/health_management/images/${firstFaceImage.face_image}" alt="顔">
 				<img class="idealbody" src="/health_management/images/body4_8.png"
 					alt="体">
 			</div>
@@ -35,7 +35,7 @@
 		<div class="photo-group2">
 			<div class="photo avater-first is-show-avater">現在</div>
 			<div class="photo avater-ideal">
-			<img class="idealface2" src="/health_management/images/kao.png" alt="顔">
+			<img class="idealface2" src= "/health_management/images/${lastFaceImage.face_image}" alt="顔">
 				<img class="idealbody2" src="/health_management/images/body1_0.png"
 					alt="体">
 			</div>

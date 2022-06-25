@@ -34,15 +34,15 @@ public class GraduateServlet extends HttpServlet {
 //		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
 
-
+		FaceImageDAO fDao = new FaceImageDAO();
+		AvaterHead firstFaceImage = fDao.selectFirst(user_id);
+		request.setAttribute("firstFaceImage", firstFaceImage);
 
 		FaceImageDAO lDao = new FaceImageDAO();
 		AvaterHead lastFaceImage = lDao.selectLast(user_id);
 		request.setAttribute("lastFaceImage", lastFaceImage);
 
-		FaceImageDAO fDao = new FaceImageDAO();
-		AvaterHead firstFaceImage = fDao.selectFirst(user_id);
-		request.setAttribute("firstFaceImage", firstFaceImage);
+
 		// 卒業ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Graduate.jsp");
 				dispatcher.forward(request, response);
