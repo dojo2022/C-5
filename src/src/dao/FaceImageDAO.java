@@ -84,7 +84,7 @@ public class FaceImageDAO {
 		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 		// SQL文を準備する
-		String sql = "SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id=? order by faceimage.image_date asc LIMIT 1";
+		String sql = "SELECT user_id, face_image, up_date FROM FACEIMAGE WHERE user_id=? order by faceimage.up_date asc LIMIT 1";
 
 		// SQLインジェクション防ぐ
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -102,7 +102,7 @@ public class FaceImageDAO {
 			firstFaceImage = new AvaterHead();
 			firstFaceImage.setUser_id(rsFirstFace.getString("user_id"));
 			firstFaceImage.setFace_image(rsFirstFace.getString("face_image"));
-			firstFaceImage.setImage_date(rsFirstFace.getDate("image_date"));
+			firstFaceImage.setUp_date(rsFirstFace.getDate("up_date"));
 			//stampcard.add(scdata);
 		}
 
@@ -131,5 +131,76 @@ public class FaceImageDAO {
 	// 結果を返す
 	return firstFaceImage;
 	}
+
+		public boolean insertFace() {//未定
+			Connection conn = null;
+			boolean result = false;
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+
+				// SQL文を準備する<ここを改造する>
+				 String sql ="INSERT INTO Face_image(id,user_id,face_id,up_date,face_image) VALUES(null,user_id,null,null,?)";
+
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				// SQL文を完成させる
+				if (users.getUser_id() != null && !users.getUser_id().equals("")) {
+					pStmt.setString(1, users.getUser_id());
+				}
+				else {
+					pStmt.setString(1, null);
+				}
+				if (users.getPassword() != null && !users.getPassword().equals("")) {
+					pStmt.setString(2, users.getPassword());
+				}
+				else {
+					pStmt.setString(2, null);
+				}
+				if (users.getUser_name() != null && !users.getUser_name().equals("")) {
+					pStmt.setString(3, users.getUser_name());
+				}
+				else {
+					pStmt.setString(3, null);
+				}
+
+				pStmt.setDouble(4, users.getHeight());
+
+				pStmt.setDouble(5, users.getWeight());
+
+
+
+
+
+				// SQL文を実行する
+				if (pStmt.executeUpdate() == 1) {
+					result = true;
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			// 結果を返す
+			return result;
+		}
 
 }

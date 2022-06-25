@@ -213,12 +213,12 @@ values (null, 1,7, '101637.png') ;
 CREATE TABLE Face_image(
 id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 user_id VARCHAR (20),
-face_id VARCHAR(20) NOT NULL,
+face_id VARCHAR(20) AUTO_INCREMENT NOT NULL,
 up_date DATE NOT NULL,
 face_image VARCHAR(200)
 );
 INSERT INTO Face_image(id,user_id,face_id,up_date,face_image)
-VALUES(null,'id_abe','aa1','2022-06-16','111000.png');
+VALUES(null,'id_abe','null',CURDATE(),'111000.png');
 
 SELECT・INSERT・UPDATE文
 【ログイン】
