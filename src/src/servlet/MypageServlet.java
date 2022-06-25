@@ -202,12 +202,25 @@ public class MypageServlet extends HttpServlet {
 
 
 
-
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
-		dispatcher.forward(request, response);
-
-
+////		達成評価に飛ぶ/飛ばない ＆ ほめページに飛ぶ/励ましページに飛ぶ（兼平）
+//		報告するたびにこの判定が行われるので、
+//		if() {
+////			達成評価に飛ぶ
+//
+//			if() {
+//				//達成メッセージ
+//			}else {
+//				//未達成メッセージ
+//
+//			}
+//
+//			//result.jspへフォワード
+//		} else {
+////			達成評価に飛ばず、マイページのまま
+//			//mypage.jspへフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+			dispatcher.forward(request, response);
+//}
 
 	}
 

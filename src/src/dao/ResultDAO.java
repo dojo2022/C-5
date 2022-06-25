@@ -45,6 +45,7 @@ public class ResultDAO {
 				goalSet.setLong_complete(rs.getInt("long_complete"));
 			}
 		}
+
 		catch (SQLException e) {
 			e.printStackTrace();
 			goalSet = null;

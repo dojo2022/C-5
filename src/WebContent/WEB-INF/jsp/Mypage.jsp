@@ -67,7 +67,6 @@
 		<!-- <form method="POST" action="/health_management/ResultServlet" id="report"> -->
 		<ul class=first>
 			<li>長期目標 :${mp_lg_item.long_goal}</li>
-			<li>${datentime}</li>
 			<li>短期目標:<input type="checkbox" name="shortbox" value="check"></li>
 
 			<li>体重<input type="text" name="weight" value="">kg <input
