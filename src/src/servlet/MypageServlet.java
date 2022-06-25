@@ -13,9 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import dao.FirstLongTransDAO;
 import dao.MypageDAO;
+import dao.ResultDAO;
 import dao.UsersDAO;
 import model.FirstLongMaster;
 import model.FirstLongTrans;
+import model.Result;
 /**
  * Servlet implementation class MypageServlet
  */
@@ -201,9 +203,20 @@ public class MypageServlet extends HttpServlet {
 		mdao.insert_weights(user_id,day_weight,bmi);
 
 
+//		FirstLongTrans tran = new FirstLongTrans();
+//		tran.setGoal_count(12);
+//		tran.setNogoal_count(1);
+
+
 
 ////		達成評価に飛ぶ/飛ばない ＆ ほめページに飛ぶ/励ましページに飛ぶ（兼平）
-//		報告するたびにこの判定が行われるので、
+//		報告するたびにこの判定が行われるので、一番さいご
+
+		ResultDAO tran = new ResultDAO();
+		Result goalSet = tran.evaluate(user_id);
+
+		int goal_count = goalSet.getGoal_count();
+
 //		if() {
 ////			達成評価に飛ぶ
 //
@@ -217,9 +230,10 @@ public class MypageServlet extends HttpServlet {
 //			//result.jspへフォワード
 //		} else {
 
-		response.sendRedirect("/health_management/ShortChecklistServlet");
+////	達成評価に飛ばず、マイページのまま
+		response.sendRedirect("/health_management/MypageServlet");
 
-////			達成評価に飛ばず、マイページのまま
+
 
 
 //}
