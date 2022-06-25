@@ -119,7 +119,7 @@ public class MypageServlet extends HttpServlet {
 		//　UPDATE文を呼び出す（updateGoalCount）
 		FirstLongTransDAO fDao2 = new FirstLongTransDAO();
 		Date exe_date = new Date(System.currentTimeMillis());
-		String type = new String();
+		String type = new String(stampcard.getType());
 		boolean updateGoalCount = fDao2.updateGoalCount(user_id,exe_date,type);
 		request.setAttribute("updateGoalCount", updateGoalCount);
 
