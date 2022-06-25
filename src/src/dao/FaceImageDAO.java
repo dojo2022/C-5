@@ -81,7 +81,7 @@ public class FaceImageDAO {
 		Class.forName("org.h2.Driver");
 
 		// データベースに接続する
-		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 		// SQL文を準備する
 		String sql = "SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id=? order by faceimage.image_date asc LIMIT 1";
