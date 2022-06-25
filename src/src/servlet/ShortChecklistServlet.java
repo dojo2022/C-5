@@ -41,7 +41,6 @@ public class ShortChecklistServlet extends HttpServlet {
 		ShortMasterDAO StmDao = new ShortMasterDAO();
 		List<ShortMaster> shortList = StmDao.short_display(user_id);
 
-
 		//		リクエストスコープに短期目標のリストをセット
 		request.setAttribute("shortList", shortList);
 

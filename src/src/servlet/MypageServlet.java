@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import dao.FirstLongTransDAO;
 import dao.MypageDAO;
 import dao.UsersDAO;
+import model.FirstLongMaster;
 import model.FirstLongTrans;
-import model.ShortMaster;
 /**
  * Servlet implementation class MypageServlet
  */
@@ -41,19 +41,22 @@ public class MypageServlet extends HttpServlet {
 			return;
 		}
 
-//		短期・長期目標表示（兼平）
+//		長期・短期目標表示（兼平）
 
 		//		リクエストスコープにuser_idを入れる 上記で取得済み
 		request.setAttribute("user_id", user_id);
 
 
 		//		DAOの処理をする（DAOの処理に）引数を渡す
-		MypageDAO mpStmDao = new MypageDAO();
-		ShortMaster mp_st_item = mpStmDao.mp_st_display(user_id);
+		MypageDAO mpTgDao = new MypageDAO();
+		FirstLongMaster mp_lg_item = mpTgDao.mp_lg_display(user_id);
+//		ShortMaster mp_st_item = mpTgDao.mp_st_display(user_id, exe_date); 短期用
 
 
 		//		リクエストスコープに短期目標のリストをセット
-		request.setAttribute("mp_st_item", mp_st_item);
+		request.setAttribute("mp_lg_item", mp_lg_item);
+//		request.setAttribute("mp_st_item", mp_st_item); 短期用
+
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
