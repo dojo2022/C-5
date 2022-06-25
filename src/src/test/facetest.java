@@ -11,10 +11,10 @@ String user_id ="id_taro";
 ////		リクエストスコープにuser_idを入れる
 //request.setAttribute("user_id",user_id);
 
-FaceImageDAO rDao = new FaceImageDAO();
+FaceImageDAO lDao = new FaceImageDAO();
 FaceImageDAO fDao = new FaceImageDAO();
 //インスタンスの生成
-AvaterHead lhead  = rDao.selectLast(user_id);
+AvaterHead lhead  = lDao.selectLast(user_id);
 AvaterHead fhead  = fDao.selectFirst(user_id);
 // select()のテスト
 	//request.setAttribute("result", goalSet);
