@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
 		<div class="photo-group">
 			<div class="photo avater-first is-show-avater">初日</div>
 			<div class="photo avater-ideal">
-			<img class="idealface" src="/health_management/images/kao.png" alt="顔">
+			<img class="idealface" src="/health_management/images/${firstFaceImage}" alt="顔">
 				<img class="idealbody" src="/health_management/images/body4_8.png"
 					alt="体">
 			</div>
