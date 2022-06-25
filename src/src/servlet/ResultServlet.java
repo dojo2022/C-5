@@ -9,11 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.AnimationDAO;
+import dao.AvaterDAO;
 import dao.FirstLongTransDAO;
 import model.FirstLongTrans;
 import model.Mypage;
+import model.Users;
+
 /**
  * Servlet implementation class ResultServlet
  */
@@ -63,6 +67,25 @@ public class ResultServlet extends HttpServlet {
 		List<Mypage> animationList = aDao.select(result_id);
 
 		request.setAttribute("animationList", animationList);
+//---------------------------------------------------------------------------------------------
+//		（安部）
+//		アバターを表示する
+		HttpSession session = request.getSession();
+		String user_id = (String)session.getAttribute("user_id");
+
+		AvaterDAO avaDao = new AvaterDAO();
+		Users ids = avaDao.select_bodyids(user_id);
+
+		int bmi_id =ids.getBmi_id();
+		int color_id =ids.getColor_id();
+
+		request.setAttribute("bmi_id", bmi_id);
+		request.setAttribute("color_id", color_id);
+
+
+
+
+
 		// 達成評価ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
 		dispatcher.forward(request, response);
