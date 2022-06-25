@@ -4,7 +4,7 @@ SQL
 テーブルを削除
 DROP TABLE IF EXISTS Users;
 
-※Usersテーブル
+Usersテーブル
 CREATE TABLE Users (
 id INT PRIMARY KEY AUTO_INCREMENT,
 user_id VARCHAR(20) UNIQUE NOT NULL,
@@ -18,6 +18,8 @@ color_id INT default 0
 テストデータ格納
 INSERT INTO Users values (NULL, 'id_kanehira', 'aaaa', 'name_Kanehira', 100, 10, 2, 4);
 INSERT INTO Users values (NULL, 'id_saburi', 'aaaa', 'aaa', 100, 10, default, default);
+※
+INSERT INTO Users values (NULL, 'id_taro', 'pass', 'tarotaro', 170, 70, default, default);
 
 マイページ
 
@@ -29,7 +31,39 @@ day_weight DOUBLE,
 bmi DOUBLE
 );
 INSERT INTO Mypage(id,user_id,date,day_weight,bmi)
-VALUES(null,'janes','2022-06-14',120,22);
+VALUES(null,'janes','2022-06-14',120.8,22);
+※
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-01',70.0,24.22);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-02',69.4,24.01);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-03',69.3,23.97);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-04',69.4,24.01);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-05',69.6,24.08);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-06',69.2,23.94);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-07',69.0,23.87);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-08',68.4,23.66);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-09',68.6,23.73);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-10',68.3,23.63);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-11',68.1,23.56);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-12',68.1,23.56);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-13',68.0,23.52);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-14',67.7,23.42);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-15',67.7,23.42);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-16',67.9,23.49);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-17',68.0,23.52);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-18',67.3,23.28);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-19',67.1,23.21);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-20',67.4,23.32);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-21',66.9,23.14);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-22',66.8,23.11);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-23',66.7,23.07);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-24',66.4,22.97);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-25',66.2,22.94);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-26',66.5,23.01);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-27',66.2,22.90);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-28',65.9,22.80);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-29',65.7,22.73);
+INSERT INTO Mypage VALUES (null,'id_taro','2022-06-30',64.1,22.17);
+
 
 初期長期マスターテーブル
 
@@ -60,10 +94,14 @@ nogoal_count INT NOT NULL DEFAULT 0,
 date DATETIME NOT NULL
 );
 
-※INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'veg',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
-INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'fat',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
-INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'cal',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
-INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'motion',DEFAULT,DEFAULT,DEFAULT,'2022-06-14');
+
+※
+INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'veg',2,12,1,'2022-06-13');
+INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'salt',2,12,0,'2022-06-25');
+INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'cal',0,0,0,'2022-06-01');
+INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'sleep',1,4,1,'2022-06-30');
+INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'motion',0,0,0,'2022-06-01');
+
 
 短期マスタテーブル
 
@@ -101,7 +139,7 @@ INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'motion',DEFAULT,DEFA
 	INSERT INTO ShortMaster values (23,'motion',2,'絶対に階段を使うんだ！');
 	INSERT INTO ShortMaster values (24,'motion',3,'腹筋と腕立てを50回やったるぜ！');
 
-  ※短期テストCREATE短期トランザクションテーブル
+  短期テストCREATE短期トランザクションテーブル
   CREATE TABLE ShortTrans(
   id INT PRIMARY KEY AUTO_INCREMENT not null,
   user_id VARCHAR(20) not null,
@@ -113,6 +151,39 @@ INSERT INTO FirstLongTrans VALUES(null,'id_yamada',DEFAULT,'motion',DEFAULT,DEFA
   )
   短期テストINSERTテスト
   INSERT INTO ShortTrans values ( NULL, 'id_kanehira', '2022-06-14', 1, 'veg', 1,  DEFAULT);
+
+※
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-01',1,'veg',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-02',1,'veg',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-03',1,'veg',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-04',1,'veg',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-05',1,'veg',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-06',1,'veg',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-07',1,'veg',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-08',1,'veg',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-09',1,'veg',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-10',1,'veg',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-11',1,'veg',3,2);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-12',1,'veg',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-13',1,'veg',3,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-14',1,'salt',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-15',1,'salt',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-16',1,'salt',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-17',1,'salt',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-18',1,'salt',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-20',1,'salt',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-21',1,'salt',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-22',1,'salt',3,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-23',1,'salt',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-24',1,'salt',3,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-25',1,'salt',3,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-26',1,'salt',3,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-27',1,'sleep',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-28',1,'sleep',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-29',1,'slepp',3,2);
+INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-30',1,'slepp',2,1);
+
+
 
 
 健康診断画像ページ
