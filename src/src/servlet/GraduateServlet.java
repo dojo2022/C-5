@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.FaceImageDAO;
+import model.AvaterHead;
 /**
  * Servlet implementation class GraduateServlet
  */
@@ -28,7 +30,7 @@ public class GraduateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*String user_id ="id_taro"; //(String)session.getAttribute("user_id");//
+		String user_id ="id_taro"; //(String)session.getAttribute("user_id");//
 //		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
 
@@ -38,7 +40,7 @@ public class GraduateServlet extends HttpServlet {
 
 		FaceImageDAO lDao = new FaceImageDAO();
 		AvaterHead lastFaceImage = lDao.selectLast(user_id);
-		request.setAttribute("lastFaceImage", lastFaceImage);*/
+		request.setAttribute("lastFaceImage", lastFaceImage);
 
 
 		// 卒業ページにフォワードする
