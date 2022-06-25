@@ -144,7 +144,7 @@ public class FaceImageDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 				// SQL文を準備する<ここを改造する>
-				 String sql ="INSERT INTO Face_image(id,user_id,face_id,up_date,face_image) VALUES(null,user_id,null,null,?)";
+				 String sql ="INSERT INTO Face_image(id,user_id,face_id,up_date,face_image) VALUES(null,user_id,null,CURDATE(),?)";
 
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
