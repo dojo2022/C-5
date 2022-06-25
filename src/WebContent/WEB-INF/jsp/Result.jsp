@@ -156,7 +156,7 @@
 				<img class="idealface" src="/health_management/images/kao.png"
 					alt="顔"> <img class="idealbody"
 					src="/health_management/images/body4_8.png" alt="体">
-				<!--images/body${body.bmi_id}_${body.count}.png-->
+				<!--images/body${body.bmi_id}_${body.color_id}.png-->
 
 			</div>
 		</div>
