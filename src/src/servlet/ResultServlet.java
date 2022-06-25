@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import dao.AnimationDAO;
 import dao.AvaterDAO;
+import dao.FaceImageDAO;
 import dao.FirstLongTransDAO;
+import model.AvaterHead;
 import model.FirstLongTrans;
 import model.Mypage;
 import model.Users;
@@ -30,7 +32,9 @@ public class ResultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//-----
-		//ログインしていない状態なので便宜上id_kanehira
+
+//face result_idはログインセッションに合わせて統合
+		//ログインしていない状態なので便宜上(金指)
 		String result_title="";
 		String message="";
 		String result_id ="id_taro"; //(String)session.getAttribute("user_id");//
@@ -56,11 +60,11 @@ public class ResultServlet extends HttpServlet {
 		}
 		request.setAttribute("result_title",result_title);
 		request.setAttribute("message", message);
-		//------------------------------ 達成評価ページにフォワードする
+		//------------------------------ 達成評価ページにフォワードする*/
 		/*	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
-						dispatcher.forward(request, response);*/
+						dispatcher.forward(request, response);
 		//String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
-		//		リクエストスコープにuser_idを入れる 疑似的にuser_id入れてるので悪しからず
+		//		リクエストスコープにuser_idを入れる 疑似的にuser_id入れてるので悪しからず*/
 		request.setAttribute("user_id", result_id);
 
 		AnimationDAO aDao = new AnimationDAO();
@@ -82,7 +86,18 @@ public class ResultServlet extends HttpServlet {
 		request.setAttribute("bmi_id", bmi_id);
 		request.setAttribute("color_id", color_id);
 
+//（金指）アバターの顔表示
+		String face_id ="id_taro"; //(String)session.getAttribute("user_id");//
+//		リクエストスコープにuser_idを入れる
+		request.setAttribute("user_id", face_id);
 
+		FaceImageDAO fDao = new FaceImageDAO();
+		AvaterHead firstFaceImage = fDao.selectFirst(face_id);
+		request.setAttribute("firstFaceImage", firstFaceImage);
+
+		FaceImageDAO lDao = new FaceImageDAO();
+		AvaterHead lastFaceImage = lDao.selectLast(face_id);
+		request.setAttribute("lastFaceImage", lastFaceImage);
 
 
 

@@ -30,6 +30,9 @@ public class GraduateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//HttpSession session = request.getSession();
+		//String user_id = (String)session.getAttribute("user_id");
+
 		String user_id ="id_taro"; //(String)session.getAttribute("user_id");//
 //		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
