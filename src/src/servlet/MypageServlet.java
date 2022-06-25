@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,12 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.AnimationDAO;
+import dao.FaceImageDAO;
 import dao.FirstLongTransDAO;
 import dao.MypageDAO;
 import dao.ResultDAO;
 import dao.UsersDAO;
+import model.AvaterHead;
 import model.FirstLongMaster;
 import model.FirstLongTrans;
+import model.Mypage;
 import model.Result;
 import model.ShortMaster;
 /**
@@ -115,6 +120,13 @@ public class MypageServlet extends HttpServlet {
 
 
 //		ここにスタンプ「表示」の処理がいる
+//（金指）アバターの顔の表示face
+
+		FaceImageDAO lDao = new FaceImageDAO();
+		AvaterHead lastFaceImage = lDao.selectLast(user_id);
+		request.setAttribute("lastFaceImage", lastFaceImage);
+
+
 
 //-------------------------------------------------------------------------------------------------------------------
 //（安部・小島作業）アバターbody表示
@@ -151,10 +163,10 @@ public class MypageServlet extends HttpServlet {
 //		//		リクエストスコープにuser_idを入れる
 //		request.setAttribute("user_id", animation_id);
 
-//		AnimationDAO aDao = new AnimationDAO();
-//		List<Mypage> animationList = aDao.select(animation_id);
+		AnimationDAO aDao = new AnimationDAO();
+		List<Mypage> animationList = aDao.select(user_id);
 
-	//	request.setAttribute("animationList", animationList);
+		request.setAttribute("animationList", animationList);
 		// パーソナルデータページにフォワードする
 	//	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
 	//	dispatcher.forward(request, response);

@@ -22,7 +22,7 @@ public class FaceImageDAO {
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 				// SQL文を準備する
-				String sql = "SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id=? order by faceimage.image_date desc LIMIT 1";
+				String sql = "SELECT user_id, face_image, up_date FROM FACE_IMAGE WHERE user_id=? order by face_image.up_date desc LIMIT 1";
 
 				// SQLインジェクション防ぐ
 				PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -40,7 +40,7 @@ public class FaceImageDAO {
 					lastFaceImage = new AvaterHead();
 					lastFaceImage.setUser_id(rsLastFace.getString("user_id"));
 					lastFaceImage.setFace_image(rsLastFace.getString("face_image"));
-					lastFaceImage.setImage_date(rsLastFace.getDate("image_date"));
+					lastFaceImage.setUp_date(rsLastFace.getDate("up_date"));
 					//stampcard.add(scdata);
 				}
 
@@ -84,7 +84,7 @@ public class FaceImageDAO {
 		conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 		// SQL文を準備する
-		String sql = "SELECT user_id, face_image, up_date FROM FACEIMAGE WHERE user_id=? order by faceimage.up_date asc LIMIT 1";
+		String sql = "SELECT user_id, face_image, up_date FROM FACE_IMAGE WHERE user_id=? order by faceimage.up_date asc LIMIT 1";
 
 		// SQLインジェクション防ぐ
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class FaceImageDAO {
 	return firstFaceImage;
 	}
 
-		public boolean insertFace() {//未定
+		/*public boolean insertFace() {//未定
 			Connection conn = null;
 			boolean result = false;
 
@@ -201,6 +201,6 @@ public class FaceImageDAO {
 
 			// 結果を返す
 			return result;
-		}
+		}*/
 
 }

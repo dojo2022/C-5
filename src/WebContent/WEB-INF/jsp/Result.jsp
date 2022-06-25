@@ -153,9 +153,8 @@
 			</div>
 			<div class="photo avater-first is-show-avater"></div>
 			<div class="photo avater-ideal">
-				<img class="idealface" src="/health_management/images/${lastFaceImage.face_image}"
-					alt="顔"> <img class="idealbody"
-					src="/health_management/images/body${body.bmi_id}_${body.color_id}.png" alt="体">
+				<img class="idealface" src="/health_management/images/${lastFaceImage.face_image}"alt="顔">
+				<img class="idealbody" src="/health_management/images/body${body.bmi_id}_${body.color_id}.png" alt="体">
 
 
 			</div>

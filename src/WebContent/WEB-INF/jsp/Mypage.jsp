@@ -51,7 +51,11 @@
 		<!--タブを切り替えて表示するコンテンツ-->
 		<div class="photo-group">
 			<div class="photo avater-now is-show-avater">
-				<input type="file" name="newface" accept="/health_management/images, kao.png">
+			<form method="POST" action="/health_management/MypageServlet">
+			<input type="file" name="newface" accept="/health_management/images">
+			<input type="submit" name="report" value="報告">
+			</form>
+				<img class="idealface" src="/health_management/images/${lastFaceImage.face_image}">
 				<img class="idealbody"
 						src="/health_management/images/body1_0.png" alt="体">
 			</div>
