@@ -123,8 +123,10 @@ public class FirstLongTransDAO {
 	}
 
 
-	//スタンプカード：スタンプを押すためのデータ取得する
+
 	//-------------------------------------------------------------------------------------
+// スタンプカード：スタンプを押すためのデータ取得する
+
 	// 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
 	//selectで検索する（SQLの命令と同じ）
 	public FirstLongTrans select(String user_id) {
@@ -136,7 +138,7 @@ public class FirstLongTransDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 			// SQL文を準備する
 			String sql = "SELECT user_id,counter,type,long_complete,goal_count,nogoal_count FROM FirstLongTrans WHERE user_id=? and long_complete=1";
@@ -200,7 +202,7 @@ public class FirstLongTransDAO {
 		try {
 			// JDBC ドライバを読み込む
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 			// SQL文を準備する
 			String sql1 = "UPDATE ShortTrans SET short_complete = 1 WHERE user_id = ? and exe_date =?";
@@ -253,6 +255,10 @@ public class FirstLongTransDAO {
 		}
 		return result;
 	}
+
+
+
+
 	public boolean updateNoGoalCount(String user_id ,Date exe_date, String type) {
 		boolean result = false;
 		Connection conn = null;
@@ -311,5 +317,4 @@ public class FirstLongTransDAO {
 		}
 		return result;
 	}
-
 }
