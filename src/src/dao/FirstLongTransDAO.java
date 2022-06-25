@@ -239,10 +239,6 @@ public class FirstLongTransDAO {
 			//int,double,boolean,char・・・・
 			result = false;
 		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			result = false;
-		}
 		finally {
 			// データベースを切断
 			if (conn != null) {

@@ -50,10 +50,15 @@
 
 		<!--タブを切り替えて表示するコンテンツ-->
 		<div class="photo-group">
-			<div class="photo avater-now is-show-avater">現在</div>
+			<div class="photo avater-now is-show-avater">
+				<input type="file" name="newface" accept="/health_management/images, kao.png">
+				<img class="idealbody"
+						src="/health_management/images/body1_0.png" alt="体">
+			</div>
 			<div class="photo avater-ideal">
 				<img class="idealface" src="/health_management/images/kao.png"
-					alt="顔"> <img class="idealbody"
+					alt="顔">
+				<img class="idealbody"
 					src="/health_management/images/body1_0.png" alt="体">
 			</div>
 		</div>

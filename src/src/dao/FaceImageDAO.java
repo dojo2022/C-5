@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.AvaterHead;
-
+//現状、おそらくDAOに問題あり
 public class FaceImageDAO {
 	// 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
 		//selectで検索する（SQLの命令と同じ）
@@ -23,7 +23,7 @@ public class FaceImageDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
 
 				// SQL文を準備する
-				String sql = "SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id =? order by faceimage.image_date desc LIMIT 1";
+				String sql = "SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id=? order by faceimage.image_date desc LIMIT 1";
 
 				// SQLインジェクション防ぐ
 				PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -40,8 +40,8 @@ public class FaceImageDAO {
 					//FirstLongTrans scdata = new FirstLongTrans();
 					lastFaceImage = new AvaterHead();
 					lastFaceImage.setUser_id(rsLastFace.getString("user_id"));
-					lastFaceImage.setFace_image(rsLastFace.getString("counter"));
-					lastFaceImage.setUp_date(rsLastFace.getDate("counter"));
+					lastFaceImage.setFace_image(rsLastFace.getString("face_image"));
+					lastFaceImage.setImage_date(rsLastFace.getDate("image_date"));
 					//stampcard.add(scdata);
 				}
 
@@ -73,7 +73,7 @@ public class FaceImageDAO {
 
 
 
-public AvaterHead selectFitst(String user_id) {
+		public AvaterHead selectFirst(String user_id) {
 	Connection conn = null;
 	//List<FirstLongTrans> stampcard1 = null;
 	AvaterHead firstFaceImage= null;
@@ -85,16 +85,16 @@ public AvaterHead selectFitst(String user_id) {
 		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
 
 		// SQL文を準備する
-		String sql2 = "SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id =? order by faceimage.image_date asc LIMIT 1";
+		String sql = "SELECT user_id, face_image, image_date FROM FACEIMAGE WHERE user_id=? order by faceimage.image_date asc LIMIT 1";
 
 		// SQLインジェクション防ぐ
-		PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+		PreparedStatement pStmt = conn.prepareStatement(sql);
 
 		// SQL文を完成させる
-		pStmt2.setString(1,user_id);
+		pStmt.setString(1,user_id);
 
 		// SQL文を実行し、結果表を取得する
-		ResultSet rsFirstFace = pStmt2.executeQuery();
+		ResultSet rsFirstFace = pStmt.executeQuery();
 
 		// 結果表をコレクションにコピーする
 		// FirstLongTransでjavabeansのコンストラクタを全部順番通り呼ぶ
@@ -102,8 +102,8 @@ public AvaterHead selectFitst(String user_id) {
 			//FirstLongTrans scdata = new FirstLongTrans();
 			firstFaceImage = new AvaterHead();
 			firstFaceImage.setUser_id(rsFirstFace.getString("user_id"));
-			firstFaceImage.setFace_image(rsFirstFace.getString("counter"));
-			firstFaceImage.setUp_date(rsFirstFace.getDate("counter"));
+			firstFaceImage.setFace_image(rsFirstFace.getString("face_image"));
+			firstFaceImage.setImage_date(rsFirstFace.getDate("image_date"));
 			//stampcard.add(scdata);
 		}
 
