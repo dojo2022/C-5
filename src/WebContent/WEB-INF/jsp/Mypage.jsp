@@ -67,7 +67,7 @@
 
 	<!-- 目標達成報告フォーム -------------------------------------------- -->
 
-	<form method="POST" action="/health_management/ShortChecklistServlet"
+	<form method="POST" action="/health_management/MypageServlet"
 		id="report">
 		<!-- <form method="POST" action="/health_management/ResultServlet" id="report"> -->
 		<ul class=first>

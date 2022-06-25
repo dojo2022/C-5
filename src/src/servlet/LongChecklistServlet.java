@@ -95,7 +95,9 @@ public class LongChecklistServlet extends HttpServlet {
 
 		//処理部
 		FirstLongTransDAO lng_upd = new FirstLongTransDAO();
-		lng_upd.long_update(user_id, long_checked);
+
+//		もしUPDATEが成功しなかったら長期目標チェックリスト画面へと戻る処理を書きました。
+		if(lng_upd.long_update(user_id, long_checked)){
 //		方法②
 //		lng_upd.long_update(long_checked[0]);
 
@@ -105,7 +107,11 @@ public class LongChecklistServlet extends HttpServlet {
 //		URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる
 		response.sendRedirect("/health_management/ShortChecklistServlet");
 
-
+		}
+		else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LongChecklist.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 }
 

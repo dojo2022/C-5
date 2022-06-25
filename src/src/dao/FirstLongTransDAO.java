@@ -88,7 +88,7 @@ public class FirstLongTransDAO {
 
 			//			SQL文を準備する
 			//			insertする項目だけを記述する。
-			String sql = "UPDATE FirstLongTrans SET long_complete = 1 WHERE user_id = ? and type  = ?";
+			String sql = "UPDATE FirstLongTrans SET long_complete = 1,date = CURDATE() WHERE user_id = ? and type  = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//			SQL文を完成させる

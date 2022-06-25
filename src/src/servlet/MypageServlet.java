@@ -185,7 +185,7 @@ public class MypageServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
 
-//		String shortbox = request.getParameter("shortbox");
+		String shortbox = request.getParameter("shortbox");
 		Double day_weight = Double.parseDouble("weight");
 
 		UsersDAO udao = new UsersDAO();
@@ -216,10 +216,12 @@ public class MypageServlet extends HttpServlet {
 //
 //			//result.jspへフォワード
 //		} else {
+
+		response.sendRedirect("/health_management/ShortChecklistServlet");
+
 ////			達成評価に飛ばず、マイページのまま
-//			//mypage.jspへフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
-			dispatcher.forward(request, response);
+
+
 //}
 
 	}
