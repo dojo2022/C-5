@@ -20,7 +20,7 @@ public class AvaterDAO
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/health_management", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 			// SQL文を準備する
 			String sql = "SELECT bmi_id,color_id FROM Users WHERE user_id=?";
@@ -39,7 +39,7 @@ public class AvaterDAO
 				//FirstLongTrans scdata = new FirstLongTrans();
 				ids = new Users();
 				ids.setBmi_id(rs.getInt("bmi_id"));
-				ids.setColor_id(rs.getInt("bmi_id"));
+				ids.setColor_id(rs.getInt("color_id"));
 
 
 			}

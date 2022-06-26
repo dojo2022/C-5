@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.AnimationDAO;
+import dao.AvaterDAO;
 import dao.FaceImageDAO;
 import dao.FirstLongTransDAO;
 import dao.MypageDAO;
@@ -24,6 +25,7 @@ import model.FirstLongTrans;
 import model.Mypage;
 import model.Result;
 import model.ShortMaster;
+import model.Users;
 /**
  * Servlet implementation class MypageServlet
  */
@@ -67,21 +69,8 @@ public class MypageServlet extends HttpServlet {
 		request.setAttribute("mp_lg_item", mp_lg_item);
 		request.setAttribute("mp_st_item", mp_st_item);
 
-		//----------------------------------------------------
-		//一時的に無効にしているだけなので悪しからず
-
-
-		//Users user = new Users(user_id);
-		//session.setAttribute("user_id", user);
-		//session.setAttribute("user_id", user_id);
-
-		// データベースから検索処理を行う
-		/*FirstLongTransDAO fDao = new FirstLongTransDAO();
-		FirstLongTrans stampCard = fDao.select(user_id);*/
-		/*この部分は金指がテスト上コメントアウトしています。
-		 * 片付いたので記号消してOKです*/
 		//------------------------------------------------------
-		//		スタンプカード
+		//スタンプカードの表示処理
 
 		// 報告確定ボタンの処理ができるまでは手書きでスタンプを指定
 		/*		request.setAttribute("stamp1", true);
@@ -104,32 +93,30 @@ public class MypageServlet extends HttpServlet {
 
 		//やること
 		// 済　firstlongtransDAOからuser_idとgoal_count、nogoal_countを取得
-		//jspに渡したい値をリクエストスコープに格納する
 		FirstLongTransDAO fDao = new FirstLongTransDAO();
 		FirstLongTrans stampcard = fDao.select(user_id);
-		request.setAttribute("stampcard", stampcard);
 
-		//for (int i = 1; i < 14; i++) {
-		//	request.setAttribute("stamp"+i, false);
-		//	成功数2,失敗数3
-		//	stamp1	true
-		//	stamp2	true
-		//	stamp3	false
-		//	 ...
-		//}
+		//jspに渡したい値をリクエストスコープに格納する
+		for (int i = 1; i <= 14; i++) {
+			if(stampcard.getGoal_count() >= i) {
+				request.setAttribute("stamp"+(i), true);
 
-		//ここにスタンプ「表示」の処理がいる
+			} else {
+				request.setAttribute("stamp"+(i), false);
+			}
+		}
+
+		//アバターの表示処理----------------------------------------------------------------------
 		//（金指）アバターの顔の表示face
 
 		FaceImageDAO lDao = new FaceImageDAO();
 		AvaterHead lastFaceImage = lDao.selectLast(user_id);
 		request.setAttribute("lastFaceImage", lastFaceImage);
 
-
-
 		//-------------------------------------------------------------------------------------------------------------------
 		//（安部・小島作業）アバターbody表示
-
+		//アバターの体系を画像を切替えるために、一番古いbmi情報と最新のbmi情報を取得。
+		//取得したbmi値を使って体画像のidを判定して更新する。
 		MypageDAO mdao = new MypageDAO();
 		Double newbmi = mdao.newbmi(user_id);
 		Double oldbmi = mdao.oldbmi(user_id);
@@ -150,25 +137,27 @@ public class MypageServlet extends HttpServlet {
 		else {
 			bmi = 1;
 		}
-		mdao.bmi_update(bmi,user_id);
 		//その変数をDAOのアップデートに与える
+		mdao.bmi_update(bmi,user_id);
 
 		//安部さんがSELECTで持ってきたbmi=idとcolor_idをjspに渡す
 		//体アバターが表示できるようになる
+		AvaterDAO avaDao = new AvaterDAO();
+		Users ids = avaDao.select_bodyids(user_id);
 
+		int bmi_id =ids.getBmi_id();
+		int color_id =ids.getColor_id();
+
+		request.setAttribute("bmi_id", bmi_id);
+		request.setAttribute("color_id", color_id);
 
 		// ---------------------------------------------------------------------------------------------------
-		//		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
-		//		//		リクエストスコープにuser_idを入れる
-		//		request.setAttribute("user_id", animation_id);
-
 		AnimationDAO aDao = new AnimationDAO();
 		List<Mypage> animationList = aDao.select(user_id);
 
+		//体重推移データをリクエストスコープに格納
 		request.setAttribute("animationList", animationList);
-		// パーソナルデータページにフォワードする
-		//	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
-		//	dispatcher.forward(request, response);
+
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
