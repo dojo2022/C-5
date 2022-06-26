@@ -167,7 +167,17 @@ public class UsersDAO {
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		finally {}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
 		return height;
 

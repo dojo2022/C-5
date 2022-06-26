@@ -190,7 +190,17 @@ public class MypageDAO {
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		finally {}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
 		return newbmi;
 
@@ -230,7 +240,17 @@ public class MypageDAO {
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		finally {}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
 		return oldbmi;
 
