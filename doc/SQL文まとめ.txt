@@ -21,6 +21,8 @@ INSERT INTO Users values (NULL, 'id_saburi', 'aaaa', 'aaa', 100, 10, default, de
 //※
 INSERT INTO Users values (NULL, 'id_taro', 'pass', 'tarotaro', 170, 70, default, default);
 
+INSERT INTO Users values (NULL, 'id_goal', 'pass', 'tarotaro', 170, 70, default, default);
+INSERT INTO Users values (NULL, 'id_nogoal', 'pass', 'tarotaro', 170, 70, default, default);
 
 
 //マイページ
@@ -68,6 +70,22 @@ INSERT INTO Mypage VALUES (null,'id_taro','2022-06-29',65.7,22.73);
 INSERT INTO Mypage VALUES (null,'id_taro','2022-06-30',64.1,22.17);
 
 
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-15',67.4,23.32);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-16',66.9,23.14);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-17',66.8,23.11);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-18',66.7,23.07);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-19',66.4,22.97);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-20',66.2,22.94);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-21',66.5,23.01);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-22',66.2,22.90);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-23',65.9,22.80);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-24',65.7,22.73);
+INSERT INTO Mypage VALUES (null,'id_goal','2022-06-25',64.1,22.17);
+
+INSERT INTO Mypage VALUES (null,'id_nogoal','2022-06-19',69.6,24.08);
+INSERT INTO Mypage VALUES (null,'id_nogoal','2022-06-20',69.2,23.94);
+
+
 //初期長期マスターテーブル
 DROP TABLE IF EXISTS FirstLongMaster;
 
@@ -107,6 +125,10 @@ INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'salt',2,12,0,'2022-06
 INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'cal',0,0,0,'2022-06-01');
 INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'sleep',1,4,1,'2022-06-30');
 INSERT INTO FirstLongTrans VALUES (null,'id_taro',default,'motion',0,0,0,'2022-06-01');
+
+INSERT INTO FirstLongTrans VALUES (null,'id_goal',default,'sleep',1,11,1,'2022-06-30');
+
+INSERT INTO FirstLongTrans VALUES (null,'id_nogoal',default,'sleep',1,5,2,'2022-06-30');
 
 
 //短期マスタテーブル
@@ -194,8 +216,22 @@ INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-28',1,'sleep',2,1);
 INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-29',1,'slepp',3,2);
 INSERT INTO ShortTrans VALUES (null,'id_taro','2022-06-30',1,'slepp',2,1);
 
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-15',1,'sleep',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-16',1,'sleep',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-17',1,'sleep',3,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-18',1,'sleep',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-19',1,'sleep',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-20',1,'sleep',3,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-21',1,'sleep',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-22',1,'sleep',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-23',1,'sleep',3,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-24',1,'sleep',1,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-25',1,'sleep',2,1);
+INSERT INTO ShortTrans VALUES (null,'id_goal','2022-06-26',1,'sleep',3,0);
 
-
+INSERT INTO ShortTrans VALUES (null,'id_nogoal','2022-06-24',1,'sleep',3,2);
+INSERT INTO ShortTrans VALUES (null,'id_nogoal','2022-06-25',1,'sleep',2,2);
+INSERT INTO ShortTrans VALUES (null,'id_nogoal','2022-06-26',1,'sleep',1,0);
 
 //健康診断画像ページ
 DROP TABLE IF EXISTS HealthImage;
@@ -233,11 +269,10 @@ face_id VARCHAR(20) AUTO_INCREMENT NOT NULL,
 up_date DATE NOT NULL,
 face_image VARCHAR(200)
 );
-INSERT INTO Face_image(id,user_id,face_id,up_date,face_image)
-VALUES(null,'id_taro',null,CURDATE(),'kao.png');
+INSERT INTO Face_image(id,user_id,face_id,up_date,face_image) VALUES(null,'id_taro',null,CURDATE(),'kao.png');
 
-
-
+INSERT INTO Face_image(id,user_id,face_id,up_date,face_image) VALUES(null,'id_goal',null,CURDATE(),'kao.png');
+INSERT INTO Face_image(id,user_id,face_id,up_date,face_image) VALUES(null,'id_nogoal',null,CURDATE(),'kao2.png');
 
 
 
