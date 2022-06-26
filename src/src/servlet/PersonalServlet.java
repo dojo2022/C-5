@@ -21,8 +21,8 @@ public class PersonalServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// パーソナルデータページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Personal.jsp");
-				dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Personal.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
