@@ -36,7 +36,7 @@ public class FirstChecktestServlet extends HttpServlet {
 		List<FirstLongMaster> questionList = FlmDao.first_display();
 
 		request.setAttribute("questionList", questionList);
-//		"questionList"がjspの変数名、questionListがDAOの変数名
+		//"questionList"がjspの変数名、questionListがDAOの変数名
 		//初期目標チェックテストページへ
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/FirstChecktest.jsp");
 		dispatcher.forward(request, response);
@@ -52,33 +52,33 @@ public class FirstChecktestServlet extends HttpServlet {
 		//入力部
 		//セッションからログインしているユーザーidを取得しましょう
 
-//		HttpSession（インターフェース）型のオブジェクトrequestを生成
-//		requestオブジェクトが持つgetSessionメソッドのインスタンスsessionを生成
-//		セッションスコープにアクセスするための権利はリクエストスコープが持っている
-//		session.getAttribute("　　　");で値をセッションスコープに入れる
+		//HttpSession（インターフェース）型のオブジェクトrequestを生成
+		//requestオブジェクトが持つgetSessionメソッドのインスタンスsessionを生成
+		//セッションスコープにアクセスするための権利はリクエストスコープが持っている
+		//session.getAttribute("　　　");で値をセッションスコープに入れる
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
 
 		//画面から選択された長期チェックを取得しましょう。
 		String[] first_checked = request.getParameterValues("first_ans");
-//		String[] first_checked  = { "veg", "fat", "cal" };
+		//String[] first_checked  = { "veg", "fat", "cal" };
 
 		//処理部
 		//firstlongtransDaoのfirst_insertメソッドを繰返し呼ぶ！？
-//		くり返し値をDAOに渡したい
+		//くり返し値をDAOに渡したい
 		FirstLongTransDAO fst_ins = new FirstLongTransDAO();
 
 
 
 		for(String checked_list : first_checked) {
-//			チェックされているtypeの行を、チェックされた分だけ生成
+			//			チェックされているtypeの行を、チェックされた分だけ生成
 			fst_ins.first_insert(user_id, checked_list);
 		}
 
-//		request.setAttribute("user_id",user_id);
+		//request.setAttribute("user_id",user_id);
 
-	//LongChecklistservletへリダイレクト
-//	URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる
+		//LongChecklistservletへリダイレクト
+		//URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる
 		response.sendRedirect("/health_management/LongChecklistServlet");
 
 

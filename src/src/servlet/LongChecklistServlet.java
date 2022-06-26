@@ -30,12 +30,12 @@ public class LongChecklistServlet extends HttpServlet {
 
 		//出力部
 
-				//リクエストスコープに入れるべきは、選択画面に表示する長期チェックの一覧
-//				入れるもの：checked_list(くり返し)
-//		セッションスコープからuser_idを取り出す
+		//リクエストスコープに入れるべきは、選択画面に表示する長期チェックの一覧
+		//入れるもの：checked_list(くり返し)
+		//セッションスコープからuser_idを取り出す
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
-//		リクエストスコープにuser_idを入れる
+		//リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
 
 		FirstLongMasterDAO FlmDao = new FirstLongMasterDAO();
@@ -51,20 +51,20 @@ public class LongChecklistServlet extends HttpServlet {
 
 
 		request.setAttribute("longList", longList);
-//		FlmDAOからlong_displayメソッドを呼び出し、longList（user_id, type long_list）を貰ってきている
+		//	FlmDAOからlong_displayメソッドを呼び出し、longList（user_id, type long_list）を貰ってきている
 
-//				for(String checked_list : first_checked) {
-////					チェックされているtypeの行を生成
-//					request.setAttribute("checked_list",checked_list);
-////		データは必ずオブジェクトで渡す
-////		request.setAttribute("格納するオブジェクト指すキー", "格納するオブジェクト");
-//		user_idをDAOに渡したい
+		//	for(String checked_list : first_checked) {
+		////	チェックされているtypeの行を生成
+		//		request.setAttribute("checked_list",checked_list);
+		////	データは必ずオブジェクトで渡す
+		////	request.setAttribute("格納するオブジェクト指すキー", "格納するオブジェクト");
+		//		user_idをDAOに渡したい
 
 		//目標チェックテストページへ
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/LongChecklist.jsp");
 		dispatcher.forward(request, response);
 
-				}
+	}
 
 
 
@@ -72,40 +72,37 @@ public class LongChecklistServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		/*ここで初期チェック（FirstCheckTest.jsp）の値をDBに格納*/
-
 
 		//入力部
 		//セッションからログインしているユーザーidを取得しましょう
 
-//		HttpSession（インターフェース）型のオブジェクトrequestを生成
-//		requestオブジェクトが持つgetSessionメソッドのインスタンスsessionを生成
-//		セッションスコープにアクセスするための権利はリクエストスコープが持っている
-////		session.getAttribute("　　　");で値をセッションスコープから取り出す
+		//HttpSession（インターフェース）型のオブジェクトrequestを生成
+		//requestオブジェクトが持つgetSessionメソッドのインスタンスsessionを生成
+		//セッションスコープにアクセスするための権利はリクエストスコープが持っている
+		//session.getAttribute("　　　");で値をセッションスコープから取り出す
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
 
-//		画面から選択された長期チェックを取得しましょう。
+		//画面から選択された長期チェックを取得しましょう。
 		String long_checked= request.getParameter("long_ans");
-//		方法②
-//		String[] long_checked = request.getParameterValues("long_ans");
-//		仕様上この配列には一つのデータしか入らないはず
+		//方法②
+		//String[] long_checked = request.getParameterValues("long_ans");
+		//仕様上この配列には一つのデータしか入らないはず
 
 		//処理部
 		FirstLongTransDAO lng_upd = new FirstLongTransDAO();
 
-//		もしUPDATEが成功しなかったら長期目標チェックリスト画面へと戻る処理を書きました。
+		//もしUPDATEが成功しなかったら長期目標チェックリスト画面へと戻る処理を書きました。
 		if(lng_upd.long_update(user_id, long_checked)){
-//		方法②
-//		lng_upd.long_update(long_checked[0]);
+			//方法②
+			//lng_upd.long_update(long_checked[0]);
 
-//		request.setAttribute("user_id", user_id);
+			//request.setAttribute("user_id", user_id);
 
-//		LongChecklistservletへリダイレクト
-//		URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる
-		response.sendRedirect("/health_management/ShortChecklistServlet");
+			//LongChecklistservletへリダイレクト
+			//URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる
+			response.sendRedirect("/health_management/ShortChecklistServlet");
 
 		}
 		else {

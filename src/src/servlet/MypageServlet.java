@@ -39,7 +39,7 @@ public class MypageServlet extends HttpServlet {
 	// sessionスコープからuser_idを取得する
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		ユーザーidを取得
+		//ユーザーidを取得
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
 
@@ -49,13 +49,13 @@ public class MypageServlet extends HttpServlet {
 			return;
 		}
 
-//		長期・短期目標表示（兼平）
+		//長期・短期目標表示（兼平）
 
-		//		リクエストスコープにuser_idを入れる 上記で取得済み
+		//リクエストスコープにuser_idを入れる 上記で取得済み
 		request.setAttribute("user_id", user_id);
 
 
-		//		DAOの処理をする（DAOの処理に）引数を渡す
+		//DAOの処理をする（DAOの処理に）引数を渡す
 		MypageDAO mpTgDao = new MypageDAO();
 		Date exe_date1 = new Date(System.currentTimeMillis());
 
@@ -63,7 +63,7 @@ public class MypageServlet extends HttpServlet {
 		ShortMaster mp_st_item = mpTgDao.mp_st_display(user_id, exe_date1);
 
 
-		//		リクエストスコープに短期目標のリストをセット
+		//リクエストスコープに短期目標のリストをセット
 		request.setAttribute("mp_lg_item", mp_lg_item);
 		request.setAttribute("mp_st_item", mp_st_item);
 
@@ -71,9 +71,9 @@ public class MypageServlet extends HttpServlet {
 		//一時的に無効にしているだけなので悪しからず
 
 
-		//		Users user = new Users(user_id);
-		//		session.setAttribute("user_id", user);
-		//		session.setAttribute("user_id", user_id);
+		//Users user = new Users(user_id);
+		//session.setAttribute("user_id", user);
+		//session.setAttribute("user_id", user_id);
 
 		// データベースから検索処理を行う
 		/*FirstLongTransDAO fDao = new FirstLongTransDAO();
@@ -109,18 +109,17 @@ public class MypageServlet extends HttpServlet {
 		FirstLongTrans stampcard = fDao.select(user_id);
 		request.setAttribute("stampcard", stampcard);
 
-		//		for (int i = 1; i < 14; i++) {
-		//			request.setAttribute("stamp"+i, false);
-		//			//成功数2,失敗数3
-		//			//stamp1	true
-		//			//stamp2	true
-		//			//stamp3	false
-		//			// ...
-		//		}
+		//for (int i = 1; i < 14; i++) {
+		//	request.setAttribute("stamp"+i, false);
+		//	成功数2,失敗数3
+		//	stamp1	true
+		//	stamp2	true
+		//	stamp3	false
+		//	 ...
+		//}
 
-
-//		ここにスタンプ「表示」の処理がいる
-//（金指）アバターの顔の表示face
+		//ここにスタンプ「表示」の処理がいる
+		//（金指）アバターの顔の表示face
 
 		FaceImageDAO lDao = new FaceImageDAO();
 		AvaterHead lastFaceImage = lDao.selectLast(user_id);
@@ -128,8 +127,8 @@ public class MypageServlet extends HttpServlet {
 
 
 
-//-------------------------------------------------------------------------------------------------------------------
-//（安部・小島作業）アバターbody表示
+		//-------------------------------------------------------------------------------------------------------------------
+		//（安部・小島作業）アバターbody表示
 
 		MypageDAO mdao = new MypageDAO();
 		Double newbmi = mdao.newbmi(user_id);
@@ -152,24 +151,24 @@ public class MypageServlet extends HttpServlet {
 			bmi = 1;
 		}
 		mdao.bmi_update(bmi,user_id);
-//		//その変数をDAOのアップデートに与える
+		//その変数をDAOのアップデートに与える
 
-//安部さんがSELECTで持ってきたbmi=idとcolor_idをjspに渡す
-//体アバターが表示できるようになる
+		//安部さんがSELECTで持ってきたbmi=idとcolor_idをjspに渡す
+		//体アバターが表示できるようになる
 
 
 		// ---------------------------------------------------------------------------------------------------
-//		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
-//		//		リクエストスコープにuser_idを入れる
-//		request.setAttribute("user_id", animation_id);
+		//		String animation_id ="id_kanehira"; //(String)session.getAttribute("user_id");//
+		//		//		リクエストスコープにuser_idを入れる
+		//		request.setAttribute("user_id", animation_id);
 
 		AnimationDAO aDao = new AnimationDAO();
 		List<Mypage> animationList = aDao.select(user_id);
 
 		request.setAttribute("animationList", animationList);
 		// パーソナルデータページにフォワードする
-	//	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
-	//	dispatcher.forward(request, response);
+		//	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
+		//	dispatcher.forward(request, response);
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Mypage.jsp");
@@ -181,12 +180,9 @@ public class MypageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-
-
-//-----------------------------------------------------------------------------------------------------------------
-// （安部・小島）その日の体重と短期目標にチェックしたか否かを取り出す
-//		→取り出したその日の体重からその日のBMIを計算→マイページトランザクションにINSERT
+		//-----------------------------------------------------------------------------------------------------------------
+		// （安部・小島）その日の体重と短期目標にチェックしたか否かを取り出す
+		//		→取り出したその日の体重からその日のBMIを計算→マイページトランザクションにINSERT
 
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
@@ -220,11 +216,11 @@ public class MypageServlet extends HttpServlet {
 
 			//firstlongtransDAOのgoal_countが1増えたらtrue（Mypageでスタンプ画像表示されるようになるはず）
 			//　UPDATE文を呼び出す（updateGoalCount）
-//			FirstLongTransDAO fDao2 = new FirstLongTransDAO();
-//			Date exe_date = new Date(System.currentTimeMillis());
-//			String type = new String(stampcard.getType());
-//			boolean updateGoalCount = fDao2.updateGoalCount(user_id,exe_date,type);
-//			request.setAttribute("updateGoalCount", updateGoalCount);
+			//			FirstLongTransDAO fDao2 = new FirstLongTransDAO();
+			//			Date exe_date = new Date(System.currentTimeMillis());
+			//			String type = new String(stampcard.getType());
+			//			boolean updateGoalCount = fDao2.updateGoalCount(user_id,exe_date,type);
+			//			request.setAttribute("updateGoalCount", updateGoalCount);
 
 
 		}else {
@@ -235,25 +231,25 @@ public class MypageServlet extends HttpServlet {
 
 			//firstlongtransDAOのnogoal_countが1増えたらfalse（Mypageでスタンプが増えないはず）
 			//　UPDATE文を呼び出す（updateNoGoalCount）
-//			FirstLongTransDAO fDao3 = new FirstLongTransDAO();
-//			boolean updateNoGoalCount = fDao3.updateNoGoalCount(user_id,exe_date,type);
-//			request.setAttribute("updateNoGoalCount", updateNoGoalCount);
+			//			FirstLongTransDAO fDao3 = new FirstLongTransDAO();
+			//			boolean updateNoGoalCount = fDao3.updateNoGoalCount(user_id,exe_date,type);
+			//			request.setAttribute("updateNoGoalCount", updateNoGoalCount);
 
 		}
 
 
 
 		//-----------------------------------------------------------------------------------------------------------------
-////		達成評価に飛ぶ/飛ばない ＆ ほめページに飛ぶ/励ましページに飛ぶ（兼平）
-//		報告するたびにこの判定が行われるので、一番さいご
+		////		達成評価に飛ぶ/飛ばない ＆ ほめページに飛ぶ/励ましページに飛ぶ（兼平）
+		//		報告するたびにこの判定が行われるので、一番さいご
 
 
 
 		ResultDAO tran = new ResultDAO();
 		Result goalSet = tran.evaluate(user_id);
 
-//		int goal_count = goalSet.getGoal_count();
-//		int nogoal_count = goalSet.getNogoal_count();
+		//int goal_count = goalSet.getGoal_count();
+		//int nogoal_count = goalSet.getNogoal_count();
 
 
 		//Daoで行う事を疑似的にServlet書いている。
@@ -293,8 +289,8 @@ public class MypageServlet extends HttpServlet {
 			request.setAttribute("title", title);
 			request.setAttribute("message", message);
 			//result.jspへフォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
-				dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Result.jsp");
+			dispatcher.forward(request, response);
 
 		} else {
 

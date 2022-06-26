@@ -49,19 +49,15 @@ public class LoginServlet extends HttpServlet {
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 
-//			Users user = new Users(user_id);
-//			session.setAttribute("user_id", user);
-//			session.setAttribute("user_id", new Users(user_id));
+			//Users user = new Users(user_id);
+			//session.setAttribute("user_id", user);
+			//session.setAttribute("user_id", new Users(user_id));
 			session.setAttribute("user_id", user_id);
-
 
 			//マイページサーブレットにリダイレクトする
 			response.sendRedirect("/health_management/MypageServlet");
 		}
 		else {									// ログイン失敗
-
-
-
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 			dispatcher.forward(request, response);

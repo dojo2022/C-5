@@ -32,7 +32,7 @@ public class ResultServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//-----
 
-//face result_idはログインセッションに合わせて統合
+		//face result_idはログインセッションに合わせて統合
 		//ログインしていない状態なので便宜上(金指)
 		String result_title="";
 		String message="";
@@ -70,11 +70,11 @@ public class ResultServlet extends HttpServlet {
 		List<Mypage> animationList = aDao.select(result_id);
 
 		request.setAttribute("animationList", animationList);
-//---------------------------------------------------------------------------------------------
-//		（安部）
-//		アバターを表示する
-//		HttpSession session = request.getSession();
-//		String user_id = (String)session.getAttribute("user_id");
+		//---------------------------------------------------------------------------------------------
+		//		（安部）
+		//		アバターを表示する
+		//		HttpSession session = request.getSession();
+		//		String user_id = (String)session.getAttribute("user_id");
 
 		AvaterDAO avaDao = new AvaterDAO();
 		Users ids = avaDao.select_bodyids(result_id);
@@ -85,9 +85,9 @@ public class ResultServlet extends HttpServlet {
 		request.setAttribute("bmi_id", bmi_id);
 		request.setAttribute("color_id", color_id);
 
-//（金指）アバターの顔表示
+		//（金指）アバターの顔表示
 		String face_id ="id_taro"; //(String)session.getAttribute("user_id");//
-//		リクエストスコープにuser_idを入れる
+		//		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", face_id);
 
 		FaceImageDAO fDao = new FaceImageDAO();
@@ -112,8 +112,6 @@ public class ResultServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		//長期目標ページへとリダイレクト
 		//long_completeを1→2にする処理はmypageservletのdopostで行う（長期目標達成時に達成評価ページのアバターの色を変えるならば）
 		response.sendRedirect("/health_management/LomgChecklistlistServlet");

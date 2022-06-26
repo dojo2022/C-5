@@ -46,8 +46,8 @@ public class ShortMasterDAO {
 			//	PreparedStatementのインスタンスを生成
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-//			SQL文を完成させる
-//			user_idをWHERE句にセット
+			//			SQL文を完成させる
+			//			user_idをWHERE句にセット
 			pStmt.setString(1, user_id);
 
 			// SQL文を実行し、結果表を取得する

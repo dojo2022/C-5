@@ -12,7 +12,7 @@ import model.Mypage;
 public class AnimationDAO {
 	public List<Mypage> select(String user_id){
 		Connection conn = null;
-//		変数の箱だけ作ってnullにする
+		//変数の箱だけ作ってnullにする
 		List<Mypage> animationList = new ArrayList<Mypage>();
 
 		try {
@@ -34,7 +34,7 @@ public class AnimationDAO {
 
 
 			while (rs.next()) {
-//				値が得られる（trueである）限り
+				//値が得られる（trueである）限り
 				Mypage animation = new Mypage(
 						//jspのNAMEとそろえる
 						rs.getString("user_id"),

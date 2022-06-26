@@ -17,10 +17,10 @@ public class FirstLongMasterDAO{
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
 
 	public List<FirstLongMaster> first_display() {
-//		FirstLongMaster型のList型のメソッド
-//		ここ
+		//FirstLongMaster型のList型のメソッド
+		//ここ
 		Connection conn = null;
-//		変数の箱だけ作ってnullにする
+		//		変数の箱だけ作ってnullにする
 		List<FirstLongMaster> questionList = new ArrayList<FirstLongMaster>();
 		//		FirstLongMaster型のArrayList questionListを生成
 		try {
@@ -32,10 +32,10 @@ public class FirstLongMasterDAO{
 
 			// SQL文を準備する　改造
 			String sql = "select * from FirstLongMaster";
-//			変数sqlにSELECT文を格納
+			//変数sqlにSELECT文を格納
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-//			ここ
-//			PreparedStatementのインスタンスを生成
+			//ここ
+			//PreparedStatementのインスタンスを生成
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -43,7 +43,7 @@ public class FirstLongMasterDAO{
 
 
 			while (rs.next()) {
-//				値が得られる（trueである）限り
+				//値が得られる（trueである）限り
 				FirstLongMaster question = new FirstLongMaster(
 						rs.getInt("id"),
 						rs.getString("type"),
@@ -83,13 +83,13 @@ public class FirstLongMasterDAO{
 		return questionList;
 	}
 
-//	チェックされた項目の長期目標を表示
+	//	チェックされた項目の長期目標を表示
 
 	public List<FirstLongTrans> long_display(String user_id) {
-//		FirstLongMaster型のList型のメソッド
-//		ここ
+		//FirstLongMaster型のList型のメソッド
+		//ここ
 		Connection conn = null;
-//		変数の箱だけ作ってnullにする
+		//変数の箱だけ作ってnullにする
 		List<FirstLongTrans> longList = new ArrayList<FirstLongTrans>();
 		//		FirstLongMaster型のArrayList longListを生成
 		try {
@@ -104,22 +104,22 @@ public class FirstLongMasterDAO{
 					+ "on FIRSTLONGTRANS.type = FIRSTLONGMASTER .type\r\n"
 					+ "where user_id = ?";
 
-//			変数sqlにSELECT文を格納
+			//			変数sqlにSELECT文を格納
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-				pStmt.setString(1, user_id);
-//			値が絶対入るように 条件分岐はしない
+			pStmt.setString(1, user_id);
+			//			値が絶対入るように 条件分岐はしない
 
-//			PreparedStatementのインスタンスを生成
+			//			PreparedStatementのインスタンスを生成
 
-			// SQL文を実行し、結果表を取得する
+			//SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 			//RESULTSETクラスのインスタンスとして得られる
 
 
 			while (rs.next()) {
-//				値が得られる（trueである）限り
+				//				値が得られる（trueである）限り
 				FirstLongTrans long_list = new FirstLongTrans(
 						rs.getInt("id"),
 						rs.getString("user_id"),

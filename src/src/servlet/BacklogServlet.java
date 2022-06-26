@@ -26,7 +26,7 @@ public class BacklogServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String user_id ="id_taro"; //(String)session.getAttribute("user_id");//
-//		リクエストスコープにuser_idを入れる
+		//		リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
 
 		AnimationDAO aDao = new AnimationDAO();
@@ -35,16 +35,15 @@ public class BacklogServlet extends HttpServlet {
 
 		request.setAttribute("animationList", animationList);
 		// 過去データ閲覧ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Backlog.jsp");
-				dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Backlog.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
 	}
 
 }

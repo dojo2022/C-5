@@ -19,13 +19,12 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		// セッションスコープを破棄する
-				/*HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 				session.invalidate();*/
 
 		// ログインページにリダイレクトする
-				response.sendRedirect("/health_management/LoginServlet");
+		response.sendRedirect("/health_management/LoginServlet");
 
 		/*RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 		dispatcher.forward(request, response);*/

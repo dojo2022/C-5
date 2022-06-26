@@ -63,11 +63,8 @@ public class ResultDAO {
 					goalSet = null;
 				}
 			}
-
-
 		}
 
-		//
 		// 結果を返す
 		return goalSet;
 

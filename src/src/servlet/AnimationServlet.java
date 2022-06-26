@@ -19,14 +19,6 @@ import model.Mypage;
 public class AnimationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AnimationServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -38,7 +30,7 @@ public class AnimationServlet extends HttpServlet {
 		}*/
 		//HttpSession session = request.getSession();
 		String user_id ="id_taro"; //(String)session.getAttribute("user_id");//
-//		リクエストスコープにuser_idを入れる
+		//リクエストスコープにuser_idを入れる
 		request.setAttribute("user_id", user_id);
 
 		AnimationDAO aDao = new AnimationDAO();
@@ -49,7 +41,7 @@ public class AnimationServlet extends HttpServlet {
 
 		// 体重推移アニメーションページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Animation.jsp");
-				dispatcher.forward(request, response);
+		dispatcher.forward(request, response);
 
 	}
 
@@ -58,7 +50,6 @@ public class AnimationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 	}
 

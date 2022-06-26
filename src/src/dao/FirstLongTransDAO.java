@@ -17,12 +17,12 @@ public class FirstLongTransDAO {
 		Connection conn = null;
 		boolean result = false;
 		try {
-			//			JDBCドライバを読み込む
+			//JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
-			//			データベース接続
+			//データベース接続
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
-			//			SQL文を準備する
+			//SQL文を準備する
 
 			//insertする項目だけを記述する。
 			String sql = "INSERT INTO FIRSTLONGTRANS (user_id, type, date) values (?,?,CURDATE())";
@@ -81,13 +81,13 @@ public class FirstLongTransDAO {
 		Connection conn = null;
 		boolean result = false;
 		try {
-			//			JDBCドライバを読み込む
+			//JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
-			//			データベース接続
+			//データベース接続
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
-			//			SQL文を準備する
-			//			insertする項目だけを記述する。
+			//SQL文を準備する
+			//insertする項目だけを記述する。
 			String sql = "UPDATE FirstLongTrans SET long_complete = 1,date = CURDATE() WHERE user_id = ? and type  = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -95,7 +95,7 @@ public class FirstLongTransDAO {
 			pStmt.setString(1, user_id);
 			pStmt.setString(2, type);
 
-			//			 SQL文を実行する 検索時はxecuteQuwryだったがここは違う
+			//SQL文を実行する 検索時はxecuteQuwryだったがここは違う
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 				//戻り値のリザルトをTRUEにする
@@ -125,7 +125,7 @@ public class FirstLongTransDAO {
 
 
 	//-------------------------------------------------------------------------------------
-// スタンプカード：スタンプを押すためのデータ取得する
+	// スタンプカード：スタンプを押すためのデータ取得する
 
 	// 引数paramでjavabeansから検索項目を指定し、検索結果のリストを返す
 	//selectで検索する（SQLの命令と同じ）
