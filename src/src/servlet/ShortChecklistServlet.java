@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -28,6 +30,8 @@ public class ShortChecklistServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//やりたいこと
 		//・shortMasterDAOからデータを持ってきてjspに渡す（出力部）
+
+		System.out.println(request.getRequestURI());
 
 		//セッションスコープからuser_idを取り出す
 		HttpSession session = request.getSession();
@@ -66,6 +70,7 @@ public class ShortChecklistServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String user_id = (String)session.getAttribute("user_id");
 
+
 		// 画面から選択された短期チェック項目を取得
 		// 取得用に設定したname：short_ans
 		String short_checked =  request.getParameter("short_ans");
@@ -78,6 +83,18 @@ public class ShortChecklistServlet extends HttpServlet {
 		String type = tmp[1];
 
 
+		//短期目標を登録する日付を決める。
+		//	１．新規登録時は今日の日付を使って、登録する。
+		//	２．Mypageの報告から転送されてきた場合は、1日増やして登録する。
+		Calendar cal = Calendar.getInstance();
+		Date date;
+		if(session.getAttribute("mypage_post") != null) {
+			//Mypageからリダイレクトされた場合は、1日増やす
+			cal.add(Calendar.DATE, 1);
+
+			session.removeAttribute("mypage_post");
+		}
+		date = new Date(cal.getTimeInMillis());
 
 		//int short_checked = Integer.parseInt(request.getParameter("short_ans"));
 		//	${shortitem.no}でとっているのでnoがとれる？
@@ -98,9 +115,11 @@ public class ShortChecklistServlet extends HttpServlet {
 
 		//	DAOでshortListからnoを取得？
 
+
+
 		//	short_insertメソッドを使用し、値を格納
 		ShortTransDAO srt_ins = new ShortTransDAO();
-		srt_ins.short_insert(user_id, type, no);
+		srt_ins.short_insert(user_id, date, type, no);
 
 
 		//	URLを入力するとgetリクエストが送信されて勝手にdoGetやってくれる

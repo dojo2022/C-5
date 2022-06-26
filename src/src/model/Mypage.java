@@ -60,7 +60,8 @@ public class Mypage implements Serializable{
 		this.day_weight = day_weight;
 	}
 	public double getBmi() {
-		return bmi;
+		//return bmi;
+		return Math.floor(bmi * 100) /100;
 	}
 	public void setBmi(double bmi) {
 		this.bmi = bmi;

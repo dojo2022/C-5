@@ -59,81 +59,164 @@
 						<table border="1" class="stampcard">
 							<tr>
 								<!-- スタンプ押す処理は、報告完了ボタンができるまでは14個手動（タグライブラリ）-->
-								<td><c:if test="${stamp1 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp2 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp3 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp4 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp5 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp6 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp7 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp1 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp2 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp3 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp4 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp5 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp6 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp7 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 							<tr>
-								<td><c:if test="${stamp8 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp9 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp10 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp11 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp12 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp13 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
-								<td><c:if test="${stamp14 == true}">
-										<img
-											src="/health_management/images/taihennyokuganbarimasita.png"
-											alt="大変よく頑張りました！" class="stamp_image">
-									</c:if></td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp8 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp9 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp10 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp11 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp12 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp13 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<c:choose>
+										<c:when test="${stamp14 == true}">
+											<img src="/health_management/images/taihennyokuganbarimasita.png"
+												alt="大変よく頑張りました！" class="stamp_image">
+										</c:when>
+										<c:otherwise>
+											<div class="stamp_image"></div>
+										</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 						</table>
-
 					</div>
 					<div class="panel tab-B">
 						<canvas id="myChart" width="750" height="380"></canvas>
@@ -154,7 +237,7 @@
 			<div class="photo avater-first is-show-avater"></div>
 			<div class="photo avater-ideal">
 				<img class="idealface" src="/health_management/images/${lastFaceImage.face_image}"alt="顔">
-				<img class="idealbody" src="/health_management/images/body${body.bmi_id}_${body.color_id}.png" alt="体">
+				<img class="idealbody" src="/health_management/images/body${bmi_id}_${color_id}.png" alt="体">
 
 
 			</div>

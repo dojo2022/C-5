@@ -50,10 +50,9 @@
 		<!--タブを切り替えて表示するコンテンツ-->
 		<div class="photo-group">
 			<div class="photo avater-now is-show-avater">
-				<form method="POST" action="/health_management/MypageServlet">
-					<input type="file" name="newface"
-						accept="/health_management/images"> <input type="submit"
-						name="report" value="報告">
+				<form method="POST" action="/health_management/PersonalServlet" enctype="multipart/form-data">
+					<input type="file" name="newface" accept="/health_management/images">
+					<input type="submit" name="submit" value="更新">
 				</form>
 				<img class="idealface"
 					src="/health_management/images/${lastFaceImage.face_image}">
@@ -71,17 +70,29 @@
 
 	<!-- 目標達成報告フォーム -------------------------------------------- -->
 
-	<form method="POST" action="/health_management/MypageServlet"
-		id="report">
+	<form method="POST" action="/health_management/MypageServlet" id="report">
 		<!-- <form method="POST" action="/health_management/ResultServlet" id="report"> -->
 		<ul class=first>
-			<li>長期目標 :${mp_lg_item.long_goal}</li>
-			<li>短期目標 :${mp_st_item.short_goal}<input type="checkbox"
-				name="shortbox" value="check"></li>
-
-			<li>体重<input type="text" name="weight" value="">kg <input
-				type="submit" name="report" value="報告"></li>
+			<li>本日の長期目標 :${mp_lg_item.long_goal}</li>
+			<li>本日の短期目標 :${mp_st_item.short_goal}</li>
+			<c:choose>
+				<c:when test="${mp_st_item_tomorrw == null}">
+					<li>体重入力→<input type="text" name="weight" value="">kg
+					</li>
+					<li>
+						実施チェック→
+						<input type="submit" name="ok" value="達成した！！！">
+						<input type="submit" name="ng" value="達成してない。。。">
+					</li>
+				</c:when>
+				<c:otherwise>
+					<li>本日の体重 :${mypage.day_weight}</li>
+					<li>本日のBMI :${mypage.bmi}</li>
+					<li>明日の短期目標 :${mp_st_item_tomorrw.short_goal}</li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
+		<input type="hidden" name="type" value="${mp_lg_item.type}">
 	</form>
 
 

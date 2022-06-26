@@ -145,7 +145,7 @@ public class UsersDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
-			String sql="SELECT height FROM Users WEHER user_id = ?";
+			String sql="SELECT height FROM Users WHERE user_id = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQLを完成させる
@@ -156,7 +156,7 @@ public class UsersDAO {
 
 			if(rs.next()) {
 				//データがあればココに入る。
-				height=Double.parseDouble(sql) ;
+				height=rs.getDouble("height");
 			}
 
 		}

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import model.FirstLongMaster;
+import model.Mypage;
 import model.ShortMaster;
 
 public class MypageDAO {
@@ -153,6 +154,57 @@ public class MypageDAO {
 
 
 }*/
+
+	//指定した、ユーザーＩＤの指定した日付の情報を取得する、もし該当するデータがなければnullが返る。
+	public Mypage get(String user_id, Date today) {
+		Connection conn = null;
+		Mypage result = null;
+
+		try {
+			//JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			//データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
+
+			//SQL文を準備する
+			String sql = "SELECT * FROM Mypage where user_id =  ? and date = ? ";
+
+			//PreparedStatementのインスタンスを生成
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQL文を完成させる
+			pStmt.setString(1, user_id);
+			pStmt.setDate(2, today);
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			if(rs.next()) {
+				result = new Mypage();
+				result.setUser_id(rs.getString("user_id"));
+				result.setDay_weight(rs.getDouble("day_weight"));
+				result.setBmi(rs.getDouble("bmi"));
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
 
 	//--------------------------------------------------------------------------------------------------------
 	//(安部)マイページServletのdoGetで体アバターを表示する
@@ -315,7 +367,7 @@ public class MypageDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 
 			// SQL文を準備する ここを改造
-			String sql = "insert into Users(id,user_id,date,day_weights,bmi) values (null,?,CURDATE(),? ,?)";
+			String sql = "insert into Mypage(user_id, date, day_weight, bmi) values (?,CURDATE(),? ,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -374,7 +426,7 @@ public class MypageDAO {
 			//	SQL文を準備する
 			//	今回は選択された長期に対応する短期目標をすべて
 			//	取り出す項目はtype, user_id, 短期目標のid, 短期目標
-			String sql = "SELECT user_id, long_goal FROM FirstLongMaster INNER JOIN FirstLongTrans ON  FirstLongMaster.type =  FirstLongTrans.type where user_id =  ? and long_complete = 1;";
+			String sql = "SELECT user_id, long_goal, FirstLongMaster.type as type FROM FirstLongMaster INNER JOIN FirstLongTrans ON  FirstLongMaster.type =  FirstLongTrans.type where user_id =  ? and long_complete = 1";
 
 			//	PreparedStatementのインスタンスを生成
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -389,10 +441,10 @@ public class MypageDAO {
 
 			//	必要な値：long_goal
 			if(rs.next()) {
-				mp_long =new FirstLongMaster(
-						rs.getString("user_id"),
-						rs.getString("long_goal")
-						);
+				mp_long = new FirstLongMaster();
+				mp_long.setUser_id(rs.getString("user_id"));
+				mp_long.setLong_goal(rs.getString("long_goal"));
+				mp_long.setType(rs.getString("type"));
 			}
 
 		}

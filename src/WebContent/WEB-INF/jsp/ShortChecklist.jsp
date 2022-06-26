@@ -13,7 +13,7 @@
 <h1>
 	<img src="" alt="健康アプリ">
 	</h1>
-今日の目標設定
+短期の目標設定
 
 <form method = "POST" action = "/health_management/ShortChecklistServlet">
 <!--

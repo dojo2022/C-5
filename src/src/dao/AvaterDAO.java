@@ -170,7 +170,7 @@ public class AvaterDAO
 		return result;
 	}
 
-	public boolean long_complete2(int color ,String user_id) {
+	public boolean long_complete2(String user_id) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -215,7 +215,7 @@ public class AvaterDAO
 		return result;
 	}
 
-	public boolean long_complete0(int color ,String user_id) {
+	public boolean long_complete0(String user_id) {
 		Connection conn = null;
 		boolean result = false;
 
