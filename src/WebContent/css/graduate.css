@@ -74,14 +74,17 @@ h2{
 }
 .mokuhyou {
     padding: 0.5em 1em;
-    margin: 2em 0;
-    border: double 5px #4ec4d3;
+    margin-left: 2em;
+    margin-bottom:5em;
+    border: double 5px #1E90FF;
 }
 .mokuhyou p {
     margin: 0;
     padding: 0;
 }
 .message{
+	  margin-bottom:100px;
+	  margin-left:2em;
     padding: 0.5em 1em;
     background: -moz-linear-gradient(#ffb03c, #ff708d);
     background: -webkit-linear-gradient(#ffb03c, #ff708d);
@@ -97,14 +100,16 @@ h2{
 }
 
 .next {
-  /*float:right;*/
-  font-weight: bold;
-  padding: 1em 0.5em;
+	font-size:30px;
+  /*font-weight: bold;*/
+  margin-top:100px;
+  margin-left:105px;
+  padding: 45px 70px;
   text-decoration: none;
-  color: #0000FF;
-  background: #0000FF;
+  color: white;
+  background: #1E90FF;
   transition: .4s;
-
+  border-radius: 12px;
 }
 
 .next > span {
