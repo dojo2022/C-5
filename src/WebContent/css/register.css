@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+
+h1, h2 {
+	text-align: center;
+}
+th {
+	background-color: SkyBlue;
+	width: 100px;
+}
 main{
 	text-align: center;
 }

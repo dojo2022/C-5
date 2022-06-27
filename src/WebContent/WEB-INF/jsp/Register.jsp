@@ -6,13 +6,12 @@
 <meta charset="UTF-8">
 <title>新規登録</title>
 <link rel="stylesheet" href="/health_management/css/register.css">
-<link rel="stylesheet" href="/health_management/css/common.css">
 </head>
+<header>
+ <h1><img src="" alt="健康アプリ"></h1>
+</header>
 <body>
 	<main>
-		<h1>
-			<img src="" alt="健康アプリ">
-		</h1>
 		<hr>
 		<h2>新規登録</h2>
 		<form method="POST" action="/health_management/RegisterServlet">
