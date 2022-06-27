@@ -5,11 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>卒業おめでとう</title>
 <link rel="stylesheet" type="text/css"
 	href="/health_management/css/graduate.css">
-<link rel="stylesheet" type="text/css"
-	href="/health_management/css/common.css">
 
 </head>
 <body>
@@ -54,7 +52,7 @@
 			<div class="message">
 				<p><strong>卒業おめでとう！</strong><br>
 				これまでの試練を乗り越えたあなたの体は明らかに見違えた、まるで別人のようだ<br>
-				だがしかし、習慣を続けることに終わりはない…！<br> 引き続き頑張っていこう!!!</p>
+				しかし、習慣を続けることに終わりはない…！<br> 引き続き頑張っていこう!!!</p>
 			</div>
 		</div>
 
