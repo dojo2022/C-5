@@ -54,15 +54,17 @@
 					<input type="file" name="newface" accept="/health_management/images">
 					<input type="submit" name="submit" value="更新">
 				</form>
-				<img class="idealface"
+				<img class="nowface"
 					src="/health_management/images/${lastFaceImage.face_image}">
-				<img class="idealbody"
+				<img class="nowbody"
 					src="/health_management/images/body${bmi_id}_${color_id}.png" alt="体">
 			</div>
+
 			<div class="photo avater-ideal">
 				<img class="idealface" src="/health_management/images/kao.png"
-					alt="顔"> <img class="idealbody"
-					src="/health_management/images/body1_0.png" alt="体">
+					alt="顔">
+				 <img class="idealbody"src="/health_management/images/body1_0.png"
+				  alt="体">
 			</div>
 		</div>
 	</div>
@@ -281,7 +283,7 @@
 	<!-- -------------------------------------------- -->
 </body>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/health_management/js/backlog.js"></script>
+<script src="/health_management/js/mypage.js"></script>
 
 <script type="text/javascript">
 const labels = [
