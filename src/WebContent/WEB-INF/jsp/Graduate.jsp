@@ -11,8 +11,11 @@
 	href="/health_management/css/graduate.css">
 
 </head>
+<header>
+<h1>日日減るすチェック</h1>
+</header>
 <body>
-	<h1>日日減るすチェック</h1>
+	<hr>
 	<h2>Congratulations!!!!!</h2>
 
 
@@ -48,8 +51,15 @@
 		<div class="text">
 			<div class="mokuhyou">
 				<p>
-					<strong>${requestScope.user_id}さんが今まで達成した長期目標</strong>
-
+					<strong>${requestScope.user_id}さんが今まで達成した長期目標：</strong>
+					定期的に野菜をとろう！<br>
+					　　　　　　　　　　　　　　　　　　　塩分摂取量を減らそう！<br>
+					　　　　　　　　　　　　　　　　　　　油物の摂取量を減らそう！<br>
+					　　　　　　　　　　　　　　　　　　　一日のカロリー摂取量を減らそう！<br>
+					　　　　　　　　　　　　　　　　　　　よく眠れる工夫をしよう！<br>
+					　　　　　　　　　　　　　　　　　　　飲酒量を減らそう！<br>
+					　　　　　　　　　　　　　　　　　　　煙草の量を減らそう！<br>
+					　　　　　　　　　　　　　　　　　　　運動習慣を身に着けよう！<br>
 				</p>
 			</div>
 
