@@ -22,7 +22,7 @@ public class FaceImageDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6_data/C5", "sa", "");
 			// SQL文を準備する
-			String sql = "SELECT user_id, face_image, up_date FROM FACE_IMAGE WHERE user_id=? order by face_image.up_date desc LIMIT 1";
+			String sql = "SELECT user_id, face_image, up_date FROM FACE_IMAGE WHERE user_id=? order by face_image.id desc LIMIT 1";
 
 			// SQLインジェクション防ぐ
 			PreparedStatement pStmt = conn.prepareStatement(sql);
