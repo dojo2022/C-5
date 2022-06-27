@@ -8,7 +8,7 @@
  <link rel="stylesheet" type="text/css" href="/health_management/css/animation.css">
 </head>
 <header>
- <h1><!--<a href="/health_management/MypageServlet">健康アプリ</a>-->健康アプリ</h1>
+ <h1><img src="" alt="健康アプリ"></h1>
 </header>
 <body>
 <hr>

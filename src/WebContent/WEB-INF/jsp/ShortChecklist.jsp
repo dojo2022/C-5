@@ -8,10 +8,10 @@
 <title>健康アプリ</title>
 <link rel="stylesheet" href="/health_management/css/checklist.css">
 </head>
+<header>
+ <h1><img src="" alt="健康アプリ"></h1>
+</header>
 <body>
-	<h1>
-		<img src="" alt="健康アプリ">
-	</h1>
 	<h2>短期の目標設定</h2>
 	<h3>
 		本日設定する短期目標を<span>１つ</span>選んでください
