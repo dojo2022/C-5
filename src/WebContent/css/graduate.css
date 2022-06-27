@@ -33,6 +33,7 @@ h2{
 }
 .avater_photo{
 	display: flex;
+	margin:20px;
 }
 
 .photo avater-first is-show-avater{
@@ -102,11 +103,11 @@ h2{
 }
 
 .next {
-	font-size:25px;
+	font-size:20px;
   /*font-weight: bold;*/
   margin-top:40px;
-  margin-left:125px;
-  padding: 45px 70px;
+  margin-left:250px;
+  padding: 30px 50px;
   text-decoration: none;
   color: white;
   background: #1E90FF;
