@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>最終報告アニメーション</title>
- <link rel="stylesheet" type="text/css" href="/health_management/css/common.css">
  <link rel="stylesheet" type="text/css" href="/health_management/css/animation.css">
 </head>
 <header>
@@ -13,7 +12,7 @@
 </header>
 <body>
 <hr>
-<h2>これまでの軌跡</h2>
+<h2>これまでの体重の軌跡</h2>
  <div class="image-horizontal-scroll">
 				<canvas id="myChart" class="box" width ="1030" height="330"></canvas>
 				</div>

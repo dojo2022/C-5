@@ -1,22 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>健康アプリ</title>
-<link rel = "stylesheet" href = "/health_management/css/checklist.css">
-<link rel = "stylesheet" href = "/health_management/css/common.css">
+<link rel="stylesheet" href="/health_management/css/checklist.css">
 </head>
 <body>
-<h1>
-	<img src="" alt="健康アプリ">
+	<h1>
+		<img src="" alt="健康アプリ">
 	</h1>
-短期の目標設定
+	<h2>短期の目標設定</h2>
+	<h3>
+		本日設定する短期目標を<span>１つ</span>選んでください
+	</h3>
 
-<form method = "POST" action = "/health_management/ShortChecklistServlet">
-<!--
+	<form method="POST" action="/health_management/ShortChecklistServlet">
+		<!--
 doGetやること
 ・リストの名前決める
 ・アイテムの名前決める
@@ -26,34 +28,35 @@ doGetやること
 ※foreachのインポート？忘れずに！
 次はmodelを確認しよう
   -->
-  <c:forEach var="shortitem" items="${shortList}">
-		<table>
-			<tr>
-				<td>
-				 	${shortitem.no}
-				</td>
+		<c:forEach var="shortitem" items="${shortList}">
+			<table>
+				<tr>
+					<th>${shortitem.no}</th>
 
-				<td>${shortitem.short_goal}</td>
-				<td>
-					<input type="checkbox" name="short_ans" value="${shortitem.no},${shortitem.type}">
-				</td>
+					<td class = "element">${shortitem.short_goal}</td>
+					<td><input type="checkbox" name="short_ans"
+						value="${shortitem.no},${shortitem.type}"></td>
 					<!-- valueをid→noに変更 短期は一種類のtypeしか持ってこないので、noでも良いと考えた -->
-			</tr>
-		</table>
-<!--
+				</tr>
+			</table>
+			<!--
 doPostやること
 ・idでtrue/falseを取得 -->
-	</c:forEach>
-<input type = "submit" name = "" value = "確定">
-</form>
+		</c:forEach>
+		<div class=rightbtn>
+			<input type="submit" name="" value="確定" class = "button">
+		</div>
+	</form>
 
-<form method = "GET" action = "/health_management/MypageServlet">
-<input type = "submit" name = "" value = "戻る">
-</form>
+	<form method="GET" action="/health_management/MypageServlet">
+		<div class=leftbtn>
+			<input type="submit" name="" value="戻る" class = "button">
+		</div>
+	</form>
 
 
 </body>
-<script src = "/health_management/js/ShortChecklist.js">
+<script src="/health_management/js/ShortChecklist.js">
 </script>
 
 </html>
