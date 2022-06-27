@@ -1,37 +1,41 @@
 @charset "UTF-8";
 
-h1{
+header{
 	text-align:center;
 }
 
 h2 {
-	font-size: 40px; text-align : center;
-	color: #191970;
+	padding: 0 auto 0 auto;
+	font-size: 40px;
+	text-align : center;
+	color: midnightblue;
 	text-decoration-line: underline;
 	text-underline-offset: 5px;
 	text-decoration-thickness: 2px;
 	text-align: center;
 }
-
+.label{
+	padding : 0 auto 1em auto;
+}
 .avater_photo{
 
 	display: flex;
 }
 .photo-group{
   text-align:center;
-  padding: 0 1em 0 0;
+  padding: 0 2em 0 2em;
   height:100px;
   border:solid 1px #CCC;
   border-top:none;
   background:#eee;
   width:340px;
-  height:650px;
+  height:580px;
 }
 
 .result_message {
 	float:left;
-    padding: 0.5em 1em;
-    margin: 2em 0;
+    padding: 0.5em 0 0 0;
+    margin: 0 0 0 5em;
     border: double 5px #4ec4d3;
 }
 .result_message p {
@@ -40,8 +44,8 @@ h2 {
 }
 .score {
 	text-align: center;
-    padding: 0.5em 1em;
-    margin: 2em 0;
+    padding: 0 0 0 0 ;
+    margin: 0 0;
     color: #FFF;
     background: #6eb7ff;
     border-bottom: solid 6px #3f87ce;
@@ -53,13 +57,15 @@ h2 {
     padding: 0;
 }
 .next {
+  margin: 510px 0 0 0;
   float:right;
   font-weight: bold;
-  padding: 1em 0.5em;
+  padding: 1em 0.5em ;
   text-decoration: none;
   color: #FFF;
-  background: #ff7f7f;
+  background: dodgerblue;
   transition: .4s;
+
 
 }
 
@@ -76,7 +82,7 @@ h2 {
 .label {
 	text-align: center;
     padding: 0.5em 1em;
-    margin: 8em 15em 0  10em;
+    margin: 5em 15em 1em  10em;
     color: #FFF;
     background: #6eb7ff;
     border-bottom: solid 6px #3f87ce;
@@ -118,7 +124,7 @@ width:750px;
   display:none;
 }
 .tab.is-active{
-  background:green;
+  background:dodgerblue;
   color:#FFF;
   transition: all 0.2s ease-out;
 }

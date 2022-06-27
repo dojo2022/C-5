@@ -10,9 +10,9 @@
 	href="/health_management/css/result.css">
 </head>
 <body>
-	<h1>
-		日日減るすチェック
-	</h1>
+	<header class="head">
+		<img src="" alt="日日減るスチェック">
+	</header>
 	<hr>
 	<div class="result_title">
 		<h2>
