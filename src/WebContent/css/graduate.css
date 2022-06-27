@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+body{
+  background-color: white;
+}
 h1{
 	text-align: center;
 }
@@ -32,6 +34,10 @@ h2{
 }
 .avater_photo{
 	display: flex;
+}
+
+.photo avater-first is-show-avater{
+	font-size: 100px;
 }
 
 .score {
@@ -81,6 +87,7 @@ h2{
     background: -webkit-linear-gradient(#ffb03c, #ff708d);
     background: linear-gradient(to right, #ffb03c, #ff708d);
     color: #FFF;
+
 }
 .message p{
     margin: 50;
@@ -90,12 +97,12 @@ h2{
 }
 
 .next {
-  float:right;
+  /*float:right;*/
   font-weight: bold;
   padding: 1em 0.5em;
   text-decoration: none;
-  color: #FFF;
-  background: #ff7f7f;
+  color: #0000FF;
+  background: #0000FF;
   transition: .4s;
 
 }
