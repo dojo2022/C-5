@@ -35,6 +35,7 @@
 				初日の体重<br>BMI
 			</div>
 		</div>
+		<img src="/health_management/images/矢印.png" class="yajirusi" alt="矢印">
 		<div class="photo-group2">
 			<div class="photo avater-first is-show-avater">現在</div>
 			<div class="photo avater-ideal">
@@ -43,10 +44,11 @@
 				<img class="idealbody2" src="/health_management/images/body1_0.png"
 					alt="体">
 			</div>
-			<img src="/health_management/images/矢印.png" alt="矢印">
+
 			<div class="score2">
 				現在の体重<br>BMI
 			</div>
+
 		</div>
 
 		<div class="text">
