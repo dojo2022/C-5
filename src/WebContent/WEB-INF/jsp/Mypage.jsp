@@ -110,10 +110,11 @@
 		<!--タブを切り替えて表示するコンテンツ-->
 		<div class="panel-group">
 			<div class="panel tab-A is-show">
-				<table border="1" class="stampcard">
+				<!-- <table border="1" style="border-collapse: collapse"  class="stampcard"> -->
+				<table style="border-collapse: separate border: solid 4px #404040; border-radius: 20px" class="stampcard">
 					<tr>
 						<!-- スタンプ押す処理は、報告完了ボタンができるまでは14個手動（タグライブラリ）-->
-						<td>
+						<td style="border-radius: 20px 0 0 0;">
 							<c:choose>
 								<c:when test="${stamp1 == true}">
 									<img src="/health_management/images/taihennyokuganbarimasita.png"
@@ -179,7 +180,7 @@
 								</c:otherwise>
 							</c:choose>
 						</td>
-						<td>
+						<td style="border-radius: 0 20px 0 0;">
 							<c:choose>
 								<c:when test="${stamp7 == true}">
 									<img src="/health_management/images/taihennyokuganbarimasita.png"
@@ -192,7 +193,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td style="border-radius: 0 0 0 20px;">
 							<c:choose>
 								<c:when test="${stamp8 == true}">
 									<img src="/health_management/images/taihennyokuganbarimasita.png"
@@ -258,7 +259,7 @@
 								</c:otherwise>
 							</c:choose>
 						</td>
-						<td>
+						<td style="border-radius: 0 0 20px 0;">
 							<c:choose>
 								<c:when test="${stamp14 == true}">
 									<img src="/health_management/images/taihennyokuganbarimasita.png"
