@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header class="head">
-		<img src="" alt="日日減るスチェック">
+		<img src="/health_management/images/rogo.png" alt="日日減るスチェック">
 	</header>
 	<hr>
 	<div class="result_title">

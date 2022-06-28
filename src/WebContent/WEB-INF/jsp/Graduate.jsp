@@ -12,7 +12,7 @@
 
 </head>
 <header>
-<h1>日日減るすチェック</h1>
+<img src="health">
 </header>
 <body>
 	<hr>
