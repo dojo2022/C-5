@@ -11,7 +11,7 @@
 <body>
 <main>
 <h1  >
-	<img src="" alt="健康アプリ">
+	<img src="/health_management/images/rogo.png" alt="健康アプリ">
 	</h1>
 <hr>
 <h2>ログイン</h2>

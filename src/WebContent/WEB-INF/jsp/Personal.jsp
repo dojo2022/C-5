@@ -11,7 +11,7 @@
 <body>
 <h1  >
 	<a href="/health_management/MypageServlet">
-	<img src="" alt="健康アプリ">
+	<img src="/health_management/images/rogo.png" alt="健康アプリ">
 	</a>
 	</h1>
 <hr>

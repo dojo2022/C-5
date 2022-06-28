@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/health_management/css/register.css">
 </head>
 <header>
- <h1><img src="" alt="健康アプリ"></h1>
+ <h1><img src="/health_management/images/rogo.png" alt="健康アプリ"></h1>
 </header>
 <body>
 	<main>

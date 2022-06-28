@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/health_management/css/checklist.css">
 </head>
 <header>
- <h1><img src="" alt="健康アプリ"></h1>
+ <h1><img src="/health_management/images/rogo.png" alt="健康アプリ"></h1>
 </header>
 <body>
 	<h2>短期の目標設定</h2>
