@@ -35,7 +35,7 @@ h2 {
 	float:left;
     padding: 0.5em 0 0 0;
     margin: 0 0 0 5em;
-    border: double 5px #4ec4d3;
+    border: double 5px  #eb1a94;
 }
 .result_message p {
     margin: 0;
@@ -46,8 +46,8 @@ h2 {
     padding: 0 0 0 0 ;
     margin: 0 0;
     color: #FFF;
-    background: #6eb7ff;
-    border-bottom: solid 6px #3f87ce;
+    background: #eb1a60;
+    border-bottom: solid 6px #d1084c;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
 }
@@ -62,7 +62,7 @@ h2 {
   padding: 1em 0.5em ;
   text-decoration: none;
   color: #FFF;
-  background: dodgerblue;
+  background: #eb1a60;
   transition: .4s;
 
 
@@ -83,8 +83,8 @@ h2 {
     padding: 0.5em 1em;
     margin: 5em 15em 1em  10em;
     color: #FFF;
-    background: #6eb7ff;
-    border-bottom: solid 6px #3f87ce;
+    background: #eb1a60;
+    border-bottom: solid 6px #d1084c;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     border-radius: 9px;
 }
@@ -123,7 +123,7 @@ width:750px;
   display:none;
 }
 .tab.is-active{
-  background:dodgerblue;
+  background:#eb1a60;
   color:#FFF;
   transition: all 0.2s ease-out;
 }
