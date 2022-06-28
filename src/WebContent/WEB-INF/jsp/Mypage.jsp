@@ -30,7 +30,7 @@
 	</div>
 	<h1>
 		<a href="/health_management/MypageServlet"> <img src="/health_management/images/rogo.png"
-			alt="日日減るすチェック">
+		class="rogo"	alt="日日減るすチェック">
 		</a>
 	</h1>
 
